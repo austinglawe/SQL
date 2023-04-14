@@ -1,1 +1,1 @@
-# Hello and welcome to my SQL project portfolio
+# Hello and welcome to my SQL project portfolio!
