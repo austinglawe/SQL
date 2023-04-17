@@ -1,0 +1,66 @@
+# This course takes you from no previous knowledge on SQL to going over skills that will help any data analyst be very successful.
+# This course is taught by Derek Steer, the CEO of Mode Analytics
+# This whole course is based around a company they made up data for called, Parch and Posey.
+# Data that is contained within this database includes, 5 tables:
+        ## web_events, accounts, orders, sales_reps, and region
+# Within these tables, there is a lot of data, some NULL
+
+
+# Within this course it teaches you the basics to expert level, using PostgreSQL as its
+# It goes over:
+    ##  SELECT & FROM
+        LIMIT
+        ORDER BY
+        WHERE
+        Arithmetic Operators (
+        LIKE
+        IN
+        NOT
+        AND and BETWEEN
+        OR
+        JOIN
+        aliases
+        LEFT JOIN
+        RIGHT JOIN
+        NULLs
+        COUNT
+        SUM
+        MIN, MAX, & AVG
+        GROUP BY
+        DISTINCT
+        HAVING
+        DATE
+        CASE
+        subqueries
+        WITH
+        LEFT & RIGHT
+        STRPOS, POSITION, SUBSTR
+        CONCAT
+        CAST
+        COALESCE
+        Window Functions
+        ROW_NUMBER & RANK
+        Percentiles
+        FULL OUTER JOINs
+        JOINs with comparison operators
+        self JOINs
+        UNIONs
+        JOINing subqueries        
+#Here are all the projects this course had me answer and go over. I will put them into progressive order
+to show where I began versus where I ended up. If you would like to view more advanced, please scroll to
+the bottom.
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
