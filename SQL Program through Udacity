@@ -41,9 +41,12 @@
         CONCAT ( || - piping )
         CAST   ( :: - casting , TO_DATE , TRIM )
         COALESCE
-        Window Functions
+        Window Functions ( OVER , PARTITION BY , ORDER BY )
         ROW_NUMBER & RANK
-        Percentiles
+	Aggregates in Window Functions
+	Aliases for Multiple Window Functions
+	Comparing a Row to Previous Row ( LAG , LEAD )
+        Percentiles ( NTILE )
         FULL OUTER JOINs
         JOINs with comparison operators
         self JOINs
@@ -1314,29 +1317,311 @@ ________________________________________________________________________________
 PART 6. [Advanced] SQL Window Functions
 
 # Window Functions 1 	6.2-4
-
+Using Derek's previous video as an example, create another running total. This time, create a running total of standard_amt_usd (in the orders table) over order time with no date truncation. Your final table should have two columns: one with the amount being added for each new row, and a second with the running total.
+SELECT standard_amt_usd,
+       SUM(standard_amt_usd) OVER (ORDER BY occurred_at) AS running_total
+FROM orders
 
 #Window Functions 2	6.5-6
-
+Now, modify your query from the previous quiz to include partitions. Still create a running total of standard_amt_usd (in the orders table) over order time, but this time, date truncate occurred_at by year and partition by that same year-truncated occurred_at variable. Your final table should have three columns: One with the amount being added for each row, one for the truncated date, and a final column with the running total within each year.
+SELECT standard_amt_usd,
+       DATE_TRUNC('year', occurred_at) as year,
+       SUM(standard_amt_usd) OVER (PARTITION BY DATE_TRUNC('year', occurred_at) ORDER BY occurred_at) AS running_total
+FROM orders
 
 #ROW_NUMBER & RANK	6.7-9
-
+Select the id, account_id, and total variable from the orders table, then create a column called total_rank that ranks this total amount of paper ordered (from highest to lowest) for each account using a partition. Your final table should have these four columns.
+SELECT id,
+       account_id,
+       total,
+       RANK() OVER (PARTITION BY account_id ORDER BY total DESC) AS total_rank
+FROM orders
 
 #Aggregates in Window Functions		6.10-12
+Run the query that Derek wrote in the previous video in the first SQL Explorer below. Keep the query results in mind; you'll be comparing them to the results of another query next.
+SELECT id,
+       account_id,
+       standard_qty,
+       DATE_TRUNC('month', occurred_at) AS month,
+       DENSE_RANK() OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS dense_rank,
+       SUM(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS sum_std_qty,
+       COUNT(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS count_std_qty,
+       AVG(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS avg_std_qty,
+       MIN(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS min_std_qty,
+       MAX(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS max_std_qty
+FROM orders
+Now remove ORDER BY DATE_TRUNC('month',occurred_at) in each line of the query that contains it in the SQL Explorer below. Evaluate your new query, compare it to the results in the SQL Explorer above, and answer the subsequent quiz questions.
+SELECT id,
+       account_id,
+       standard_qty,
+       DATE_TRUNC('month', occurred_at) AS month,
+       DENSE_RANK() OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS dense_rank,
+       SUM(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS sum_std_qty,
+       COUNT(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS count_std_qty,
+       AVG(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS avg_std_qty,
+       MIN(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS min_std_qty,
+       MAX(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS max_std_qty
+FROM orders
+
+What is the value of dense_rank in every row for the following account_id values?
+account_id 
+1001
+1011
+1021
+What is the value of sum_std_qty in the first row for the following account_id values?
+account_id 
+1001
+1011
+1021
+What is happening when you omit the ORDER BY clause when doing aggregates with window functions? Use the results from the queries above to guide your thoughts then jot these thoughts down in a few sentences in the text box below.
+
+The ORDER BY clause is one of two clauses integral to window functions. The ORDER and PARTITION define what is referred to as the “window”—the ordered subset of data over which calculations are made. Removing ORDER BY just leaves an unordered partition; in our query's case, each column's value is simply an aggregation (e.g., sum, count, average, minimum, or maximum) of all the standard_qty values in its respective account_id.
+
+As Stack Overflow user mathguy explains:
+The easiest way to think about this - leaving the ORDER BY out is equivalent to "ordering" in a way that all rows in the partition are "equal" to each other. Indeed, you can get the same effect by explicitly adding the ORDER BY clause like this: ORDER BY 0 (or "order by" any constant expression), or even, more emphatically, ORDER BY NULL.
 
 
 #Aliases for Multiple Window Functions	6.13-15
+Using Derek's example in the previous window, deconstruct the window function alias into its two parts: the alias part and the window function part.
+of:
+Alias part
+Window function part
+
+Now, create and use an alias to shorten the following query (which is different than the one in Derek's previous video) that has multiple window functions. Name the alias account_year_window, which is more descriptive than main_window in the example above.
+SELECT id,
+       account_id,
+       DATE_TRUNC('year',occurred_at) AS year,
+       DENSE_RANK() OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS dense_rank,
+       total_amt_usd,
+       SUM(total_amt_usd) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS sum_total_amt_usd,
+       COUNT(total_amt_usd) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS count_total_amt_usd,
+       AVG(total_amt_usd) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS avg_total_amt_usd,
+       MIN(total_amt_usd) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS min_total_amt_usd,
+       MAX(total_amt_usd) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at)) AS max_total_amt_usd
+FROM orders
+
+
+SELECT id,
+       account_id,
+       DATE_TRUNC('year',occurred_at) AS year,
+       DENSE_RANK() OVER account_year_window AS dense_rank,
+       total_amt_usd,
+       SUM(total_amt_usd) OVER account_year_window AS sum_total_amt_usd,
+       COUNT(total_amt_usd) OVER account_year_window AS count_total_amt_usd,
+       AVG(total_amt_usd) OVER account_year_window AS avg_total_amt_usd,
+       MIN(total_amt_usd) OVER account_year_window AS min_total_amt_usd,
+       MAX(total_amt_usd) OVER account_year_window AS max_total_amt_usd
+FROM orders 
+WINDOW account_year_window AS (PARTITION BY account_id ORDER BY DATE_TRUNC('year',occurred_at))
 
 
 #Comparing a Row to Previous Row	6.16-18
+In the previous video, Derek outlines how to compare a row to a previous or subsequent row. This technique can be useful when analyzing time-based events. Imagine you're an analyst at Parch & Posey and you want to determine how the current order's total revenue ("total" meaning from sales of all types of paper) compares to the next order's total revenue.
 
+Modify Derek's query from the previous video in the SQL Explorer below to perform this analysis. You'll need to use occurred_at and total_amt_usd in the orders table along with LEAD to do so. In your query results, there should be four columns: occurred_at, total_amt_usd, lead, and lead_difference.
+
+SELECT account_id,
+       standard_sum,
+       LAG(standard_sum) OVER (ORDER BY standard_sum) AS lag,
+       LEAD(standard_sum) OVER (ORDER BY standard_sum) AS lead,
+       standard_sum - LAG(standard_sum) OVER (ORDER BY standard_sum) AS lag_difference,
+       LEAD(standard_sum) OVER (ORDER BY standard_sum) - standard_sum AS lead_difference
+FROM (
+SELECT account_id,
+       SUM(standard_qty) AS standard_sum
+  FROM orders 
+ GROUP BY 1
+ ) sub
+ 
+SELECT occurred_at,
+       total_amt_usd,
+       LEAD(total_amt_usd) OVER (ORDER BY occurred_at) AS lead,
+       LEAD(total_amt_usd) OVER (ORDER BY occurred_at) - total_amt_usd AS lead_difference
+FROM (
+SELECT occurred_at,
+       SUM(total_amt_usd) AS total_amt_usd
+  FROM orders 
+ GROUP BY 1
+) sub 
 
 #Percentiles		6.19-22
+You can use partitions with percentiles to determine the percentile of a specific subset of all rows. Imagine you're an analyst at Parch & Posey and you want to determine the largest orders (in terms of quantity) a specific customer has made to encourage them to order more similarly sized large orders. You only want to consider the NTILE for that customer's account_id.
 
+In the SQL Explorer below, write three queries (separately) that reflect each of the following:
+
+Use the NTILE functionality to divide the accounts into 4 levels in terms of the amount of standard_qty for their orders. Your resulting table should have the account_id, the occurred_at time for each order, the total amount of standard_qty paper purchased, and one of four levels in a standard_quartile column.
+```
+SELECT
+       account_id,
+       occurred_at,
+       standard_qty,
+       NTILE(4) OVER (PARTITION BY account_id ORDER BY standard_qty) AS standard_quartile
+  FROM orders 
+ ORDER BY account_id DESC
+```
+
+Use the NTILE functionality to divide the accounts into two levels in terms of the amount of gloss_qty for their orders. Your resulting table should have the account_id, the occurred_at time for each order, the total amount of gloss_qty paper purchased, and one of two levels in a gloss_half column.
+```
+SELECT
+       account_id,
+       occurred_at,
+       gloss_qty,
+       NTILE(2) OVER (PARTITION BY account_id ORDER BY gloss_qty) AS gloss_half
+  FROM orders 
+ ORDER BY account_id DESC
+```
+
+Use the NTILE functionality to divide the orders for each account into 100 levels in terms of the amount of total_amt_usd for their orders. Your resulting table should have the account_id, the occurred_at time for each order, the total amount of total_amt_usd paper purchased, and one of 100 levels in a total_percentile column.
+```
+SELECT
+       account_id,
+       occurred_at,
+       total_amt_usd,
+       NTILE(100) OVER (PARTITION BY account_id ORDER BY total_amt_usd) AS total_percentile
+  FROM orders 
+ ORDER BY account_id DESC
+```
+
+Note: To make it easier to interpret the results, order by the account_id in each of the queries.
 
 
 _______________________________________________________________________________________________
+PART 7. [Advanced] SQL Advanced JOINs & Performance Tuning
 
+#FULL OUTER JOIN	7.2-4
+You’re not likely to use FULL JOIN (which can also be written as FULL OUTER JOIN) too often, but the syntax is worth practicing anyway. LEFT JOIN and RIGHT JOIN each return unmatched rows from one of the tables—FULL JOIN returns unmatched rows from both tables. FULL JOIN is commonly used in conjunction with aggregations to understand the amount of overlap between two tables.
+
+Say you're an analyst at Parch & Posey and you want to see:
+
+each account who has a sales rep and each sales rep that has an account (all of the columns in these returned rows will be full)
+but also each account that does not have a sales rep and each sales rep that does not have an account (some of the columns in these returned rows will be empty)
+This type of question is rare, but FULL OUTER JOIN is perfect for it. In the following SQL Explorer, write a query with FULL OUTER JOIN to fit the above described Parch & Posey scenario (selecting all of the columns in both of the relevant tables, accounts and sales_reps) then answer the subsequent multiple choice quiz.
+
+In your query results for the above Parch & Posey FULL OUTER JOIN quiz, are there any unmatched rows?
+
+SELECT *
+  FROM accounts
+ FULL JOIN sales_reps ON accounts.sales_rep_id = sales_reps.id
+If unmatched rows existed (they don't for this query), you could isolate them by adding the following line to the end of the query:
+
+WHERE accounts.sales_rep_id IS NULL OR sales_reps.id IS NULL
+To elaborate on the rarity of FULL OUTER JOINS in practice, this Stack Overflow answer is helpful: When is a good situation to use a full outer join?
+
+
+#Joins with Comparison Operators	7.5-7
+The query in Derek's video was pretty long. Let's now use a shorter query to showcase the power of joining with comparison operators.
+
+Inequality operators (a.k.a. comparison operators) don't only need to be date times or numbers, they also work on strings! You'll see how this works by completing the following quiz, which will also reinforce the concept of joining with comparison operators.
+
+In the following SQL Explorer, write a query that left joins the accounts table and the sales_reps tables on each sale rep's ID number and joins it using the < comparison operator on accounts.primary_poc and sales_reps.name, like so:
+
+accounts.primary_poc < sales_reps.name
+The query results should be a table with three columns: the account name (e.g. Johnson Controls), the primary contact name (e.g. Cammy Sosnowski), and the sales representative's name (e.g. Samuel Racine). Then answer the subsequent multiple choice question.
+
+What is the relationship between accounts.primary_poc and sales_reps.name?
+[] The primary point of contact's full name comes before the sales representative's name alphabetically
+[] The primary point of contact's full name comes after the sales representative's name alphabetically
+[] The company name comes after the sales representative's name alphabetically
+
+SELECT accounts.name as account_name,
+       accounts.primary_poc as poc_name,
+       sales_reps.name as sales_rep_name
+  FROM accounts
+  LEFT JOIN sales_reps
+    ON accounts.sales_rep_id = sales_reps.id
+   AND accounts.primary_poc < sales_reps.name
+For more details on how string comparison with < and > work in SQL, check out this excellent answer on Stack Overflow: SQL string comparison, greater than and less than operators
+
+
+
+
+#Self Joins		7.8-10
+What use case below is appropriate for self joins?
+[] When you want to calculate the running total of orders made over the course of the year.
+[] When you want to show both parent and child relationships within a family tree.
+[] When you want the first four digits of a student ID as a unique identifier.
+[] When you want to join all records of two tables to determine where employees live.
+One of the most common use cases for self JOINs is in cases where two events occurred, one after another. As you may have noticed in the previous video, using inequalities in conjunction with self JOINs is common.
+
+Modify the query from the previous video, which is pre-populated in the SQL Explorer below, to perform the same interval analysis except for the web_events table. Also:
+
+change the interval to 1 day to find those web events that occurred after, but not more than 1 day after, another web event
+add a column for the channel variable in both instances of the table in your query
+You can find more on the types of INTERVALS (and other date related functionality) in the Postgres documentation here.
+
+SELECT o1.id AS o1_id,
+       o1.account_id AS o1_account_id,
+       o1.occurred_at AS o1_occurred_at,
+       o2.id AS o2_id,
+       o2.account_id AS o2_account_id,
+       o2.occurred_at AS o2_occurred_at
+  FROM orders o1
+ LEFT JOIN orders o2
+   ON o1.account_id = o2.account_id
+  AND o2.occurred_at > o1.occurred_at
+  AND o2.occurred_at <= o1.occurred_at + INTERVAL '28 days'
+ORDER BY o1.account_id, o1.occurred_at
+
+
+SELECT we1.id AS we_id,
+       we1.account_id AS we1_account_id,
+       we1.occurred_at AS we1_occurred_at,
+       we1.channel AS we1_channel,
+       we2.id AS we2_id,
+       we2.account_id AS we2_account_id,
+       we2.occurred_at AS we2_occurred_at,
+       we2.channel AS we2_channel
+  FROM web_events we1 
+ LEFT JOIN web_events we2
+   ON we1.account_id = we2.account_id
+  AND we1.occurred_at > we2.occurred_at
+  AND we1.occurred_at <= we2.occurred_at + INTERVAL '1 day'
+ORDER BY we1.account_id, we2.occurred_at
+
+#UNION			7.11-13
+
+What use case below is it appropriate to use a union?
+[] When you want to determine all reasons students are late. Currently, each late reason is maintained within tables corresponding to the grade the student is in.
+[] When you want to determine which state students live. Currently, there is one table for students and their academic performance and another table with their demographic and location information.
+[] When you want to determine the average price of products that sold over $10k in revenue. Currently, there is one table that has all products and their respective pricing.
+[] When you want to determine the total number of teachers by neighborhood in a particular city. Currently, there is one table that maintains the teacher’s information, including which neighborhood they teach in.
+
+Write a query that uses UNION ALL on two instances (and selecting all columns) of the accounts table. Then inspect the results and answer the subsequent quiz.
+SELECT *
+    FROM accounts
+
+UNION ALL
+
+SELECT *
+  FROM accounts
+
+Without rewriting and running the query, how many results would be returned if you used UNION instead of UNION ALL in the above query?
+SELECT *
+    FROM accounts
+    WHERE name = 'Walmart'
+
+UNION ALL
+
+SELECT *
+  FROM accounts
+  WHERE name = 'Disney'
+  
+Add a WHERE clause to each of the tables that you unioned in the query above, filtering the first table where name equals Walmart and filtering the second table where name equals Disney. Inspect the results then answer the subsequent quiz.
+WITH double_accounts AS (
+    SELECT *
+      FROM accounts
+    
+    UNION ALL
+    
+    SELECT *
+      FROM accounts
+)
+
+SELECT name,
+       COUNT(*) AS name_count
+ FROM double_accounts 
+GROUP BY 1
+ORDER BY 2 DESC
 
 
 
