@@ -1623,6 +1623,11 @@ SELECT name,
 GROUP BY 1
 ORDER BY 2 DESC
 
+Select all of the following statements that are true about tuning performance with LIMIT.
+[] If you have time series data, limiting to a small time window can make your queries run more quickly.
+[] Testing your queries on a subset of data, finalizing your query, then removing the subset limitation is a sound strategy.
+[] Applying LIMIT 10 when aggregating data to one row (i.e. with a GROUP BY) will speed up your queries.
+[] When working with subqueries, limiting the amount of data you’re working with in the place where it will be executed first will have the maximum impact on query run time.
 
 
 
