@@ -1371,24 +1371,38 @@ FROM (SELECT a.id,
 
 
 ## WITH                   4.11-14
-You need to find the average number of events for each channel per day.
-SELECT channel, AVG(events) AS average_events FROM (SELECT DATE_TRUNC('day',occurred_at) AS day, channel, COUNT(*) as events FROM web_events GROUP BY 1,2) sub GROUP BY channel ORDER BY 2 DESC;
-Let's try this again using a WITH statement.
+--You need to find the average number of events for each channel per day.
+
+SELECT  channel, 
+	AVG(events) AS average_events 
+FROM (SELECT DATE_TRUNC('day',occurred_at) AS day, 
+	     channel, 
+	     COUNT(*) as events 
+      FROM web_events GROUP BY 1,2) sub 
+GROUP BY channel ORDER BY 2 DESC;
+
+And then instead with a WITH statement.
 Notice, you can pull the inner query:
+
 SELECT DATE_TRUNC('day',occurred_at) AS day, 
        channel, COUNT(*) as events
 FROM web_events 
 GROUP BY 1,2
+
 This is the part we put in the WITH statement. Notice, we are aliasing the table as events below:
+
 WITH events AS (
           SELECT DATE_TRUNC('day',occurred_at) AS day, 
-                        channel, COUNT(*) as events
+                 channel, 
+		 COUNT(*) as events
           FROM web_events 
           GROUP BY 1,2)
+
 Now, we can use this newly created events table as if it is any other table in our database:
+
 WITH events AS (
           SELECT DATE_TRUNC('day',occurred_at) AS day, 
-                        channel, COUNT(*) as events
+                 channel, COUNT(*) as events
           FROM web_events 
           GROUP BY 1,2)
 
@@ -1396,7 +1410,10 @@ SELECT channel, AVG(events) AS average_events
 FROM events
 GROUP BY channel
 ORDER BY 2 DESC;
-For the above example, we don't need anymore than the one additional table, but imagine we needed to create a second table to pull from. We can create an additional table to pull from in the following way:
+
+For the above example, we don't need anymore than the one additional table, but imagine we needed to create a second table 
+to pull from. We can create an additional table to pull from in the following way:
+
 WITH table1 AS (
           SELECT *
           FROM web_events),
@@ -1410,7 +1427,8 @@ SELECT *
 FROM table1
 JOIN table2
 ON table1.account_id = table2.id;
-You can add more and more tables using the WITH statement in the same way. The quiz at the bottom will assure you are catching all of the necessary components of these new queries.
+You can add more and more tables using the WITH statement in the same way. The quiz at the bottom will assure you are catching all of 
+the necessary components of these new queries.
 
 
 Provide the name of the sales_rep in each region with the largest amount of total_amt_usd sales.
@@ -1509,28 +1527,29 @@ WITH t1 AS (
 SELECT AVG(tot_spent)
 FROM t1;
 
-What is the lifetime average amount spent in terms of total_amt_usd, including only the companies that spent more per order, on average, than the average of all orders.
-(What is the lifetime average amount spent in terms of **total_amt_usd**, including only the companies that spent more per order, on average, than the average of all orders.)
-``` WITH t1 AS ( SELECT AVG(o.total_amt_usd) avg_all FROM orders o JOIN accounts a ON a.id = o.account_id), t2 AS ( SELECT o.account_id, AVG(o.total_amt_usd) avg_amt FROM orders o GROUP BY 1 HAVING AVG(o.total_amt_usd) > (SELECT * FROM t1)) SELECT AVG(avg_amt) FROM t2; ``` 
-
 _____________________________________________________________________________________________________
 PART 5. SQL Data Cleaning 
 
 #LEFT, RIGHT, LENGTH	5.2-4
-In the accounts table, there is a column holding the website for each company. The last three digits specify what type of web address they are using. A list of extensions (and pricing) is provided here. Pull these extensions and provide how many of each website type exist in the accounts table.
+In the accounts table, there is a column holding the website for each company. The last three digits specify what type of web address 
+they are using. A list of extensions (and pricing) is provided here. Pull these extensions and provide how many of each website type 
+exist in the accounts table.
 SELECT RIGHT(website, 3) AS domain, COUNT(*) num_companies
 FROM accounts
 GROUP BY 1
 ORDER BY 2 DESC;
 
-There is much debate about how much the name (or even the first letter of a company name) matters. Use the accounts table to pull the first letter of each company name to see the distribution of company names that begin with each letter (or number).
+There is much debate about how much the name (or even the first letter of a company name) matters. Use the accounts table to pull the first 
+letter of each company name to see the distribution of company names that begin with each letter (or number).
 SELECT LEFT(UPPER(name), 1) AS first_letter, COUNT(*) num_companies
 FROM accounts
 GROUP BY 1
 ORDER BY 2 DESC;
 
-Use the accounts table and a CASE statement to create two groups: one group of company names that start with a number and a second group of those company names that start with a letter. What proportion of company names start with a letter?
-There are 350 company names that start with a letter and 1 that starts with a number. This gives a ratio of 350/351 that are company names that start with a letter or 99.7%.
+Use the accounts table and a CASE statement to create two groups: one group of company names that start with a number and a second group of 
+those company names that start with a letter. What proportion of company names start with a letter?
+There are 350 company names that start with a letter and 1 that starts with a number. This gives a ratio of 350/351 that are company names 
+that start with a letter or 99.7%.
 SELECT SUM(num) nums, SUM(letter) letters
 FROM (SELECT name, CASE WHEN LEFT(UPPER(name), 1) IN ('0','1','2','3','4','5','6','7','8','9') 
                           THEN 1 ELSE 0 END AS num, 
@@ -1539,7 +1558,8 @@ FROM (SELECT name, CASE WHEN LEFT(UPPER(name), 1) IN ('0','1','2','3','4','5','6
          FROM accounts) t1;
 
 Consider vowels as a, e, i, o, and u. What proportion of company names start with a vowel, and what percent start with anything else?
-There are 80 company names that start with a vowel and 271 that start with other characters. Therefore 80/351 are vowels or 22.8%. Therefore, 77.2% of company names do not start with vowels.
+There are 80 company names that start with a vowel and 271 that start with other characters. Therefore 80/351 are vowels or 22.8%. 
+Therefore, 77.2% of company names do not start with vowels.
 SELECT SUM(vowels) vowels, SUM(other) other
 FROM (SELECT name, CASE WHEN LEFT(UPPER(name), 1) IN ('A','E','I','O','U') 
                            THEN 1 ELSE 0 END AS vowels, 
@@ -1561,25 +1581,34 @@ FROM sales_reps;
 
 
 #CONCAT			5.8-10
-Each company in the accounts table wants to create an email address for each primary_poc. The email address should be the first name of the primary_poc . last name primary_poc @ company name .com.
+Each company in the accounts table wants to create an email address for each primary_poc. The email address should be the first name of 
+the primary_poc . last name primary_poc @ company name .com.
 WITH t1 AS (
     SELECT LEFT(primary_poc,     STRPOS(primary_poc, ' ') -1 ) first_name,  RIGHT(primary_poc, LENGTH(primary_poc) - STRPOS(primary_poc, ' ')) last_name, name
     FROM accounts)
 SELECT first_name, last_name, CONCAT(first_name, '.', last_name, '@', name, '.com')
 FROM t1;
 
-You may have noticed that in the previous solution some of the company names include spaces, which will certainly not work in an email address. See if you can create an email address that will work by removing all of the spaces in the account name, but otherwise your solution should be just as in question 1. Some helpful documentation is here.
+You may have noticed that in the previous solution some of the company names include spaces, which will certainly not work in an email address. 
+See if you can create an email address that will work by removing all of the spaces in the account name, but otherwise your solution 
+should be just as in question 1. Some helpful documentation is here.
 WITH t1 AS (
     SELECT LEFT(primary_poc,     STRPOS(primary_poc, ' ') -1 ) first_name,  RIGHT(primary_poc, LENGTH(primary_poc) - STRPOS(primary_poc, ' ')) last_name, name
     FROM accounts)
 SELECT first_name, last_name, CONCAT(first_name, '.', last_name, '@', REPLACE(name, ' ', ''), '.com')
 FROM  t1;
 
-We would also like to create an initial password, which they will change after their first log in. The first password will be the first letter of the primary_poc's first name (lowercase), then the last letter of their first name (lowercase), the first letter of their last name (lowercase), the last letter of their last name (lowercase), the number of letters in their first name, the number of letters in their last name, and then the name of the company they are working with, all capitalized with no spaces.
+We would also like to create an initial password, which they will change after their first log in. The first password will be the 
+first letter of the primary_poc's first name (lowercase), then the last letter of their first name (lowercase), the first letter of 
+their last name (lowercase), the last letter of their last name (lowercase), the number of letters in their first name, the number of letters 
+in their last name, and then the name of the company they are working with, all capitalized with no spaces.
 WITH t1 AS (
     SELECT LEFT(primary_poc,     STRPOS(primary_poc, ' ') -1 ) first_name,  RIGHT(primary_poc, LENGTH(primary_poc) - STRPOS(primary_poc, ' ')) last_name, name
     FROM accounts)
-SELECT first_name, last_name, CONCAT(first_name, '.', last_name, '@', name, '.com'), LEFT(LOWER(first_name), 1) || RIGHT(LOWER(first_name), 1) || LEFT(LOWER(last_name), 1) || RIGHT(LOWER(last_name), 1) || LENGTH(first_name) || LENGTH(last_name) || REPLACE(UPPER(name), ' ', '')
+SELECT  first_name, 
+	last_name, 
+	CONCAT(first_name, '.', last_name, '@', name, '.com'), 
+	LEFT(LOWER(first_name), 1) || RIGHT(LOWER(first_name), 1) || LEFT(LOWER(last_name), 1) || RIGHT(LOWER(last_name), 1) || LENGTH(first_name) || LENGTH(last_name) || REPLACE(UPPER(name), ' ', '')
 FROM t1;
 
 
@@ -1625,13 +1654,38 @@ LEFT JOIN orders o
 ON a.id = o.account_id
 WHERE o.total IS NULL;
 3.
-SELECT COALESCE(o.id, a.id) filled_id, a.name, a.website, a.lat, a.long, a.primary_poc, a.sales_rep_id, COALESCE(o.account_id, a.id) account_id, o.occurred_at, o.standard_qty, o.gloss_qty, o.poster_qty, o.total, o.standard_amt_usd, o.gloss_amt_usd, o.poster_amt_usd, o.total_amt_usd
+SELECT  COALESCE(o.id, a.id) filled_id, 
+	a.name, 
+	a.website, 
+	a.lat, 
+	a.long, 
+	a.primary_poc, 
+	a.sales_rep_id, 
+	COALESCE(o.account_id, a.id) account_id, 
+	o.occurred_at, o.standard_qty, o.gloss_qty, 
+	o.poster_qty, o.total, o.standard_amt_usd, 
+	o.gloss_amt_usd, o.poster_amt_usd, 
+	o.total_amt_usd
 FROM accounts a
 LEFT JOIN orders o
 ON a.id = o.account_id
 WHERE o.total IS NULL;
 4.
-SELECT COALESCE(o.id, a.id) filled_id, a.name, a.website, a.lat, a.long, a.primary_poc, a.sales_rep_id, COALESCE(o.account_id, a.id) account_id, o.occurred_at, COALESCE(o.standard_qty, 0) standard_qty, COALESCE(o.gloss_qty,0) gloss_qty, COALESCE(o.poster_qty,0) poster_qty, COALESCE(o.total,0) total, COALESCE(o.standard_amt_usd,0) standard_amt_usd, COALESCE(o.gloss_amt_usd,0) gloss_amt_usd, COALESCE(o.poster_amt_usd,0) poster_amt_usd, COALESCE(o.total_amt_usd,0) total_amt_usd
+SELECT  COALESCE(o.id, a.id) filled_id, 
+	a.name, 
+	a.website, 
+	a.lat, a.long, 
+	a.primary_poc, 
+	a.sales_rep_id, 
+	COALESCE(o.account_id, a.id) account_id, 
+	o.occurred_at, COALESCE(o.standard_qty, 0) standard_qty, 
+	COALESCE(o.gloss_qty,0) gloss_qty, 
+	COALESCE(o.poster_qty,0) poster_qty, 
+	COALESCE(o.total,0) total, 
+	COALESCE(o.standard_amt_usd,0) standard_amt_usd, 
+	COALESCE(o.gloss_amt_usd,0) gloss_amt_usd, 
+	COALESCE(o.poster_amt_usd,0) poster_amt_usd, 
+	COALESCE(o.total_amt_usd,0) total_amt_usd
 FROM accounts a
 LEFT JOIN orders o
 ON a.id = o.account_id
@@ -1642,7 +1696,23 @@ FROM accounts a
 LEFT JOIN orders o
 ON a.id = o.account_id;
 6.
-SELECT COALESCE(o.id, a.id) filled_id, a.name, a.website, a.lat, a.long, a.primary_poc, a.sales_rep_id, COALESCE(o.account_id, a.id) account_id, o.occurred_at, COALESCE(o.standard_qty, 0) standard_qty, COALESCE(o.gloss_qty,0) gloss_qty, COALESCE(o.poster_qty,0) poster_qty, COALESCE(o.total,0) total, COALESCE(o.standard_amt_usd,0) standard_amt_usd, COALESCE(o.gloss_amt_usd,0) gloss_amt_usd, COALESCE(o.poster_amt_usd,0) poster_amt_usd, COALESCE(o.total_amt_usd,0) total_amt_usd
+SELECT  COALESCE(o.id, a.id) filled_id, 
+	a.name, 
+	a.website, 
+	a.lat, 
+	a.long, 
+	a.primary_poc, 
+	a.sales_rep_id, 
+	COALESCE(o.account_id, a.id) account_id, 
+	o.occurred_at, 
+	COALESCE(o.standard_qty, 0) standard_qty, 
+	COALESCE(o.gloss_qty,0) gloss_qty, 
+	COALESCE(o.poster_qty,0) poster_qty, 
+	COALESCE(o.total,0) total, 
+	COALESCE(o.standard_amt_usd,0) standard_amt_usd, 
+	COALESCE(o.gloss_amt_usd,0) gloss_amt_usd, 
+	COALESCE(o.poster_amt_usd,0) poster_amt_usd, 
+	COALESCE(o.total_amt_usd,0) total_amt_usd
 FROM accounts a
 LEFT JOIN orders o
 ON a.id = o.account_id;
@@ -1650,20 +1720,25 @@ ________________________________________________________________________________
 PART 6. [Advanced] SQL Window Functions
 
 # Window Functions 1 	6.2-4
-Using Derek's previous video as an example, create another running total. This time, create a running total of standard_amt_usd (in the orders table) over order time with no date truncation. Your final table should have two columns: one with the amount being added for each new row, and a second with the running total.
+Using Derek's previous video as an example, create another running total. This time, create a running total of standard_amt_usd (in the orders table) 
+over order time with no date truncation. Your final table should have two columns: one with the amount being added for each new row, and a second 
+with the running total.
 SELECT standard_amt_usd,
        SUM(standard_amt_usd) OVER (ORDER BY occurred_at) AS running_total
 FROM orders
 
 #Window Functions 2	6.5-6
-Now, modify your query from the previous quiz to include partitions. Still create a running total of standard_amt_usd (in the orders table) over order time, but this time, date truncate occurred_at by year and partition by that same year-truncated occurred_at variable. Your final table should have three columns: One with the amount being added for each row, one for the truncated date, and a final column with the running total within each year.
+Now, modify your query from the previous quiz to include partitions. Still create a running total of standard_amt_usd (in the orders table) over 
+order time, but this time, date truncate occurred_at by year and partition by that same year-truncated occurred_at variable. Your final table should 
+have three columns: One with the amount being added for each row, one for the truncated date, and a final column with the running total within each year.
 SELECT standard_amt_usd,
        DATE_TRUNC('year', occurred_at) as year,
        SUM(standard_amt_usd) OVER (PARTITION BY DATE_TRUNC('year', occurred_at) ORDER BY occurred_at) AS running_total
 FROM orders
 
 #ROW_NUMBER & RANK	6.7-9
-Select the id, account_id, and total variable from the orders table, then create a column called total_rank that ranks this total amount of paper ordered (from highest to lowest) for each account using a partition. Your final table should have these four columns.
+Select the id, account_id, and total variable from the orders table, then create a column called total_rank that ranks this total amount 
+of paper ordered (from highest to lowest) for each account using a partition. Your final table should have these four columns.
 SELECT id,
        account_id,
        total,
@@ -1671,7 +1746,8 @@ SELECT id,
 FROM orders
 
 #Aggregates in Window Functions		6.10-12
-Run the query that Derek wrote in the previous video in the first SQL Explorer below. Keep the query results in mind; you'll be comparing them to the results of another query next.
+Run the query that Derek wrote in the previous video in the first SQL Explorer below. Keep the query results in mind; you'll be comparing 
+them to the results of another query next.
 SELECT id,
        account_id,
        standard_qty,
@@ -1683,7 +1759,8 @@ SELECT id,
        MIN(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS min_std_qty,
        MAX(standard_qty) OVER (PARTITION BY account_id ORDER BY DATE_TRUNC('month',occurred_at)) AS max_std_qty
 FROM orders
-Now remove ORDER BY DATE_TRUNC('month',occurred_at) in each line of the query that contains it in the SQL Explorer below. Evaluate your new query, compare it to the results in the SQL Explorer above, and answer the subsequent quiz questions.
+Now remove ORDER BY DATE_TRUNC('month',occurred_at) in each line of the query that contains it in the SQL Explorer below. Evaluate your 
+new query, compare it to the results in the SQL Explorer above, and answer the subsequent quiz questions.
 SELECT id,
        account_id,
        standard_qty,
@@ -1706,12 +1783,17 @@ account_id
 1001
 1011
 1021
-What is happening when you omit the ORDER BY clause when doing aggregates with window functions? Use the results from the queries above to guide your thoughts then jot these thoughts down in a few sentences in the text box below.
+What is happening when you omit the ORDER BY clause when doing aggregates with window functions? Use the results from the queries above to 
+guide your thoughts then jot these thoughts down in a few sentences in the text box below.
 
-The ORDER BY clause is one of two clauses integral to window functions. The ORDER and PARTITION define what is referred to as the “window”—the ordered subset of data over which calculations are made. Removing ORDER BY just leaves an unordered partition; in our query's case, each column's value is simply an aggregation (e.g., sum, count, average, minimum, or maximum) of all the standard_qty values in its respective account_id.
+The ORDER BY clause is one of two clauses integral to window functions. The ORDER and PARTITION define what is referred to as the “window”—the 
+ordered subset of data over which calculations are made. Removing ORDER BY just leaves an unordered partition; in our query's case, each column's 
+value is simply an aggregation (e.g., sum, count, average, minimum, or maximum) of all the standard_qty values in its respective account_id.
 
 As Stack Overflow user mathguy explains:
-The easiest way to think about this - leaving the ORDER BY out is equivalent to "ordering" in a way that all rows in the partition are "equal" to each other. Indeed, you can get the same effect by explicitly adding the ORDER BY clause like this: ORDER BY 0 (or "order by" any constant expression), or even, more emphatically, ORDER BY NULL.
+The easiest way to think about this - leaving the ORDER BY out is equivalent to "ordering" in a way that all rows in the partition are "equal" 
+to each other. Indeed, you can get the same effect by explicitly adding the ORDER BY clause like this: ORDER BY 0 (or "order by" any constant expression), 
+or even, more emphatically, ORDER BY NULL.
 
 
 #Aliases for Multiple Window Functions	6.13-15
@@ -1720,7 +1802,8 @@ of:
 Alias part
 Window function part
 
-Now, create and use an alias to shorten the following query (which is different than the one in Derek's previous video) that has multiple window functions. Name the alias account_year_window, which is more descriptive than main_window in the example above.
+Now, create and use an alias to shorten the following query (which is different than the one in Derek's previous video) that has multiple 
+window functions. Name the alias account_year_window, which is more descriptive than main_window in the example above.
 SELECT id,
        account_id,
        DATE_TRUNC('year',occurred_at) AS year,
@@ -1749,9 +1832,13 @@ WINDOW account_year_window AS (PARTITION BY account_id ORDER BY DATE_TRUNC('year
 
 
 #Comparing a Row to Previous Row	6.16-18
-In the previous video, Derek outlines how to compare a row to a previous or subsequent row. This technique can be useful when analyzing time-based events. Imagine you're an analyst at Parch & Posey and you want to determine how the current order's total revenue ("total" meaning from sales of all types of paper) compares to the next order's total revenue.
+In the previous video, Derek outlines how to compare a row to a previous or subsequent row. This technique can be useful when analyzing 
+time-based events. Imagine you're an analyst at Parch & Posey and you want to determine how the current order's total revenue 
+("total" meaning from sales of all types of paper) compares to the next order's total revenue.
 
-Modify Derek's query from the previous video in the SQL Explorer below to perform this analysis. You'll need to use occurred_at and total_amt_usd in the orders table along with LEAD to do so. In your query results, there should be four columns: occurred_at, total_amt_usd, lead, and lead_difference.
+Modify Derek's query from the previous video in the SQL Explorer below to perform this analysis. You'll need to use occurred_at 
+and total_amt_usd in the orders table along with LEAD to do so. In your query results, there should be four columns: occurred_at, 
+total_amt_usd, lead, and lead_difference.
 
 SELECT account_id,
        standard_sum,
@@ -1778,11 +1865,15 @@ SELECT occurred_at,
 ) sub 
 
 #Percentiles		6.19-22
-You can use partitions with percentiles to determine the percentile of a specific subset of all rows. Imagine you're an analyst at Parch & Posey and you want to determine the largest orders (in terms of quantity) a specific customer has made to encourage them to order more similarly sized large orders. You only want to consider the NTILE for that customer's account_id.
+You can use partitions with percentiles to determine the percentile of a specific subset of all rows. Imagine you're an analyst at 
+Parch & Posey and you want to determine the largest orders (in terms of quantity) a specific customer has made to encourage them to 
+order more similarly sized large orders. You only want to consider the NTILE for that customer's account_id.
 
 In the SQL Explorer below, write three queries (separately) that reflect each of the following:
 
-Use the NTILE functionality to divide the accounts into 4 levels in terms of the amount of standard_qty for their orders. Your resulting table should have the account_id, the occurred_at time for each order, the total amount of standard_qty paper purchased, and one of four levels in a standard_quartile column.
+Use the NTILE functionality to divide the accounts into 4 levels in terms of the amount of standard_qty for their orders. Your resulting 
+table should have the account_id, the occurred_at time for each order, the total amount of standard_qty paper purchased, and one of four 
+levels in a standard_quartile column.
 ```
 SELECT
        account_id,
@@ -1793,7 +1884,8 @@ SELECT
  ORDER BY account_id DESC
 ```
 
-Use the NTILE functionality to divide the accounts into two levels in terms of the amount of gloss_qty for their orders. Your resulting table should have the account_id, the occurred_at time for each order, the total amount of gloss_qty paper purchased, and one of two levels in a gloss_half column.
+Use the NTILE functionality to divide the accounts into two levels in terms of the amount of gloss_qty for their orders. Your resulting table 
+should have the account_id, the occurred_at time for each order, the total amount of gloss_qty paper purchased, and one of two levels in a gloss_half column.
 ```
 SELECT
        account_id,
@@ -1804,7 +1896,9 @@ SELECT
  ORDER BY account_id DESC
 ```
 
-Use the NTILE functionality to divide the orders for each account into 100 levels in terms of the amount of total_amt_usd for their orders. Your resulting table should have the account_id, the occurred_at time for each order, the total amount of total_amt_usd paper purchased, and one of 100 levels in a total_percentile column.
+Use the NTILE functionality to divide the orders for each account into 100 levels in terms of the amount of total_amt_usd for their orders. 
+Your resulting table should have the account_id, the occurred_at time for each order, the total amount of total_amt_usd paper purchased, and 
+one of 100 levels in a total_percentile column.
 ```
 SELECT
        account_id,
@@ -1822,13 +1916,18 @@ ________________________________________________________________________________
 PART 7. [Advanced] SQL Advanced JOINs & Performance Tuning
 
 #FULL OUTER JOIN	7.2-4
-You’re not likely to use FULL JOIN (which can also be written as FULL OUTER JOIN) too often, but the syntax is worth practicing anyway. LEFT JOIN and RIGHT JOIN each return unmatched rows from one of the tables—FULL JOIN returns unmatched rows from both tables. FULL JOIN is commonly used in conjunction with aggregations to understand the amount of overlap between two tables.
+You’re not likely to use FULL JOIN (which can also be written as FULL OUTER JOIN) too often, but the syntax is worth practicing anyway. 
+LEFT JOIN and RIGHT JOIN each return unmatched rows from one of the tables—FULL JOIN returns unmatched rows from both tables. FULL JOIN is commonly 
+used in conjunction with aggregations to understand the amount of overlap between two tables.
 
 Say you're an analyst at Parch & Posey and you want to see:
 
 each account who has a sales rep and each sales rep that has an account (all of the columns in these returned rows will be full)
-but also each account that does not have a sales rep and each sales rep that does not have an account (some of the columns in these returned rows will be empty)
-This type of question is rare, but FULL OUTER JOIN is perfect for it. In the following SQL Explorer, write a query with FULL OUTER JOIN to fit the above described Parch & Posey scenario (selecting all of the columns in both of the relevant tables, accounts and sales_reps) then answer the subsequent multiple choice quiz.
+but also each account that does not have a sales rep and each sales rep that does not have an account (some of the columns in these 
+returned rows will be empty)
+This type of question is rare, but FULL OUTER JOIN is perfect for it. In the following SQL Explorer, write a query with FULL OUTER JOIN to fit 
+the above described Parch & Posey scenario (selecting all of the columns in both of the relevant tables, accounts and sales_reps) then answer 
+the subsequent multiple choice quiz.
 
 In your query results for the above Parch & Posey FULL OUTER JOIN quiz, are there any unmatched rows?
 
@@ -1844,12 +1943,15 @@ To elaborate on the rarity of FULL OUTER JOINS in practice, this Stack Overflow 
 #Joins with Comparison Operators	7.5-7
 The query in Derek's video was pretty long. Let's now use a shorter query to showcase the power of joining with comparison operators.
 
-Inequality operators (a.k.a. comparison operators) don't only need to be date times or numbers, they also work on strings! You'll see how this works by completing the following quiz, which will also reinforce the concept of joining with comparison operators.
+Inequality operators (a.k.a. comparison operators) don't only need to be date times or numbers, they also work on strings! You'll see how this 
+works by completing the following quiz, which will also reinforce the concept of joining with comparison operators.
 
-In the following SQL Explorer, write a query that left joins the accounts table and the sales_reps tables on each sale rep's ID number and joins it using the < comparison operator on accounts.primary_poc and sales_reps.name, like so:
+In the following SQL Explorer, write a query that left joins the accounts table and the sales_reps tables on each sale rep's ID number and joins 
+it using the < comparison operator on accounts.primary_poc and sales_reps.name, like so:
 
 accounts.primary_poc < sales_reps.name
-The query results should be a table with three columns: the account name (e.g. Johnson Controls), the primary contact name (e.g. Cammy Sosnowski), and the sales representative's name (e.g. Samuel Racine). Then answer the subsequent multiple choice question.
+The query results should be a table with three columns: the account name (e.g. Johnson Controls), the primary contact name (e.g. Cammy Sosnowski), 
+and the sales representative's name (e.g. Samuel Racine). Then answer the subsequent multiple choice question.
 
 What is the relationship between accounts.primary_poc and sales_reps.name?
 [] The primary point of contact's full name comes before the sales representative's name alphabetically
@@ -1863,7 +1965,8 @@ SELECT accounts.name as account_name,
   LEFT JOIN sales_reps
     ON accounts.sales_rep_id = sales_reps.id
    AND accounts.primary_poc < sales_reps.name
-For more details on how string comparison with < and > work in SQL, check out this excellent answer on Stack Overflow: SQL string comparison, greater than and less than operators
+For more details on how string comparison with < and > work in SQL, check out this excellent answer on Stack Overflow: SQL string comparison, 
+greater than and less than operators
 
 
 
@@ -1874,9 +1977,11 @@ What use case below is appropriate for self joins?
 [] When you want to show both parent and child relationships within a family tree.
 [] When you want the first four digits of a student ID as a unique identifier.
 [] When you want to join all records of two tables to determine where employees live.
-One of the most common use cases for self JOINs is in cases where two events occurred, one after another. As you may have noticed in the previous video, using inequalities in conjunction with self JOINs is common.
+One of the most common use cases for self JOINs is in cases where two events occurred, one after another. As you may have noticed in the 
+previous video, using inequalities in conjunction with self JOINs is common.
 
-Modify the query from the previous video, which is pre-populated in the SQL Explorer below, to perform the same interval analysis except for the web_events table. Also:
+Modify the query from the previous video, which is pre-populated in the SQL Explorer below, to perform the same interval analysis except 
+for the web_events table. Also:
 
 change the interval to 1 day to find those web events that occurred after, but not more than 1 day after, another web event
 add a column for the channel variable in both instances of the table in your query
@@ -1914,10 +2019,14 @@ ORDER BY we1.account_id, we2.occurred_at
 #UNION			7.11-13
 
 What use case below is it appropriate to use a union?
-[] When you want to determine all reasons students are late. Currently, each late reason is maintained within tables corresponding to the grade the student is in.
-[] When you want to determine which state students live. Currently, there is one table for students and their academic performance and another table with their demographic and location information.
-[] When you want to determine the average price of products that sold over $10k in revenue. Currently, there is one table that has all products and their respective pricing.
-[] When you want to determine the total number of teachers by neighborhood in a particular city. Currently, there is one table that maintains the teacher’s information, including which neighborhood they teach in.
+[] When you want to determine all reasons students are late. Currently, each late reason is maintained within tables corresponding to 
+   the grade the student is in.
+[] When you want to determine which state students live. Currently, there is one table for students and their academic performance 
+   and another table with their demographic and location information.
+[] When you want to determine the average price of products that sold over $10k in revenue. Currently, there is one table that has all 
+   products and their respective pricing.
+[] When you want to determine the total number of teachers by neighborhood in a particular city. Currently, there is one table that 
+   maintains the teacher’s information, including which neighborhood they teach in.
 
 Write a query that uses UNION ALL on two instances (and selecting all columns) of the accounts table. Then inspect the results and answer the subsequent quiz.
 SELECT *
@@ -1939,7 +2048,8 @@ SELECT *
   FROM accounts
   WHERE name = 'Disney'
   
-Add a WHERE clause to each of the tables that you unioned in the query above, filtering the first table where name equals Walmart and filtering the second table where name equals Disney. Inspect the results then answer the subsequent quiz.
+Add a WHERE clause to each of the tables that you unioned in the query above, filtering the first table where name equals Walmart and 
+filtering the second table where name equals Disney. Inspect the results then answer the subsequent quiz.
 WITH double_accounts AS (
     SELECT *
       FROM accounts
@@ -1960,7 +2070,8 @@ Select all of the following statements that are true about tuning performance wi
 [] If you have time series data, limiting to a small time window can make your queries run more quickly.
 [] Testing your queries on a subset of data, finalizing your query, then removing the subset limitation is a sound strategy.
 [] Applying LIMIT 10 when aggregating data to one row (i.e. with a GROUP BY) will speed up your queries.
-[] When working with subqueries, limiting the amount of data you’re working with in the place where it will be executed first will have the maximum impact on query run time.
+[] When working with subqueries, limiting the amount of data you’re working with in the place where it will be executed first will 
+   have the maximum impact on query run time.
 
 
 
