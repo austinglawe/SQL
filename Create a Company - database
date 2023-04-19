@@ -1,0 +1,99 @@
+--Create a table of a company and their inventory
+
+CREATE TABLE dealership (key INTEGER PRIMARY KEY, year INTEGER, make TEXT, model TEXT, color TEXT, in_stock INTEGER, vehicle_type TEXT, fuel_type TEXT);
+
+INSERT INTO dealership VALUES (1, 2022, 'Toyota', 'Camry' , 'White', 3, 'Mid-Size Car', 'Hybrid');
+INSERT INTO dealership VALUES (2, 2023, 'Toyota', 'Prius' , 'Gray', 2, 'Compact Car', 'Hybrid');
+INSERT INTO dealership VALUES (3, 2021, 'Toyota', 'Rav4', 'Black', 7, 'SUV', 'Hybrid');
+INSERT INTO dealership VALUES (4, 2022, 'Ford', 'Mustang', 'Red', 3, 'Sports Car', 'Gasoline');
+INSERT INTO dealership VALUES (5, 2021, 'Ford', 'F-150', 'Black', 2, 'Truck', 'Diesel');
+INSERT INTO dealership VALUES (6, 2022, 'Tesla', 'Model Y', 'White', 4, 'SUV', 'Electric');
+INSERT INTO dealership VALUES (7, 2009, 'Honda', 'Civic', 'Gray', 1, 'Compact Car', 'Gasoline');
+INSERT INTO dealership VALUES (8, 2015, 'Lexus', 'ES', 'Gray', 3, 'Luxury Car', 'Gasoline');
+INSERT INTO dealership VALUES (9, 2019, 'Hyundai', 'Santa Fe', 'Black', 4, 'SUV', 'Gasoline');
+INSERT INTO dealership VALUES (10, 2020, 'Tesla', 'Model 3', 'White', 5, 'Compact Car', 'Electric');
+INSERT INTO dealership VALUES (11, 2021, 'Hyundai', 'IONIQ 5', 'Gray', 2, 'SUV', 'Electric');
+INSERT INTO dealership VALUES (12, 2019, 'Nissan', 'Leaf', 'Black', 7, 'Compact Car', 'Electric');
+INSERT INTO dealership VALUES (13, 2021, 'Jeep', 'Wrangler', 'Black', 8, 'SUV', 'Gasoline');
+INSERT INTO dealership VALUES (14, 2020, 'Acura', 'MDX', 'Gray', 3, 'SUV', 'Gasoline');
+INSERT INTO dealership VALUES (15, 2021, 'Toyota', 'Highlander', 'Gray', 1, 'SUV', 'Hybrid');
+
+--What are the different makes in stock?
+SELECT DISTINCT make 
+FROM dealership
+ORDER BY make;
+
+--How many makes are there in total?
+SELECT count(make)
+FROM  (SELECT DISTINCT make 
+      FROM dealership);
+
+--How many different models are there for each make?
+SELECT  make, 
+        COUNT(model) 
+FROM dealership 
+GROUP BY make;
+
+--What models are fully electic vehicles?
+SELECT  make, 
+        model 
+FROM dealership 
+WHERE fuel_type = 'Electric';
+
+--How many total electric vehicles are in stock?
+SELECT SUM(in_stock)
+FROM    (SELECT * 
+        FROM dealership 
+        WHERE fuel_type = 'Electric');
+
+--What are all the different models of Gray cars in stock?
+SELECT * 
+FROM dealership 
+WHERE color = 'Gray';
+
+--How many different models of Gray cars are there?
+SELECT COUNT(*)
+FROM  (SELECT * 
+      FROM dealership 
+      WHERE color = 'Gray');
+
+--How many total gray cars are there in stock?
+SELECT SUM(in_stock)
+FROM  (SELECT * 
+      FROM dealership  
+      WHERE color = 'Gray');
+      
+--How many different types of Electric SUVs are there?
+SELECT COUNT(*)
+FROM
+      (SELECT make,
+              model
+      FROM dealership
+      WHERE fuel_type = 'Electric' AND vehicle_type = 'SUV');
+
+--How many different model types of cars were made after 2020, between 2010 and 2020, and how many were made before 2010? 
+--And what is the total count of cars in each category?
+SELECT car_age, 
+       COUNT(car_age) AS model_count,
+       SUM(in_stock) AS total_in_stock
+FROM 
+      (SELECT make, 
+              model,
+              in_stock,
+              CASE WHEN year >= 2020 THEN 'Made afer 2020' 
+              WHEN year >= 2010 THEN 'Made between 2010-2020' 
+              ELSE 'Made before 2010' END AS car_age 
+        FROM dealership) 
+GROUP BY car_age;
+
+--How many total cars are in stock?
+SELECT SUM(in_stock) all_cars 
+FROM dealership;
+
+--What model of car has the most cars in stock and how many are there?
+SELECT make, 
+       model, 
+       in_stock
+FROM dealership 
+ORDER BY in_stock DESC 
+LIMIT 1;
