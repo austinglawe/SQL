@@ -1,1 +1,12 @@
 https://www.youtube.com/watch?v=7S_tz1z_5bA&t=90s&ab_channel=ProgrammingwithMosh
+
+USE store;
+
+SELECT *
+-- FROM customers
+-- WHERE customer_id < 5
+-- ORDER BY first_name;
+
+-- this makes whatever after it, a comment. It does not execute anything after --
+
+
