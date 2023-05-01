@@ -9,4 +9,68 @@ SELECT *
 
 -- this makes whatever after it, a comment. It does not execute anything after --
 
+SELECT 
+	last_name, 
+	first_name, 
+  points, 
+  points * 10 + 100 AS 'Discount Factor'
+FROM 
+	customers;
+
+
+SELECT DISTINCT state
+FROM customers
+ORDER BY state;
+
+
+
+-- Return all the products
+-- name
+-- unit price
+-- new price (unit price * 1.1)
+SELECT 
+	name,
+    unit_price,
+    unit_price * 1.1 AS new_price
+FROM 
+	products;
+  
+  
+  -- > 	Greater than
+-- < 	Less than
+-- >=	Greater than or equal to
+-- <=	Less than or equal to
+-- =	Equal to
+-- != 	Not Equal to
+-- <>	Not Equal to
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
