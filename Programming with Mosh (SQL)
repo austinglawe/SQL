@@ -45,7 +45,20 @@ FROM
 -- <>	Not Equal to
 
 
-
+ SELECT *
+ FROM customers
+ WHERE birth_date > '1990-01-01' 
+ OR points > 1000 AND state = 'VA'
+ -- AND is always evaluated first, AND has a higher precedence
+ 
+ 
+ 
+  SELECT *
+ FROM customers
+ WHERE NOT (birth_date > '1990-01-01' OR points > 1000)
+ -- the NOT operator is the reverse of everything so this would be intrepreted as
+ -- (birth_date <= '1990-01-01' AND points <= 1000)
+ -- as you can see, the one written directly above is easier to comprehend though
 
 
 
