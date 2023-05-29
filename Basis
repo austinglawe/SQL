@@ -8,9 +8,88 @@ CREATE TABLE basis_names(
             applied_to_name TEXT,
             fees_name TEXT,
             original_amount FLOAT,
-            adjustment FLOAT,
+            adjustment_amount FLOAT,
             new_amount FLOAT,
             adjustment_reason TEXT,
             adjusted_by_name TEXT,
-
+            family_last_name TEXT,
+            family_first_name TEXT,
+            applied_to_last_name TEXT,
+            applied_to_first_name TEXT,
+            adjusted_by_last_name TEXT,
+            adjusted_by_first_name TEXT            
 );
+
+
+_____OG______
+A2 - Family Id
+B2 - Family Name
+C2 - Month Adjustment
+D2 - Date of Adjustment
+E2 - Applied On (Family / Student)
+F2 - Fees Name
+G2 - Orignal Amount
+H2 - Adjustment
+I2 - New Amount
+J2 - Reason for Adjustment
+K2 - Adjusted By
+L2 - School
+____________________________
+M2 - Blank
+___________________
+N2 - family_id
+O2 - family_name
+P2 - family_last_name
+Q2 - family_first_name
+R2 - month_adjustment
+S2 - adjustment_date
+T2 - applied_to_name
+U2 - applied_to_last_name
+V2 - applied_to_first_name
+W2 - fees_name
+X2 - original_amount
+Y2 - adjustment_amount
+Z2 - new_amount
+AA2 - adjustment_reason
+AB2 - adjusted_by_name
+AC2 - adjusted_by_last_name
+AD2 - adjusted_by_first_name
+AE2 - school
+AF1 - "
+
+N2 - =TEXT(A2,"0")
+O2 - =P2&", "&Q2
+P2 - =PROPER(TRIM(LEFT(B2, FIND(",", B2) - 1)))
+Q2 - =PROPER(TRIM(RIGHT(B2, LEN(B2) - FIND(",", B2))))
+R2 - =TEXT(C2,"yyyy-mm")
+S2 - =IF(LEN(D2)>10,TEXT(LEFT(D2,10),"yyyy-mm-dd"),TEXT(D2,"yyyy-mm-dd"))
+T2 - =U2&", "&V2
+U2 - =IF(PROPER(E2)<>"Family", PROPER(TRIM(LEFT(E2, FIND(",", E2) - 1))),PROPER(TRIM(LEFT(B2, FIND(",", B2) - 1))))
+V2 - =IF(PROPER(E2)<>"Family", PROPER(TRIM(RIGHT(E2, LEN(E2) - FIND(",", E2)))), PROPER(TRIM(RIGHT(B2, LEN(B2) - FIND(",", B2)))))
+W2 - =F2
+X2 - =G2
+Y2 - =H2
+Z2 - =I2
+AA2 - =J2
+AB2 - =AC2&", "&AD2
+AC2 - =PROPER(TRIM(LEFT(K2, FIND(",", K2) - 1)))
+AD2 - =PROPER(TRIM(RIGHT(K2, LEN(K2) - FIND(",", K2))))
+AE2 - =L2
+_____________________________________________________________________
+
+AG2 - ="("&AF1&AE2&AF1&", "&N2&", "&AF1&O2&AF1&")"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
