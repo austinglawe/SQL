@@ -1,7 +1,7 @@
 CREATE TABLE basis_names(
             id int auto_increment primary key, 
-            school text,
-            family_id int,
+            school TEXT,
+            family_id INT,
             family_name TEXT,
             month_adjusted DATE,
             adjustment_date DATE,
@@ -17,7 +17,7 @@ CREATE TABLE basis_names(
             applied_to_last_name TEXT,
             applied_to_first_name TEXT,
             adjusted_by_last_name TEXT,
-            adjusted_by_first_name TEXT            
+            adjusted_by_first_name TEXT       
 );
 
 
@@ -82,8 +82,26 @@ AG2 - ="("&AF1&AE2&AF1&", "&N2&", "&AF1&O2&AF1&")"
 
 
 
+&AF1&       &AF1&
 
-
+            school TEXT, AE2
+            family_id INT, N2
+            family_name TEXT, O2
+            month_adjusted DATE, R2
+            adjustment_date DATE, S2
+            applied_to_name TEXT, T2
+            fees_name TEXT, W2
+            original_amount FLOAT, X2
+            adjustment_amount FLOAT, Y2
+            new_amount FLOAT, Z2
+            adjustment_reason TEXT, AA2
+            adjusted_by_name TEXT, AB2
+            family_last_name TEXT, P2
+            family_first_name TEXT, Q2
+            applied_to_last_name TEXT, U2
+            applied_to_first_name TEXT, V2
+            adjusted_by_last_name TEXT, AC2
+            adjusted_by_first_name TEXT AD2  
 
 
 
