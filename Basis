@@ -76,11 +76,11 @@ AC2 - =PROPER(TRIM(LEFT(K2, FIND(",", K2) - 1)))
 AD2 - =PROPER(TRIM(RIGHT(K2, LEN(K2) - FIND(",", K2))))
 AE2 - =L2
 _____________________________________________________________________
+AF2 - Blank
 
-AG2 - ="("&AF1&AE2&AF1&", "&N2&", "&AF1&O2&AF1&")"
-AG2 - ="("&
-")"
-___________________________________________________
+AG2 - ="("&$AF$1&AE2&$AF$1&", "&N2&", "&$AF$1&O2&$AF$1&", "&R2&", "&S2&", "&$AF$1&T2&$AF$1&", "&$AF$1&W2&$AF$1&", "&X2&", "&Y2&", "&Z2&", "&$AF$1&AA2&$AF$1&", "&$AF$1&AB2&$AF$1&", "&$AF$1&P2&$AF$1&", "&$AF$1&Q2&$AF$1&", "&$AF$1&U2&$AF$1&", "&$AF$1&V2&$AF$1&", "&$AF$1&AC2&$AF$1&", "&$AF$1&AD2&$AF$1&")"
+
+____________________________________________________________________
 
             school TEXT, AE2
             family_id INT, N2
@@ -102,26 +102,27 @@ ___________________________________________________
             adjusted_by_first_name TEXT AD2 
 ______________________________________________________
 ", "&
+$AF$1&
 AG2 - ="("&$AF$1&AE2&$AF$1&", "&N2&", "&$AF$1&O2&$AF$1&", "&R2&", "&S2&", "&$AF$1&T2&$AF$1&", "&$AF$1&W2&$AF$1&", "&X2&", "&Y2&", "&Z2&", "&$AF$1&AA2&$AF$1&", "&$AF$1&AB2&$AF$1&", "&$AF$1&P2&$AF$1&", "&$AF$1&Q2&$AF$1&", "&$AF$1&U2&$AF$1&", "&$AF$1&V2&$AF$1&", "&$AF$1&AC2&$AF$1&", "&$AF$1&AD2&$AF$1&")"
 
-            school TEXT, AF1&AE2&AF1&
+            school TEXT, $AF$1&AE2&$AF$1&
             family_id INT, N2&
-            family_name TEXT, AF1&O2&AF1&
+            family_name TEXT, $AF$1&O2&$AF$1&
             month_adjusted DATE, R2&", "&
             adjustment_date DATE, S2&", "&
-            applied_to_name TEXT, AF1&T2&AF1&", "&
-            fees_name TEXT, AF1&W2&AF1&", "&
+            applied_to_name TEXT, $AF$1&T2&$AF$1&", "&
+            fees_name TEXT, $AF$1&W2&$AF$1&", "&
             original_amount FLOAT, X2&", "&
             adjustment_amount FLOAT, Y2&", "&
             new_amount FLOAT, Z2&", "&
-            adjustment_reason TEXT, AF1&AA2&AF1&", "&
-            adjusted_by_name TEXT, AF1&AB2&AF1&", "&
-            family_last_name TEXT, AF1&P2&AF1&", "&
-            family_first_name TEXT, AF1&Q2&AF1&", "&
-            applied_to_last_name TEXT, AF1&U2&AF1&", "&
-            applied_to_first_name TEXT, AF1&V2&AF1&", "&
-            adjusted_by_last_name TEXT, AF1&AC2&AF1&", "&
-            adjusted_by_first_name TEXT AF1&AD2&AF1&", "&
+            adjustment_reason TEXT, $AF$1&AA2&$AF$1&", "&
+            adjusted_by_name TEXT, $AF$1&AB2&$AF$1&", "&
+            family_last_name TEXT, $AF$1&P2&$AF$1&", "&
+            family_first_name TEXT, $AF$1&Q2&$AF$1&", "&
+            applied_to_last_name TEXT, $AF$1&U2&$AF$1&", "&
+            applied_to_first_name TEXT, $AF$1&V2&$AF$1&", "&
+            adjusted_by_last_name TEXT, $AF$1&AC2&$AF$1&", "&
+            adjusted_by_first_name TEXT $AF$1&AD2&$AF$1&", "&
 
 
 
