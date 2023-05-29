@@ -63,7 +63,7 @@ P2 - =PROPER(TRIM(LEFT(B2, FIND(",", B2) - 1)))
 Q2 - =PROPER(TRIM(RIGHT(B2, LEN(B2) - FIND(",", B2))))
 R2 - =TEXT(C2,"yyyy-mm")
 S2 - =IF(LEN(D2)>10,TEXT(LEFT(D2,10),"yyyy-mm-dd"),TEXT(D2,"yyyy-mm-dd"))
-T2 - =U2&", "&V2
+T2 - =IF(PROPER(E2)="Family",U2&", "&V2&" (Family)",U2&", "&V2&"")
 U2 - =IF(PROPER(E2)<>"Family", PROPER(TRIM(LEFT(E2, FIND(",", E2) - 1))),PROPER(TRIM(LEFT(B2, FIND(",", B2) - 1))))
 V2 - =IF(PROPER(E2)<>"Family", PROPER(TRIM(RIGHT(E2, LEN(E2) - FIND(",", E2)))), PROPER(TRIM(RIGHT(B2, LEN(B2) - FIND(",", B2)))))
 W2 - =F2
