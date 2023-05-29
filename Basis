@@ -1,0 +1,6 @@
+CREATE TABLE basis_names(
+            id int auto_increment primary key, 
+            school text,
+            family_id int,
+            family_name TEXT
+);
