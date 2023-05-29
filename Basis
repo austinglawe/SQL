@@ -2,5 +2,15 @@ CREATE TABLE basis_names(
             id int auto_increment primary key, 
             school text,
             family_id int,
-            family_name TEXT
+            family_name TEXT,
+            month_adjusted DATE,
+            adjustment_date DATE,
+            applied_to_name TEXT,
+            fees_name TEXT,
+            original_amount FLOAT,
+            adjustment FLOAT,
+            new_amount FLOAT,
+            adjustment_reason TEXT,
+            adjusted_by_name TEXT,
+
 );
