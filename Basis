@@ -20,7 +20,7 @@ CREATE TABLE basis_names(
             adjusted_by_first_name TEXT       
 );
 
-
+___________________________________________EXCEL___________________________________________________________________________________________________
 _____OG______
 A2 - Family Id
 B2 - Family Name
@@ -124,7 +124,78 @@ AG2 - ="("&$AF$1&AE2&$AF$1&", "&N2&", "&$AF$1&O2&$AF$1&", "&R2&", "&S2&", "&$AF$
             adjusted_by_last_name TEXT, $AF$1&AC2&$AF$1&", "&
             adjusted_by_first_name TEXT $AF$1&AD2&$AF$1&", "&
 
+________________________________________________________________________________________________________________________________________
+in excel, what formula do I use to to get everything after the , in cell b2
+=MID(B2, FIND(",", B2) + 1, LEN(B2) - FIND(",", B2))
 
+in excel, what formula do I use to to get everything before the , in cell b2
+=LEFT(B2, FIND(",", B2) - 1)
+
+
+
+I want to create a new table to merge my current tables basis_1, basis_2, basis_3, and basis_1;
+they have the same columns and I want them to continue after each other; the columns they all have are the same names and those are as follows:
+family_id, family_name, family_last_name, family_first_name, month_adjusted, adjustment_date, applied_to_name, applied_to_last_name, applied_to_first_name, fees_name, original_amount, adjustment_amount, new_amount, adjustment_reason, adjusted_by_name, adjusted_by_last_name, adjusted_by_first_name, school
+
+CREATE TABLE merged_basis (
+    family_id INT,
+    family_name TEXT,
+    family_last_name TEXT,
+    family_first_name TEXT,
+    month_adjusted DATE,
+    adjustment_date DATE,
+    applied_to_name TEXT,
+    applied_to_last_name TEXT,
+    applied_to_first_name TEXT,
+    fees_name TEXT,
+    original_amount FLOAT,
+    adjustment_amount FLOAT,
+    new_amount FLOAT,
+    adjustment_reason TEXT,
+    adjusted_by_name TEXT,
+    adjusted_by_last_name TEXT,
+    adjusted_by_first_name TEXT,
+    school TEXT
+);
+
+INSERT INTO merged_basis
+SELECT * FROM basis_1
+UNION ALL
+SELECT * FROM basis_2
+UNION ALL
+SELECT * FROM basis_3
+UNION ALL
+SELECT * FROM basis_4;
+
+
+------------------------------------------------------------------------------------------------------------
+to find all the students and filter by the family name, student name, and the school
+SELECT  count(*) AS number,
+		*
+FROM basis_students
+GROUP BY family_full_name, student_full_name, school
+ORDER BY student_full_name
+54,200 results (9,742 extra)
+
+
+to find all the students and filter by family name and student name
+SELECT  count(*) AS number,
+		*
+FROM basis_students
+GROUP BY family_full_name, student_full_name
+ORDER BY student_full_name
+44,458 results
+
+
+
+to find all the families
+SELECT  count(*) AS number,
+		*
+FROM basis_students
+GROUP BY family_full_name
+ORDER BY family_full_name
+29,061 results
+_______________________________________________________________________________________________________________________________________________________
 
 
 
