@@ -114,8 +114,19 @@ SELECT DISTINCT school
 FROM school_rosters;
 
 And as I put the data together I knew that is the case for each table that is relevant to this project.
+
+For the following data this formula was used and changed to match the needs:
+
+SELECT DISTINCT column_name
+FROM table_name
+
+adjustments_one, adjustments_two, adjustments_three, and adjustments_four - the data of all were disregarded due to merger into adjustments_all
+adjustments_all has every school but was too large of a data set to put into excel, so needed to be split into 4 seperate tables in order to merge.
 _____________________________________________________________________________
-the columns and their distinct rows in adjustments_all are as follows:
+the columns and their distinct rows number are as follows, in table:
+
+adjustments_all
+
 school -                               21
 school_year -                          11     
 indicator_id -                    110,111
@@ -126,23 +137,61 @@ family_first_name -                10,448
 family_last_name -                 16,029
 family_full_name -                 29,020
 month_adjusted -                  533,942
-adjustment_date, date
-applied_on, text
-student_first_name, text
-student_last_name, text
-student_full_name, text
-fees_name, text
-original_amount, float
-adjustment_amount, float
-new_amount, float
-reason_for_adjustment, text
-adjusted_by, text
+adjustment_date -
+applied_on -
+student_first_name - 
+student_last_name -
+student_full_name  - 
+fees_name - 
+original_amount - 
+adjustment_amount -
+new_amount -
+reason_for_adjustment -
+adjusted_by -
+__________________________________________________________________________________________________________
+
+the columns and their distinct rows number are as follows, in table:
+
+all_families
 
 
+__________________________________________________________________________________________________________
+the columns and their distinct rows number are as follows, in table:
+
+basis_guide
 
 
+__________________________________________________________________________________________________________
+the columns and their distinct rows number are as follows, in table:
+
+notes
 
 
+__________________________________________________________________________________________________________
+the columns and their distinct rows number are as follows, in table:
+
+payments
+
+
+__________________________________________________________________________________________________________
+the columns and their distinct rows number are as follows, in table:
+
+project_organized
+
+
+__________________________________________________________________________________________________________
+the columns and their distinct rows number are as follows, in table:
+
+school_rosters
+
+
+__________________________________________________________________________________________________________
+the columns and their distinct rows number are as follows, in table:
+
+students
+
+
+__________________________________________________________________________________________________________
 
 
 
