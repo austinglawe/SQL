@@ -127,16 +127,16 @@ the columns and their distinct rows number are as follows, in table:
 
 adjustments_all
 
-school -                                     21
-school_year -                                11     
-indicator_id -                          110,111
-school_id -                                  21
-family_id -                              24,924
-family_name -                            29,941
-family_first_name -                      10,448
-family_last_name -                       16,029
-family_full_name -                       29,020
-month_adjusted -                        533,942
+school -                                       21
+school_year -                                  11     
+indicator_id -                            110,111
+school_id -                                    21
+family_id -                                24,924
+family_name -                              29,941
+family_first_name -                        10,448
+family_last_name -                         16,029
+family_full_name -                         29,020
+month_adjusted -                          533,942
 adjustment_date -                       x
 applied_on -                            x
 student_first_name -                    x
@@ -153,54 +153,54 @@ the columns and their distinct rows number are as follows, in table:
 
 all_families
 
-school                                  x
-family_name                             x
-family_first_name                       x
-family_last_name                        x
-indicator_id                            x
-school_id                               x
-family_id                               x
-school_family_id                        x
-family_tuition                          x
-payment_count                           x
-plan_name                               x
-enrollment_status                       x
-school_year                             x
+school -                                x
+family_name -                           x
+family_first_name -                     x
+family_last_name -                      x
+indicator_id -                          x
+school_id -                             x
+family_id -                             x
+school_family_id -                      x
+family_tuition -                        x
+payment_count -                         x
+plan_name -                             x
+enrollment_status -                     x
+school_year -                           x
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 basis_guide
 
-BASIS_school                        x
-school_id                           x
-school_site_id                      x
-blackbaud_start_year                x
-blackbaud_years                     x
-blackbaud_link                      x
-school_website                      x
-grades                              x
-street_address                      x
-city                                x
-state                               x
-zip                                 x
-full_address                        x
-phone_number                        x
+BASIS_school -                          x
+school_id -                             x
+school_site_id -                        x
+blackbaud_start_year -                  x
+blackbaud_years -                       x
+blackbaud_link -                        x
+school_website -                        x
+grades -                                x
+street_address -                        x
+city -                                  x
+state -                                 x
+zip -                                   x
+full_address -                          x
+phone_number -                          x
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 notes
 
-indicator_id                        x
-family_name_OG                      x
-family_name                         x
-message                             x
-requested_on                        x
-requested_by                        x
-status                              x
-school                              x
-school_year                         x
-family_id                           x
-school_id                           x
+indicator_id -                          x
+family_name_OG -                        x
+family_name -                           x
+message -                               x
+requested_on -                          x
+requested_by -                          x
+status -                                x
+school -                                x
+school_year -                           x
+family_id -                             x
+school_id -                             x
 
 
 __________________________________________________________________________________________________________
@@ -208,97 +208,97 @@ the columns and their distinct rows number are as follows, in table:
 
 payments
 
-school                              x
-indicator_id                        x
-family_name_OG                      x
-family_first_name                   x
-family_last_name                    x
-family_full_name                    x
-og_posted_date                      x
-og_success_date                     x
-og_transfer_date                    x
-post_date                           x
-success_date                        x
-transfer_date                       x
-payment_method                      x
-amount                              x
-payment_status                      x
-school_year                         x
-school_id                           x
-family_id                           x
+school -                                x
+indicator_id -                          x
+family_name_OG -                        x
+family_first_name -                     x
+family_last_name -                      x
+family_full_name -                      x
+og_posted_date -                        x
+og_success_date -                       x
+og_transfer_date -                      x
+post_date -                             x
+success_date -                          x
+transfer_date -                         x
+payment_method -                        x
+amount -                                x
+payment_status -                        x
+school_year -                           x
+school_id -                             x
+family_id -                             x
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 project_organized
 
-school                              x
-student_name                        x
-sd_liability_balance                x
-school_year                         x
-school_id                           x
-family_id                           x
-indicator_id                        x
-payment_amount                      x
-payment_method                      x
-payment_date                        x
-notes                               x
-account_holder_primary              x
-account_holder_secondary            x
-full_address                        x
-email_primary                       x
-email_secondary                     x
-phone_primary                       x
-phone_secondary                     x
-mobile_number                       x
-international_number                x
+school -                                x
+student_name -                          x
+sd_liability_balance -                  x
+school_year -                           x
+school_id -                             x
+family_id -                             x
+indicator_id -                          x
+payment_amount -                        x
+payment_method -                        x
+payment_date -                          x
+notes -                                 x
+account_holder_primary -                x
+account_holder_secondary -              x
+full_address -                          x
+email_primary -                         x
+email_secondary -                       x
+phone_primary -                         x
+phone_secondary -                       x
+mobile_number -                         x
+international_number -                  x
 
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 school_rosters
 
-school                              x
-school_year                         x
-school_no                           x
-indicator_id                        x
-school_id                           x
-family_id                           x
-family_first_name                   x
-family_last_name                    x
-family_full_name                    x
-student_names                       x
-type_code                           x
-street_address                      x
-apt                                 x
-email                               x
-phone_primary                       x
-phone_secondary                     x
-city                                x
-state                               x
-zip                                 x
-fax                                 x
-payment_plan                        x
-payment_method                      x
-payment_months                      x
-payment_day                         x
-discounts                           x
-fees                                x
-tuition                             x
-admin_fee_display                   x
-admin_fee_actual                    x
-follow_up_and_bank_fees             x
-late_fees                           x
-total_discounts                     x
-total_fees                          x
-total_adv_as_discount               x
-total_adv_as_payment                x
-total_due                           x
-total_paid                              x
-total_paid_pending_transfer_to_school   x
-total_outstanding                       x
-date_added                              x
-additional_field                        x
-added_by                                x
+school -                                x
+school_year -                           x
+school_no -                             x
+indicator_id -                          x
+school_id -                             x
+family_id -                             x
+family_first_name -                     x
+family_last_name -                      x
+family_full_name -                      x
+student_names -                         x
+type_code -                             x
+street_address -                        x
+apt -                                   x
+email -                                 x
+phone_primary -                         x
+phone_secondary -                       x
+city -                                  x
+state -                                 x
+zip -                                   x
+fax -                                   x
+payment_plan -                          x
+payment_method -                        x
+payment_months -                        x
+payment_day -                           x
+discounts -                             x
+fees -                                  x
+tuition -                               x
+admin_fee_display -                     x
+admin_fee_actual -                      x
+follow_up_and_bank_fees -               x
+late_fees -                             x
+total_discounts -                       x
+total_fees -                            x
+total_adv_as_discount -                 x
+total_adv_as_payment -                  x
+total_due -                             x
+total_paid -                            x
+total_paid_pending_transfer_to_school - x
+total_outstanding -                     x
+date_added -                            x
+additional_field -                      x
+added_by -                              x
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
