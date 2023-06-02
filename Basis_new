@@ -86,6 +86,64 @@ project_organized -       7,105
 school_rosters -        112,729
 students -              148,361
 __________________________________________________________________________
+Within this data there are only these school worked with:
+Ahwatukee
+Chandler
+Chandler Primary - North
+Chandler Primary - South
+Flagstaff
+Goodyear
+Goodyear Primary
+Mesa
+Oro Valley
+Oro Valley Primary
+Peoria
+Peoria Primary
+Phoenix
+Phoenix - Central
+Phoenix Primary
+Prescott
+Scottsdale
+Scottsdale Primary - East
+Scottsdale Primary - West
+Tucson - North
+Tucson Primary
+
+This was shown by using the formula:
+SELECT DISTINCT school
+FROM school_rosters;
+
+And as I put the data together I knew that is the case for each table that is relevant to this project.
+_____________________________________________________________________________
+the columns and their distinct rows in adjustments_all are as follows:
+school -                               21
+school_year -                          11     
+indicator_id -                    110,111
+school_id -                            21
+family_id -                        24,924
+family_name -                      29,941
+family_first_name -                10,448
+family_last_name -                 16,029
+family_full_name -                 29,020
+month_adjusted -                  533,942
+adjustment_date, date
+applied_on, text
+student_first_name, text
+student_last_name, text
+student_full_name, text
+fees_name, text
+original_amount, float
+adjustment_amount, float
+new_amount, float
+reason_for_adjustment, text
+adjusted_by, text
+
+
+
+
+
+
+
 
 
 
