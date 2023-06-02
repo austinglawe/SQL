@@ -71,8 +71,21 @@ payments
 project_organized
 school_rosters
 students
-
-
+__________________________________________________________________________
+The rows in each table without working in any data are as follows
+adjustments_all -     3,177,400          
+adjustments_four -      218,418
+adjustments_one -       948,333
+adjustments_three -   1,027,101
+adjustments_two -       983,548
+all_families -          128,514
+basis_guide -                35
+notes -                 417,909
+payments -              651,865
+project_organized -       7,105
+school_rosters -        112,729
+students -              148,361
+__________________________________________________________________________
 
 
 
