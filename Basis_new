@@ -1,0 +1,89 @@
+in sql I have 4 tables I want to merge into one larger table called: adjustments_all
+The tables are adjustments_four, adjustments_one, adjustments_three, and adjustments_two.
+They all have the same headers and I just want to merge them.
+the column names and their type are as follows:
+school, text
+school_year, text
+indicator_id, integer
+school_id, text
+family_id, text
+family_name, text
+family_first_name, text
+family_last_name, text
+family_full_name, text
+month_adjusted, date (month and year)
+adjustment_date, date
+applied_on, text
+student_first_name, text
+student_last_name, text
+student_full_name, text
+fees_name, text
+original_amount, float
+adjustment_amount, float
+new_amount, float
+reason_for_adjustment, text
+adjusted_by, text
+
+SOLUTION:
+CREATE TABLE adjustments_all (
+    school TEXT,
+    school_year TEXT,
+    indicator_id INTEGER,
+    school_id TEXT,
+    family_id TEXT,
+    family_name TEXT,
+    family_first_name TEXT,
+    family_last_name TEXT,
+    family_full_name TEXT,
+    month_adjusted DATE,
+    adjustment_date DATE,
+    applied_on TEXT,
+    student_first_name TEXT,
+    student_last_name TEXT,
+    student_full_name TEXT,
+    fees_name TEXT,
+    original_amount FLOAT,
+    adjustment_amount FLOAT,
+    new_amount FLOAT,
+    reason_for_adjustment TEXT,
+    adjusted_by TEXT
+);
+
+INSERT INTO adjustments_all
+    SELECT * FROM adjustments_one
+    UNION ALL
+    SELECT * FROM adjustments_two
+    UNION ALL
+    SELECT * FROM adjustments_three
+    UNION ALL
+    SELECT * FROM adjustments_four;
+__________________________________________________________________________
+I have 12 tables now:
+adjustments_all
+adjustments_four
+adjustments_one
+adjustments_three
+adjustments_two
+all_families
+basis_guide
+notes
+payments
+project_organized
+school_rosters
+students
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
