@@ -431,3 +431,84 @@ OR fees_name LIKE "%SD - ATF Security Deposit Donated%"
 OR fees_name LIKE "%SD-ATF-Security Deposit Donated%"
 OR fees_name LIKE "%LB - Sibling Discount SEMESTER Option%"
 OR fees_name LIKE "%LB - Sibling Discount YEARLY Option%"
+
+__________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________
+
+CREATE TABLE sd_amounts (
+    school TEXT,
+    school_year TEXT,
+    indicator_id INT,
+    school_id TEXT,
+    family_id TEXT,
+    family_name TEXT,
+    family_first_name TEXT,
+    family_last_name TEXT,
+    family_full_name TEXT,
+    month_adjusted DATE,
+    adjustment_date DATE,
+    applied_on TEXT,
+    student_first_name TEXT,
+    student_last_name TEXT,
+    student_full_name TEXT,
+    fees_name TEXT,
+    original_amount FLOAT,
+    adjustment_amount FLOAT,
+    new_amount FLOAT,
+    reason_for_adjustment TEXT,
+    adjusted_by TEXT
+);
+
+
+INSERT INTO sd_amounts
+SELECT
+    school,
+    school_year,
+    indicator_id,
+    school_id,
+    family_id,
+    family_name,
+    family_first_name,
+    family_last_name,
+    family_full_name,
+    month_adjusted,
+    adjustment_date,
+    applied_on,
+    student_first_name,
+    student_last_name,
+    student_full_name,
+    fees_name,
+    original_amount,
+    adjustment_amount,
+    new_amount,
+    reason_for_adjustment,
+    adjusted_by
+FROM adjustments_all
+WHERE 
+original_amount LIKE "%150%"
+OR adjustment_amount LIKE "%150%"
+OR new_amount LIKE "%150%"
+OR original_amount LIKE "%300%"
+OR adjustment_amount LIKE "%300%"
+OR new_amount LIKE "%300%"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
