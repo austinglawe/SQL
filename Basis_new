@@ -127,43 +127,80 @@ the columns and their distinct rows number are as follows, in table:
 
 adjustments_all
 
-school -                               21
-school_year -                          11     
-indicator_id -                    110,111
-school_id -                            21
-family_id -                        24,924
-family_name -                      29,941
-family_first_name -                10,448
-family_last_name -                 16,029
-family_full_name -                 29,020
-month_adjusted -                  533,942
-adjustment_date -
-applied_on -
-student_first_name - 
-student_last_name -
-student_full_name  - 
-fees_name - 
-original_amount - 
-adjustment_amount -
-new_amount -
-reason_for_adjustment -
-adjusted_by -
+school -                                     21
+school_year -                                11     
+indicator_id -                          110,111
+school_id -                                  21
+family_id -                              24,924
+family_name -                            29,941
+family_first_name -                      10,448
+family_last_name -                       16,029
+family_full_name -                       29,020
+month_adjusted -                        533,942
+adjustment_date -                       x
+applied_on -                            x
+student_first_name -                    x
+student_last_name -                     x
+student_full_name  -                    x
+fees_name -                             x
+original_amount -                       x
+adjustment_amount -                     x
+new_amount -                            x
+reason_for_adjustment -                 x
+adjusted_by -                           x
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 all_families
 
-
+school                                  x
+family_name                             x
+family_first_name                       x
+family_last_name                        x
+indicator_id                            x
+school_id                               x
+family_id                               x
+school_family_id                        x
+family_tuition                          x
+payment_count                           x
+plan_name                               x
+enrollment_status                       x
+school_year                             x
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 basis_guide
 
-
+BASIS_school                        x
+school_id                           x
+school_site_id                      x
+blackbaud_start_year                x
+blackbaud_years                     x
+blackbaud_link                      x
+school_website                      x
+grades                              x
+street_address                      x
+city                                x
+state                               x
+zip                                 x
+full_address                        x
+phone_number                        x
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 notes
+
+indicator_id                        x
+family_name_OG                      x
+family_name                         x
+message                             x
+requested_on                        x
+requested_by                        x
+status                              x
+school                              x
+school_year                         x
+family_id                           x
+school_id                           x
 
 
 __________________________________________________________________________________________________________
@@ -171,68 +208,324 @@ the columns and their distinct rows number are as follows, in table:
 
 payments
 
-
+school                              x
+indicator_id                        x
+family_name_OG                      x
+family_first_name                   x
+family_last_name                    x
+family_full_name                    x
+og_posted_date                      x
+og_success_date                     x
+og_transfer_date                    x
+post_date                           x
+success_date                        x
+transfer_date                       x
+payment_method                      x
+amount                              x
+payment_status                      x
+school_year                         x
+school_id                           x
+family_id                           x
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 project_organized
 
+school                              x
+student_name                        x
+sd_liability_balance                x
+school_year                         x
+school_id                           x
+family_id                           x
+indicator_id                        x
+payment_amount                      x
+payment_method                      x
+payment_date                        x
+notes                               x
+account_holder_primary              x
+account_holder_secondary            x
+full_address                        x
+email_primary                       x
+email_secondary                     x
+phone_primary                       x
+phone_secondary                     x
+mobile_number                       x
+international_number                x
 
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 school_rosters
-school
-school_year
-school_no
-indicator_id
-family_id
-school_id
-first_name
-last_name
-student_names
-type_code
-street_address
-apt
-email
-phone_primary
-phone_secondary
-city
-state
-zip
-fax
-payment_plan
-payment_method
-payment_months
-payment_day
-discounts
-fees
-tuition
-admin_fee_display
-admin_fee_actual
-follow_up_and_bank_fees
-late_fees
-total_discounts
-total_fees
-total_adv_as_discount
-total_adv_as_payment
-total_due
-total_paid
-total_paid_pending_transfer_to_school
-total_outstanding
-date_added
-additional_field
-added_by
+
+school                              x
+school_year                         x
+school_no                           x
+indicator_id                        x
+school_id                           x
+family_id                           x
+family_first_name                   x
+family_last_name                    x
+family_full_name                    x
+student_names                       x
+type_code                           x
+street_address                      x
+apt                                 x
+email                               x
+phone_primary                       x
+phone_secondary                     x
+city                                x
+state                               x
+zip                                 x
+fax                                 x
+payment_plan                        x
+payment_method                      x
+payment_months                      x
+payment_day                         x
+discounts                           x
+fees                                x
+tuition                             x
+admin_fee_display                   x
+admin_fee_actual                    x
+follow_up_and_bank_fees             x
+late_fees                           x
+total_discounts                     x
+total_fees                          x
+total_adv_as_discount               x
+total_adv_as_payment                x
+total_due                           x
+total_paid                              x
+total_paid_pending_transfer_to_school   x
+total_outstanding                       x
+date_added                              x
+additional_field                        x
+added_by                                x
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 students
 
+family_name                             x
+family_first_name                       x
+family_last_name                        x
+family_full_name                        x
+indicator_id                            x
+student_name                            x
+student_first_name                      x
+student_last_name                       x
+student_full_name                       x
+school_student_id                       x
+grade                                   x
+student_tuition                         x
+student_fees                            x
+student_discounts                       x
+family_fees                             x
+family_discounts                        x
+smart_admin_fee_display                 x
+total_due                               x
+payment_count                           x
+plan_name                               x
+next_payment_date                       x
+enrollment_status                       x
+school                                  x
+school_year                             x
+family_id                               x
+school_id                               x
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+The point of each column is as follows:
+
+school_rosters:
+
+school	                                School Name
+school_year	                            School Year
+school_no	                            School Number in Year (Unnecessary)
+indicator_id	                        originally family id (first 5 [school_id], next 2 [school year. beginning of year], last 6 [family_id])
+school_id	                            first 5 of indicator id
+family_id	                            last 6 of indicator id
+family_first_name	                    parent first name (untrimmed)
+family_last_name	                    parent last name (untrimmed)
+family_full_name	                    parent - first last - trimmed and proper
+student_names	                        names of students
+type_code	                            type code
+street_address	                        family address
+apt	                                    family apt
+email	                                family email
+phone_primary	                        family primary phone
+phone_secondary	                        family secondary phone
+city	                                family city
+state	                                family state
+zip	                                    family zip
+fax	                                    family fax
+payment_plan	                        family payment plan
+payment_method	                        family payment method
+payment_months	                        family payment months
+payment_day	                            family  payment day
+discounts	                            family discounts
+fees	                                family fees
+tuition	                                family tuition costs
+admin_fee_display	                    family admin fees
+admin_fee_actual	                    family admin actual fees
+follow_up_and_bank_fees	                family follow up fees and bank fees
+late_fees	                            family late fees
+total_discounts	                        family total discounts
+total_fees	                            family total fees
+total_adv_as_discount	                x
+total_adv_as_payment	                x
+total_due	                            x
+total_paid	                            x
+total_paid_pending_transfer_to_school	x
+total_outstanding	                    x
+date_added	                            x
+additional_field	                    x
+added_by	                            x
+__________________________________________________________________________________________________________
+payments
+
+school	                                School Name
+indicator_id	                        originally family id (first 5 [school_id], next 2 [school year. beginning of year], last 6 [family_id])
+family_name_OG	                        parent name - last, first (untrimmed)
+family_first_name	                    parent first name
+family_last_name	                    parent last name
+family_full_name	                    parent name - first last
+og_posted_date	                        payment post date, not edited
+og_success_date	                        payment success date, not edited
+og_transfer_date	                    payment transfer date, not edited
+post_date	                            payment post date edited
+success_date	                        payment success date edited
+transfer_date	                        payment transfer date edited
+payment_method	                        family payment method
+amount	                                amount paid
+payment_status	                        failed, success, etc
+school_year	                            School Year
+school_id	                            first 5 of indicator id
+family_id	                            last 6 of indicator id
 
 __________________________________________________________________________________________________________
+notes
 
+indicator_id	                        originally family id (first 5 [school_id], next 2 [school year. beginning of year], last 6 [family_id])
+family_name_OG	                        parent name - first last
+family_name	                            parent name - trimmed and proper
+message	                                message
+requested_on	                        date requested
+requested_by	                        basis member requested
+status	                                status of
+school	                                School
+school_year	School                      Year
+family_id	                            last 6 of indicator id
+school_id	                            first 5 of indicator id
+__________________________________________________________________________________________________________
+all_families
 
+school	School Name
+family_name	                            parent name - last, first ; untrimmed
+family_first_name	                    Parent First Name
+family_last_name	                    Parent Last Name
+family_full_name	                    Parent name - first last
+indicator_id	                        originally family id (first 5 [school_id], next 2 [school year. beginning of year], last 6 [family_id])
+school_id	                            first 5 of indicator id
+family_id	                            last 6 of indicator id
+school_family_id	                    not sure
+family_tuition	                        tuition paid
+payment_count	                        payments counted
+plan_name	                            plan type
+enrollment_status	                    enrollment status
+school_year	                            School Year
+__________________________________________________________________________________________________________
+adjustments_all
 
+school	                                School
+school_year	                            school year
+indicator_id	                        originally family id (first 5 [school_id], next 2 [school year. beginning of year], last 6 [family_id])
+school_id	                            first 5 of indicator id
+family_id	                            last 6 of family id
+family_name	                            parent name - last, first; untrimmed
+family_first_name	                    parent first name
+family_last_name	                    parent last name
+family_full_name	                    parent full name
+month_adjusted	                        month adjusted
+adjustment_date	                        date adjusted
+applied_on	                            student applied to
+student_first_name	                    student first name
+student_last_name	                    student last name
+student_full_name	                    student full name
+original_amount	                        original amount
+adjustment_amount	                    adjusted amount
+new_amount	                            new amount
+reason_for_adjustment	                reason of adjustment
+adjusted_by	                            adjusted by
+__________________________________________________________________________________________________________
+students
+
+family_name	                            parent name - last, first; untrimmed
+family_first_name	                    Parent First Name
+family_last_name	                    Parent Last Name
+family_full_name	                    Parent Name - first last
+indicator_id	                        originally family id (first 5 [school_id], next 2 [school year. beginning of year], last 6 [family_id])
+student_name	                        student name - last, first; untrimmed
+student_first_name	                    Student First Name
+student_last_name	                    Student Last Name
+student_full_name	                    Student name - first last
+school_student_id	                    Student id for some schools
+grade	                                grade of student
+student_tuition	                        Tuition Paid
+student_fees	                        Student Fees
+student_discounts	                    Student Discounts
+family_fees	                            Family Fees
+family_discounts	                    Family Discounts
+smart_admin_fee_display	                Smart Admin Fee Displayed
+total_due	                            Total Dues
+payment_count	                        Payment Count
+plan_name	                            Plan Name
+next_payment_date	                    Next Payment Date
+enrollment_status	                    Enrollment Status
+school	                                School
+school_year	                            School Year
+family_id	                            last 6 of indicator id
+school_id	                            first 5 of indicator id
+
+__________________________________________________________________________________________________________
+project_organized	
+
+school	                                School
+student_name	                        Student name - first last
+sd_liability_balance	                SD Liability owed
+school_year	                            Last School Year
+school_id	                            first 5 of indicator id
+family_id	                            last 6 of indicator id
+indicator_id	                        originally family id (first 5 [school_id], next 2 [school year. beginning of year], last 6 [family_id])
+payment_amount	                        account amount paid
+payment_method	                        payment method
+payment_date	                        payment date
+notes	                                notes
+account_holder_primary	                primary account holder
+account_holder_secondary	            secondary account holder
+full_address	                        full address
+email_primary	                        primary email address
+email_secondary	                        secondary email address
+phone_primary	                        primary phone
+phone_secondary	                        secondary phone
+mobile_number	                        mobile phone
+international_number	                international phone
+
+__________________________________________________________________________________________________________
+basis_guide	
+
+BASIS_school	                        School Name
+school_id	                            School Id
+school_site_id	                        Blackbaud Site id
+blackbaud_start_year	                blackbaud start year
+blackbaud_years	                        years in blackbaud
+blackbaud_link	                        blackbaud link
+school_website	                        school website link
+grades	grades                          covered
+street_address	                        street address of school
+city	                                city of school
+state	                                state of school
+zip	                                    school zip
+full_address	                        full address of school
+phone_number	                        phone number of school
 
 
 
