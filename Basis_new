@@ -149,7 +149,6 @@ new_amount -
 reason_for_adjustment -
 adjusted_by -
 __________________________________________________________________________________________________________
-
 the columns and their distinct rows number are as follows, in table:
 
 all_families
@@ -183,8 +182,47 @@ ________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 school_rosters
-
-
+school
+school_year
+school_no
+indicator_id
+family_id
+school_id
+first_name
+last_name
+student_names
+type_code
+street_address
+apt
+email
+phone_primary
+phone_secondary
+city
+state
+zip
+fax
+payment_plan
+payment_method
+payment_months
+payment_day
+discounts
+fees
+tuition
+admin_fee_display
+admin_fee_actual
+follow_up_and_bank_fees
+late_fees
+total_discounts
+total_fees
+total_adv_as_discount
+total_adv_as_payment
+total_due
+total_paid
+total_paid_pending_transfer_to_school
+total_outstanding
+date_added
+additional_field
+added_by
 __________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
