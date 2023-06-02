@@ -1,6 +1,6 @@
-in sql I have 4 tables I want to merge into one larger table called: adjustments_all
-The tables are adjustments_four, adjustments_one, adjustments_three, and adjustments_two.
-They all have the same headers and I just want to merge them.
+In sql I have 4 tables I want to merge into one larger table called: adjustments_all
+The 4 tables are: adjustments_four, adjustments_one, adjustments_three, and adjustments_two.
+They all have the same headers and I just want to merge the data together.
 the column names and their type are as follows:
 school, text
 school_year, text
@@ -11,7 +11,7 @@ family_name, text
 family_first_name, text
 family_last_name, text
 family_full_name, text
-month_adjusted, date (month and year)
+month_adjusted, date
 adjustment_date, date
 applied_on, text
 student_first_name, text
@@ -113,8 +113,8 @@ This was shown by using the formula:
 SELECT DISTINCT school
 FROM school_rosters;
 
-And as I put the data together I knew that is the case for each table that is relevant to this project.
-
+Since I put the data together I know those are the only schools relevant to this project.
+___________________________________________________________________________________________________________________________
 For the following data this formula was used and changed to match the needs:
 
 SELECT DISTINCT column_name
@@ -122,7 +122,7 @@ FROM table_name
 
 adjustments_one, adjustments_two, adjustments_three, and adjustments_four - the data of all were disregarded due to merger into adjustments_all
 adjustments_all has every school but was too large of a data set to put into excel, so needed to be split into 4 seperate tables in order to merge.
-_____________________________________________________________________________
+_____________________________________________________________________________________________________________________________
 the columns and their distinct rows number are as follows, in table:
 
 adjustments_all
