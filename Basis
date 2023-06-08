@@ -196,8 +196,17 @@ GROUP BY family_full_name
 ORDER BY family_full_name
 29,061 results
 _______________________________________________________________________________________________________________________________________________________
-
-
+This is to pull all the relevant family data that I might need to complete my schools
+SELECT *
+FROM(
+SELECT project_family_ids.school AS project_school,
+	   project_family_ids.family_id AS project_family_id,
+	   project_family_ids.table_in
+FROM project_family_ids) AS project_ids
+JOIN school_rosters
+ON school_rosters.family_id = project_ids.project_family_id)
+GROUP BY school, family_id
+ORDER BY family_full_name
 
 
 
