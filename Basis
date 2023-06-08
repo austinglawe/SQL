@@ -255,3 +255,86 @@ GROUP BY family_full_name
 ORDER BY family_name_occurrences DESC, family_full_name
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT *
+FROM adjustments_all
+WHERE fees_name LIKE "%OFFSET Security Deposit%"
+OR fees_name LIKE "%OFFSET: Security Deposit 8-12%"
+OR fees_name LIKE "%OFFSET: Security Deposit K-7%"
+OR fees_name LIKE "%SD - (50%)Security Deposit K-7%"
+OR fees_name LIKE "%SD - OFFSET: Security Deposit 8-12%"
+OR fees_name LIKE "%SD - OFFSET: Security Deposit K-7%"
+OR fees_name LIKE "%SD - Security Deposit - Financial Aid%"
+OR fees_name LIKE "%SD - Security Deposit 8-12%"
+OR fees_name LIKE "%SD - Security Deposit Discount - Employee%"
+OR fees_name LIKE "%SD - Security Deposit Discount - Financial Aid%"
+OR fees_name LIKE "%SD - Security Deposit Discount - Non-Employee%"
+OR fees_name LIKE "%SD - Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD - Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD - Security Deposit K-7%"
+OR fees_name LIKE "%SD- Security Deposit 8-12%"
+OR fees_name LIKE "%SD- Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD- Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD- Security Deposit K-7%"
+OR fees_name LIKE "%SD: 2020-21 End of Year Balance - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2020-21 End of Year Balance move to 2021-22 - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2021-22 End of year balance - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2021-22 End of year balance move to 2022-23 - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2021-22 End of year balance write off - Student Security Deposit%"
+OR fees_name LIKE "%SD: Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD: Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD: Security Deposit K-7%"
+OR fees_name LIKE "%SD-Employee Discount%"
+OR fees_name LIKE "%SD-OFFSET: Security Deposit 8-12%"
+OR fees_name LIKE "%SD-OFFSET: Security Deposit K-7%"
+OR fees_name LIKE "%SD-Security Deposit 8-12%"
+OR fees_name LIKE "%SD-Security Deposit 8-12.%"
+OR fees_name LIKE "%SD-Security Deposit Discount - Non-Employee%"
+OR fees_name LIKE "%SD-Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD-Security Deposit Fee Discount - Non-Employee%"
+OR fees_name LIKE "%SD-Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD-Security Deposit K-7%"
+OR fees_name LIKE "%Security Deposit 8-12%"
+OR fees_name LIKE "%Security Deposit Employee Credit%"
+OR fees_name LIKE "%Security Deposit Financial Aid%"
+OR fees_name LIKE "%Security Deposit K-7%"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
