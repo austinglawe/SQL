@@ -471,9 +471,70 @@ OR fees_name LIKE "%Security Deposit transferred to Tucson North%"
 
 
 
+how do I create a new table in sql called adjustments_main that has the columns 
+school, TEXT
+school_year, TEXT
+indicator_id, INT
+school_id, INT
+family_id, INT
+family_name, TEXT
+family_first_name, TEXT
+family_last_name, TEXT
+family_full_name, TEXT
+month_adjusted, TEXT
+adjustment_date, TEXT
+applied_on, TEXT
+student_first_name, TEXT
+student_last_name, TEXT
+student_full_name, TEXT
+fees_name, TEXT
+original_amount, FLOAT
+adjustment_amount, FLOAT
+new_amount, FLOAT
+reason_for_adjustment, TEXT
+adjusted_by, TEXT
+with the values of a temporary table created by a sql query
 
 
+CREATE TABLE adjustments_main (
+    school TEXT,
+    school_year TEXT,
+    indicator_id INT,
+    school_id INT,
+    family_id INT,
+    family_name TEXT,
+    family_first_name TEXT,
+    family_last_name TEXT,
+    family_full_name TEXT,
+    month_adjusted TEXT,
+    adjustment_date TEXT,
+    applied_on TEXT,
+    student_first_name TEXT,
+    student_last_name TEXT,
+    student_full_name TEXT,
+    fees_name TEXT,
+    original_amount FLOAT,
+    adjustment_amount FLOAT,
+    new_amount FLOAT,
+    reason_for_adjustment TEXT,
+    adjusted_by TEXT
+);
 
+INSERT INTO adjustments_main (
+    school, school_year, indicator_id, school_id, family_id,
+    family_name, family_first_name, family_last_name, family_full_name,
+    month_adjusted, adjustment_date, applied_on, student_first_name,
+    student_last_name, student_full_name, fees_name, original_amount,
+    adjustment_amount, new_amount, reason_for_adjustment, adjusted_by
+)
+SELECT
+    school, school_year, indicator_id, school_id, family_id,
+    family_name, family_first_name, family_last_name, family_full_name,
+    month_adjusted, adjustment_date, applied_on, student_first_name,
+    student_last_name, student_full_name, fees_name, original_amount,
+    adjustment_amount, new_amount, reason_for_adjustment, adjusted_by
+FROM
+    temporary_table;
 
 
 
