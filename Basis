@@ -210,3 +210,48 @@ ORDER BY family_full_name
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT 	COUNT(*) AS family_name_occurrences,
+		family_full_name
+FROM
+(SELECT 	count(*) AS num_of,
+		school,
+		family_id,
+		family_first_name,
+		family_last_name,
+		family_full_name,
+		student_names,
+		street_address,
+		city,
+		state,
+		zip,
+		email
+		
+FROM(
+SELECT *
+FROM(
+SELECT project_family_ids.school AS project_school,
+	   project_family_ids.family_id AS project_family_id,
+	   project_family_ids.table_in
+FROM project_family_ids) AS project_ids
+JOIN school_rosters
+ON school_rosters.family_id = project_ids.project_family_id)
+GROUP BY school, family_id
+ORDER BY family_full_name)
+GROUP BY family_full_name
+ORDER BY family_name_occurrences DESC, family_full_name
+
+
