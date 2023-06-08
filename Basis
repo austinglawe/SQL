@@ -537,12 +537,3 @@ FROM
     temporary_table;
 
 
-
-
-Dylan,
-Thank you! The original table I had had 3,177,400 rows for every adjustment I downloaded. Using those two pivot tables, I put it through SQL and created this table. I was able to narrow it down to 171,632 rows with the two tables. The other two tabs (adjustments_main, adjustments_extras), are just those two broke down separately. 
-Also, this is from every school and every year, but I could work on filtering out just the ones relevant to our project as well, if you'd need that also.
-
-Thanks,
-Austin
-
