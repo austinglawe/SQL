@@ -537,3 +537,24 @@ FROM
     temporary_table;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE all_family_ids (
+  family_id INT
+);
+INSERT INTO all_family_ids (family_id)
+SELECT family_id
+FROM notes;
