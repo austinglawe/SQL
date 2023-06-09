@@ -579,11 +579,11 @@ SELECT 	school,
 		indicator_id,
 		school_id,
 		family_id,
-		famliy_first_name,
+		family_first_name,
 		family_last_name,
 		family_full_name,
 		student_names,
-		student_name_1,
+		student_names_1,
 		type_code,
 		street_address,
 		apt,
@@ -611,13 +611,119 @@ SELECT 	school,
 		total_adv_as_payment,
 		total_due,
 		total_paid,
-		total_paid_ending_transfer_to_school,
+		total_paid_pending_transfer_to_school,
 		total_outstanding,
 		date_added,
 		additional_field,
 		added_by
 FROM school_rosters_split
 WHERE student_names_1 NOT NULL
+
+
+
+in sql can you create for me a table called rosters_students that has the following columns
+
+        school TEXT,
+		school_year TEXT,
+		school_no INT, 
+		indicator_id INT,
+		school_id INT,
+		family_id INT,
+		family_first_name TEXT,
+		family_last_name TEXT,
+		family_full_name TEXT,
+		student_names TEXT,
+		name_of_student TEXT,
+		type_code TEXT,
+		street_address TEXT,
+		apt TEXT,
+		email TEXT,
+		phone_primary TEXT,
+		phone_secondary TEXT,
+		city TEXT,
+		state TEXT,
+		zip TEXT,
+		fax TEXT,
+		payment_plan TEXT,
+		payment_method TEXT,
+		payment_months TEXT,
+		payment_day TEXT,
+		discounts TEXT,
+		fees TEXT,
+		tuition TEXT,
+		admin_fee_display TEXT,
+		admin_fee_actual TEXT,
+		follow_up_and_bank_fees TEXT,
+		late_fees TEXT,
+		total_discounts TEXT,
+		total_fees TEXT,
+		total_adv_as_discount TEXT,
+		total_adv_as_payment TEXT,
+		total_due TEXT,
+		total_paid TEXT,
+		total_paid_pending_transfer_to_school TEXT,
+		total_outstanding TEXT,
+		date_added TEXT,
+		additional_field TEXT,
+		added_by TEXT
+		
+		
+CREATE TABLE rosters_students (
+    school TEXT,
+    school_year TEXT,
+    school_no INT,
+    indicator_id INT,
+    school_id INT,
+    family_id INT,
+    family_first_name TEXT,
+    family_last_name TEXT,
+    family_full_name TEXT,
+    student_names TEXT,
+    name_of_student TEXT,
+    type_code TEXT,
+    street_address TEXT,
+    apt TEXT,
+    email TEXT,
+    phone_primary TEXT,
+    phone_secondary TEXT,
+    city TEXT,
+    state TEXT,
+    zip TEXT,
+    fax TEXT,
+    payment_plan TEXT,
+    payment_method TEXT,
+    payment_months TEXT,
+    payment_day TEXT,
+    discounts TEXT,
+    fees TEXT,
+    tuition TEXT,
+    admin_fee_display TEXT,
+    admin_fee_actual TEXT,
+    follow_up_and_bank_fees TEXT,
+    late_fees TEXT,
+    total_discounts TEXT,
+    total_fees TEXT,
+    total_adv_as_discount TEXT,
+    total_adv_as_payment TEXT,
+    total_due TEXT,
+    total_paid TEXT,
+    total_paid_pending_transfer_to_school TEXT,
+    total_outstanding TEXT,
+    date_added TEXT,
+    additional_field TEXT,
+    added_by TEXT
+);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
