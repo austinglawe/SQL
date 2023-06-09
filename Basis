@@ -717,8 +717,57 @@ CREATE TABLE rosters_students (
 
 
 
+INSERT INTO rosters_students
+SELECT * 
+FROM (
+SELECT 	school,
+		school_year,
+		school_no,
+		indicator_id,
+		school_id,
+		family_id,
+		family_first_name,
+		family_last_name,
+		family_full_name,
+		student_names,
+		student_names_1,
+		type_code,
+		street_address,
+		apt,
+		email,
+		phone_primary,
+		phone_secondary,
+		city,
+		state,
+		zip,
+		fax,
+		payment_plan,
+		payment_method,
+		payment_months,
+		payment_day,
+		discounts,
+		fees,
+		tuition,
+		admin_fee_display,
+		admin_fee_actual,
+		follow_up_and_bank_fees,
+		late_fees,
+		total_discounts,
+		total_fees,
+		total_adv_as_discount,
+		total_adv_as_payment,
+		total_due,
+		total_paid,
+		total_paid_pending_transfer_to_school,
+		total_outstanding,
+		date_added,
+		additional_field,
+		added_by
+FROM school_rosters_split
+WHERE student_names_1 NOT NULL)
 
-
+SELECT *
+FROM school_rosters
 
 
 
