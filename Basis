@@ -558,3 +558,22 @@ CREATE TABLE all_family_ids (
 INSERT INTO all_family_ids (family_id)
 SELECT family_id
 FROM notes;
+
+
+
+
+
+SELECT *
+FROM 
+(SELECT family_id AS id
+FROM distinct_family_ids) AS dfi
+JOIN school_rosters AS sr
+ON sr.family_id = dfi.id
+
+
+
+
+
+
+
+
