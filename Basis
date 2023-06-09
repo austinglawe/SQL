@@ -771,6 +771,10 @@ FROM school_rosters
 
 
 
+SELECT *
+FROM project_organized
+JOIN adjustments_all
+ON adjustments_all.student_full_name = project_organized.student_name
 
 
 
