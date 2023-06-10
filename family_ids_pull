@@ -8,3 +8,31 @@ SELECT  COUNT(*) AS count_of,
 FROM adjustments_all
 GROUP BY family_id, family_full_name, student_full_name, school
 ORDER BY count_of DESC
+
+SELECT   COUNT(*) AS count_of,
+         family_id,
+         family_full_name,
+         student_full_name
+FROM adjustments_all
+WHERE family_full_name LIKE "%basis%"
+GROUP BY family_id, family_full_name, student_full_name
+
+SELECT   COUNT(*) AS count_of,
+         family_id,
+         family_full_name,
+         student_full_name
+FROM adjustments_all
+WHERE family_full_name NOT LIKE "%basis%"
+GROUP BY family_id, family_full_name, student_full_name
+
+
+
+SELECT  count(*) AS count_of,
+        school,
+        family_name,
+        family_id
+FROM notes
+GROUP BY school, family_name, family_id
+
+
+
