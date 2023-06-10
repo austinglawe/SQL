@@ -1,0 +1,10 @@
+pulling family_ids
+
+SELECT  COUNT(*) AS count_of,
+        school,
+        family_id,
+        family_full_name,
+        student_full_name
+FROM adjustments_all
+GROUP BY family_id, family_full_name, student_full_name, school
+ORDER BY count_of DESC
