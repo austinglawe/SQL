@@ -1,16 +1,22 @@
 So I wanted to see what adjustment fees to the basis project were relevant and this gives a little better view of it
-I wanted find the number of times the fee name had been used. then the total from it, then the 
+I wanted find the number of times the fee name had been used, then the total from it, then the maximum amount of each, then the minimum amount of each, then the average amount of each
 
-SELECT  COUNT(*),
-        SUM(original_amount),
-        SUM(adjustment_amount),
-        SUM(new_amount),
-		MAX(original_amount),
-		MAX(adjustment_amount),
-		MAX(new_amount),
-		MIN(original_amount),
-		MIN(adjustment_amount),
-		MIN(new_amount),
+
+SELECT  COUNT(*) AS num_of,
+        SUM(original_amount) AS tot_original_amt,
+        SUM(adjustment_amount) AS tot_adj_amt,
+        SUM(new_amount) AS total_new_amt,
+		MAX(original_amount) AS max_original_amt,
+		MAX(adjustment_amount) AS max_adj_amt,
+		MAX(new_amount) AS max_new_amt,
+		MIN(original_amount) AS min_new_amt,
+		MIN(adjustment_amount) AS min_adj_amt,
+		MIN(new_amount) AS min_new_amt,
+		AVG(original_amount) AS avg_original_amt,
+		AVG(adjustment_amount) AS avg_adj_amt,
+		AVG(new_amount) AS avg_new_amt,
         fees_name
 FROM adjustments_all
 GROUP BY fees_name
+
+
