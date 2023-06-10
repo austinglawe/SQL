@@ -40,3 +40,35 @@ FROM adjustments_all
 GROUP BY fees_name)
 WHERE tot_original_amt = 0
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT *
+FROM(
+SELECT  COUNT(*) AS num_of,
+        SUM(original_amount) AS tot_original_amt,
+        SUM(adjustment_amount) AS tot_adj_amt,
+        SUM(new_amount) AS total_new_amt,
+		MAX(original_amount) AS max_original_amt,
+		MAX(adjustment_amount) AS max_adj_amt,
+		MAX(new_amount) AS max_new_amt,
+		MIN(original_amount) AS min_original_amt,
+		MIN(adjustment_amount) AS min_adj_amt,
+		MIN(new_amount) AS min_new_amt,
+		AVG(original_amount) AS avg_original_amt,
+		AVG(adjustment_amount) AS avg_adj_amt,
+		AVG(new_amount) AS avg_new_amt,
+        fees_name
+FROM adjustments_all
+GROUP BY fees_name)
