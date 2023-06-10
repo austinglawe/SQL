@@ -1,0 +1,16 @@
+So I wanted to see what adjustment fees to the basis project were relevant and this gives a little better view of it
+I wanted find the number of times the fee name had been used. then the total from it, then the 
+
+SELECT  COUNT(*),
+        SUM(original_amount),
+        SUM(adjustment_amount),
+        SUM(new_amount),
+		MAX(original_amount),
+		MAX(adjustment_amount),
+		MAX(new_amount),
+		MIN(original_amount),
+		MIN(adjustment_amount),
+		MIN(new_amount),
+        fees_name
+FROM adjustments_all
+GROUP BY fees_name
