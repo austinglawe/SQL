@@ -1643,6 +1643,12 @@ ON a_s.student_full_name = p_o.student_name)
 
 
 
+SELECT *,
+	   SUM(amount) AS total_paid
+FROM payments
+WHERE payment_status NOT IN( "Failed", "Voided")
+GROUP BY family_id
+ORDER BY family_full_name
 
 
 
