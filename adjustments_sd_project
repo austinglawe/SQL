@@ -695,8 +695,416 @@ JOIN adjustments_all ON adjustments_all.family_id = family_ids_project2.distinct
 
 
 
+SELECT *
+FROM adjustments_project
+WHERE fees_name LIKE "%OFFSET Security Deposit%"
+OR fees_name LIKE "%OFFSET: Security Deposit 8-12%"
+OR fees_name LIKE "%OFFSET: Security Deposit K-7%"
+OR fees_name LIKE "%SD - (50%)Security Deposit K-7%"
+OR fees_name LIKE "%SD - OFFSET: Security Deposit 8-12%"
+OR fees_name LIKE "%SD - OFFSET: Security Deposit K-7%"
+OR fees_name LIKE "%SD - Security Deposit - Financial Aid%"
+OR fees_name LIKE "%SD - Security Deposit 8-12%"
+OR fees_name LIKE "%SD - Security Deposit Discount - Employee%"
+OR fees_name LIKE "%SD - Security Deposit Discount - Financial Aid%"
+OR fees_name LIKE "%SD - Security Deposit Discount - Non-Employee%"
+OR fees_name LIKE "%SD - Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD - Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD - Security Deposit K-7%"
+OR fees_name LIKE "%SD- Security Deposit 8-12%"
+OR fees_name LIKE "%SD- Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD- Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD- Security Deposit K-7%"
+OR fees_name LIKE "%SD: 2020-21 End of Year Balance - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2020-21 End of Year Balance move to 2021-22 - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2021-22 End of year balance - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2021-22 End of year balance move to 2022-23 - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2021-22 End of year balance write off - Student Security Deposit%"
+OR fees_name LIKE "%SD: Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD: Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD: Security Deposit K-7%"
+OR fees_name LIKE "%SD-Employee Discount%"
+OR fees_name LIKE "%SD-OFFSET: Security Deposit 8-12%"
+OR fees_name LIKE "%SD-OFFSET: Security Deposit K-7%"
+OR fees_name LIKE "%SD-Security Deposit 8-12%"
+OR fees_name LIKE "%SD-Security Deposit 8-12.%"
+OR fees_name LIKE "%SD-Security Deposit Discount - Non-Employee%"
+OR fees_name LIKE "%SD-Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD-Security Deposit Fee Discount - Non-Employee%"
+OR fees_name LIKE "%SD-Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD-Security Deposit K-7%"
+OR fees_name LIKE "%Security Deposit 8-12%"
+OR fees_name LIKE "%Security Deposit Employee Credit%"
+OR fees_name LIKE "%Security Deposit Financial Aid%"
+OR fees_name LIKE "%Security Deposit K-7%"
+
+OR fees_name LIKE "%ATF - Account Credit Donated%"
+OR fees_name LIKE "%ATF - SD Donated to ATF%"
+OR fees_name LIKE "%ATF - Security Deposit Donated%"
+OR fees_name LIKE "%ATF - -Security Deposit Donated%"
+OR fees_name LIKE "%ATF- Account Credit Donated to ATF%"
+OR fees_name LIKE "%ATF- Credit Balance Donated%"
+OR fees_name LIKE "%ATF- Security Deposit Donated%"
+OR fees_name LIKE "%ATF: Security Deposit Donated%"
+OR fees_name LIKE "%ATF-Account Credit Donation%"
+OR fees_name LIKE "%ATF-Credit balance donated%"
+OR fees_name LIKE "%ATF-Credit Donation%"
+OR fees_name LIKE "%ATF-SD Donated to ATF%"
+OR fees_name LIKE "%ATF-Security Deposit Donated%"
+OR fees_name LIKE "%ATF-Security Deposit Donation%"
+OR fees_name LIKE "%BASIS Internal Balance Discount Offset%"
+OR fees_name LIKE "%BASIS Internal Balance Fee Offset%"
+OR fees_name LIKE "%Credit Balance Fwd%"
+OR fees_name LIKE "%Credit f/ Previous Year%"
+OR fees_name LIKE "%Discount - Other Financial Aid%"
+OR fees_name LIKE "%Discount- Other financial aid%"
+OR fees_name LIKE "%Discount-Other financial aid%"
+OR fees_name LIKE "%Employee Discount%"
+OR fees_name LIKE "%Employee Discount: Other%"
+OR fees_name LIKE "%Financial Aid: Other%"
+OR fees_name LIKE "%Full Day Kindergarten Deposit%"
+OR fees_name LIKE "%Full Day Registration NO REFUND%"
+OR fees_name LIKE "%KG - Employee Discount%"
+OR fees_name LIKE "%KG - Employee Discount - Kindergarten%"
+OR fees_name LIKE "%KG - Employee Discount Kindergarten%"
+OR fees_name LIKE "%KG - Employee Discount: Registration%"
+OR fees_name LIKE "%KG - Financial Aid Discount%"
+OR fees_name LIKE "%KG - Financial Aid: Kindergarten%"
+OR fees_name LIKE "%KG - Financial Aid: Registration%"
+OR fees_name LIKE "%KG - Full Day Kinder Non-Refundable Deposit%"
+OR fees_name LIKE "%KG - Full Day Kinder Non-Refundable Registration Fee%"
+OR fees_name LIKE "%KG - Full Day Kindergarten Deposit%"
+OR fees_name LIKE "%KG - Full Day Registration Fee (NON-REFUNDABLE)%"
+OR fees_name LIKE "%KG - Kinder Registration NO REFUND%"
+OR fees_name LIKE "%KG - Kindergarten Discount - Financial Aid%"
+OR fees_name LIKE "%KG - Kindergarten Discount- Employee%"
+OR fees_name LIKE "%KG - Kindergarten Employee%"
+OR fees_name LIKE "%KG - Kindergarten Employee Credit%"
+OR fees_name LIKE "%KG - Kindergarten Employee Discount%"
+OR fees_name LIKE "%KG - Kindergarten Financial Aid%"
+OR fees_name LIKE "%KG - Kindergarten May Credit 2021%"
+OR fees_name LIKE "%KG - Kindergarten Registration- Employee Discount%"
+OR fees_name LIKE "%KG - Kindergarten Registration Financial Aid%"
+OR fees_name LIKE "%KG - Kindergarten Registration Refund (West Transfer)%"
+OR fees_name LIKE "%KG - Kindergarten SD Offset%"
+OR fees_name LIKE "%KG - Kindergarten Tuition Financial Aid%"
+OR fees_name LIKE "%KG - Offset%"
+OR fees_name LIKE "%KG - Offset Kinder%"
+OR fees_name LIKE "%KG ? Kindergarten Credit - Employee%"
+OR fees_name LIKE "%KG- COVID19 - Kindergarten Paid In Full Tuition%"
+OR fees_name LIKE "%KG- Employee Kindergarten Registration Fee Discount%"
+OR fees_name LIKE "%KG- FDK Registration Refund%"
+OR fees_name LIKE "%KG- Kindergarten Credit%"
+OR fees_name LIKE "%KG- Kindergarten Employee Discount%"
+OR fees_name LIKE "%KG- Kindergarten Registration Employee Discount%"
+OR fees_name LIKE "%KG- Kindergarten Registration Fee Refund%"
+OR fees_name LIKE "%KG- Kindergarten Tuition Refund%"
+OR fees_name LIKE "%KG- Kindergarten: Employee Discount%"
+OR fees_name LIKE "%KG- Kindergarten: Financial Aid%"
+OR fees_name LIKE "%KG- Paid in Full Kinder Tuition%"
+OR fees_name LIKE "%KG: OFFSET Kindergarten Registration%"
+OR fees_name LIKE "%KG-Employee Kinder Discount%"
+OR fees_name LIKE "%KG-Financial Aid Kindergarten Annual%"
+OR fees_name LIKE "%KG-Financial Aid Kindergarten monthly%"
+OR fees_name LIKE "%KG-Financial Aid Kindergarten Registration%"
+OR fees_name LIKE "%KG-Financial Aid: Other%"
+OR fees_name LIKE "%KG-Full Day Kinder Non-Refundable Registration Fee%"
+OR fees_name LIKE "%KG-Full Day Registration Fee (NON-REFUNDABLE)%"
+OR fees_name LIKE "%KG-Kindergarten Credit - Employee%"
+OR fees_name LIKE "%KG-Kindergarten Employee Discount%"
+OR fees_name LIKE "%KG-Kindergarten Financial Aid%"
+OR fees_name LIKE "%KG-Kindergarten Registration non-refundable offset%"
+OR fees_name LIKE "%KG-Paid in Full Kinder Tuition%"
+OR fees_name LIKE "%OFFSET: Initial School Fees - Family%"
+OR fees_name LIKE "%OFFSET: refund issued%"
+OR fees_name LIKE "%OFFSET: See Note%"
+OR fees_name LIKE "%Other Discount - Employee%"
+OR fees_name LIKE "%Other Discount - Employee Club Enrollment Discount%"
+OR fees_name LIKE "%Other Discount - Employee Club Enrollment Discount (FALL)%"
+OR fees_name LIKE "%Other Discount - Employee Club Enrollment Discount (SPRING)%"
+OR fees_name LIKE "%Other Discount - Financial Aid%"
+OR fees_name LIKE "%Other Discount - Non-Employee%"
+OR fees_name LIKE "%Other Financial Aid%"
+OR fees_name LIKE "%Other Refund%"
+OR fees_name LIKE "%Other: Employee Discount%"
+OR fees_name LIKE "%Other: Financial Aid%"
+OR fees_name LIKE "%Other: School Credit (per HOPS)%"
+OR fees_name LIKE "%Other-Employee Discount%"
+OR fees_name LIKE "%Other-Financial Aid%"
+OR fees_name LIKE "%Paid via Shopify%"
+OR fees_name LIKE "%Refund for Item already paid%"
+OR fees_name LIKE "%Refund for No Show%"
+OR fees_name LIKE "%Refund Misc.%"
+OR fees_name LIKE "%School Credit (per HOPS)%"
+OR fees_name LIKE "%SD - ATF Security Deposit Donated%"
+OR fees_name LIKE "%SD - Paid Via Shopify%"
+OR fees_name LIKE "%SD - Security Deposit transferred from 2016-17 Tucson Primary%"
+OR fees_name LIKE "%SD - Security Deposit transferred from 2017-18 Tucson Primary%"
+OR fees_name LIKE "%SD - Security Deposit transferred from 2018-19 Tucson Primary%"
+OR fees_name LIKE "%SD - Security Deposit transferred from 2019-20 Tucson Primary%"
+OR fees_name LIKE "%SD - Security Deposit transferred from Tucson Primary%"
+OR fees_name LIKE "%SD - Security Deposit transferred to 2018-19 Tucson North%"
+OR fees_name LIKE "%SD - Security Deposit transferred to 2019-20 Tucson North%"
+OR fees_name LIKE "%SD - Security Deposit transferred to 2020-21 Tucson North%"
+OR fees_name LIKE "%SD-ATF-Security Deposit Donated%"
+OR fees_name LIKE "%SD-Security Deposit Paid via Shopify%"
+OR fees_name LIKE "%Security Deposit Donated%"
+OR fees_name LIKE "%Security Deposit Donated to ATF%"
+OR fees_name LIKE "%Security Deposit Payment transferred from Tucson%"
+OR fees_name LIKE "%Security Deposit Payment transferred to OV%"
+OR fees_name LIKE "%Security Deposit Payment transferred to OVP%"
+OR fees_name LIKE "%Security Deposit Payment transferred to Tucson N%"
+OR fees_name LIKE "%Security Deposit Transfer%"
+OR fees_name LIKE "%Security Deposit transferred to 2017-18 Tucson North%"
+OR fees_name LIKE "%Security Deposit transferred to Tucson North%"
 
 
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE adjustments_sds (
+school TEXT,
+school_year TEXT,
+indicator_id INT,
+school_id INT,
+family_id INT,
+family_name TEXT,
+family_first_name TEXT,
+family_last_name TEXT,
+family_full_name TEXT,
+month_adjusted TEXT,
+adjustment_date TEXT,
+applied_on TEXT, 
+student_first_name TEXT,
+student_last_name TEXT,
+student_full_name TEXT,
+fees_name TEXT,
+original_amount FLOAT,
+adjustment_amount FLOAT,
+new_amount FLOAT,
+reason_for_adjustment TEXT,
+adjusted_by TEXT
+);
+
+
+
+
+INSERT INTO adjustments_sds (
+    school,
+    school_year,
+    indicator_id,
+    school_id,
+    family_id,
+    family_name,
+    family_first_name,
+    family_last_name,
+    family_full_name,
+    month_adjusted,
+    adjustment_date,
+    applied_on,
+    student_first_name,
+    student_last_name,
+    student_full_name,
+    fees_name,
+    original_amount,
+    adjustment_amount,
+    new_amount,
+    reason_for_adjustment,
+    adjusted_by
+)
+SELECT
+    school,
+    school_year,
+    indicator_id,
+    school_id,
+    family_id,
+    family_name,
+    family_first_name,
+    family_last_name,
+    family_full_name,
+    month_adjusted,
+    adjustment_date,
+    applied_on,
+    student_first_name,
+    student_last_name,
+    student_full_name,
+    fees_name,
+    original_amount,
+    adjustment_amount,
+    new_amount,
+    reason_for_adjustment,
+    adjusted_by
+FROM (
+SELECT *
+FROM adjustments_project
+WHERE fees_name LIKE "%OFFSET Security Deposit%"
+OR fees_name LIKE "%OFFSET: Security Deposit 8-12%"
+OR fees_name LIKE "%OFFSET: Security Deposit K-7%"
+OR fees_name LIKE "%SD - (50%)Security Deposit K-7%"
+OR fees_name LIKE "%SD - OFFSET: Security Deposit 8-12%"
+OR fees_name LIKE "%SD - OFFSET: Security Deposit K-7%"
+OR fees_name LIKE "%SD - Security Deposit - Financial Aid%"
+OR fees_name LIKE "%SD - Security Deposit 8-12%"
+OR fees_name LIKE "%SD - Security Deposit Discount - Employee%"
+OR fees_name LIKE "%SD - Security Deposit Discount - Financial Aid%"
+OR fees_name LIKE "%SD - Security Deposit Discount - Non-Employee%"
+OR fees_name LIKE "%SD - Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD - Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD - Security Deposit K-7%"
+OR fees_name LIKE "%SD- Security Deposit 8-12%"
+OR fees_name LIKE "%SD- Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD- Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD- Security Deposit K-7%"
+OR fees_name LIKE "%SD: 2020-21 End of Year Balance - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2020-21 End of Year Balance move to 2021-22 - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2021-22 End of year balance - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2021-22 End of year balance move to 2022-23 - Student Security Deposit%"
+OR fees_name LIKE "%SD: 2021-22 End of year balance write off - Student Security Deposit%"
+OR fees_name LIKE "%SD: Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD: Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD: Security Deposit K-7%"
+OR fees_name LIKE "%SD-Employee Discount%"
+OR fees_name LIKE "%SD-OFFSET: Security Deposit 8-12%"
+OR fees_name LIKE "%SD-OFFSET: Security Deposit K-7%"
+OR fees_name LIKE "%SD-Security Deposit 8-12%"
+OR fees_name LIKE "%SD-Security Deposit 8-12.%"
+OR fees_name LIKE "%SD-Security Deposit Discount - Non-Employee%"
+OR fees_name LIKE "%SD-Security Deposit Employee Credit%"
+OR fees_name LIKE "%SD-Security Deposit Fee Discount - Non-Employee%"
+OR fees_name LIKE "%SD-Security Deposit Financial Aid%"
+OR fees_name LIKE "%SD-Security Deposit K-7%"
+OR fees_name LIKE "%Security Deposit 8-12%"
+OR fees_name LIKE "%Security Deposit Employee Credit%"
+OR fees_name LIKE "%Security Deposit Financial Aid%"
+OR fees_name LIKE "%Security Deposit K-7%"
+
+OR fees_name LIKE "%ATF - Account Credit Donated%"
+OR fees_name LIKE "%ATF - SD Donated to ATF%"
+OR fees_name LIKE "%ATF - Security Deposit Donated%"
+OR fees_name LIKE "%ATF - -Security Deposit Donated%"
+OR fees_name LIKE "%ATF- Account Credit Donated to ATF%"
+OR fees_name LIKE "%ATF- Credit Balance Donated%"
+OR fees_name LIKE "%ATF- Security Deposit Donated%"
+OR fees_name LIKE "%ATF: Security Deposit Donated%"
+OR fees_name LIKE "%ATF-Account Credit Donation%"
+OR fees_name LIKE "%ATF-Credit balance donated%"
+OR fees_name LIKE "%ATF-Credit Donation%"
+OR fees_name LIKE "%ATF-SD Donated to ATF%"
+OR fees_name LIKE "%ATF-Security Deposit Donated%"
+OR fees_name LIKE "%ATF-Security Deposit Donation%"
+OR fees_name LIKE "%BASIS Internal Balance Discount Offset%"
+OR fees_name LIKE "%BASIS Internal Balance Fee Offset%"
+OR fees_name LIKE "%Credit Balance Fwd%"
+OR fees_name LIKE "%Credit f/ Previous Year%"
+OR fees_name LIKE "%Discount - Other Financial Aid%"
+OR fees_name LIKE "%Discount- Other financial aid%"
+OR fees_name LIKE "%Discount-Other financial aid%"
+OR fees_name LIKE "%Employee Discount%"
+OR fees_name LIKE "%Employee Discount: Other%"
+OR fees_name LIKE "%Financial Aid: Other%"
+OR fees_name LIKE "%Full Day Kindergarten Deposit%"
+OR fees_name LIKE "%Full Day Registration NO REFUND%"
+OR fees_name LIKE "%KG - Employee Discount%"
+OR fees_name LIKE "%KG - Employee Discount - Kindergarten%"
+OR fees_name LIKE "%KG - Employee Discount Kindergarten%"
+OR fees_name LIKE "%KG - Employee Discount: Registration%"
+OR fees_name LIKE "%KG - Financial Aid Discount%"
+OR fees_name LIKE "%KG - Financial Aid: Kindergarten%"
+OR fees_name LIKE "%KG - Financial Aid: Registration%"
+OR fees_name LIKE "%KG - Full Day Kinder Non-Refundable Deposit%"
+OR fees_name LIKE "%KG - Full Day Kinder Non-Refundable Registration Fee%"
+OR fees_name LIKE "%KG - Full Day Kindergarten Deposit%"
+OR fees_name LIKE "%KG - Full Day Registration Fee (NON-REFUNDABLE)%"
+OR fees_name LIKE "%KG - Kinder Registration NO REFUND%"
+OR fees_name LIKE "%KG - Kindergarten Discount - Financial Aid%"
+OR fees_name LIKE "%KG - Kindergarten Discount- Employee%"
+OR fees_name LIKE "%KG - Kindergarten Employee%"
+OR fees_name LIKE "%KG - Kindergarten Employee Credit%"
+OR fees_name LIKE "%KG - Kindergarten Employee Discount%"
+OR fees_name LIKE "%KG - Kindergarten Financial Aid%"
+OR fees_name LIKE "%KG - Kindergarten May Credit 2021%"
+OR fees_name LIKE "%KG - Kindergarten Registration- Employee Discount%"
+OR fees_name LIKE "%KG - Kindergarten Registration Financial Aid%"
+OR fees_name LIKE "%KG - Kindergarten Registration Refund (West Transfer)%"
+OR fees_name LIKE "%KG - Kindergarten SD Offset%"
+OR fees_name LIKE "%KG - Kindergarten Tuition Financial Aid%"
+OR fees_name LIKE "%KG - Offset%"
+OR fees_name LIKE "%KG - Offset Kinder%"
+OR fees_name LIKE "%KG ? Kindergarten Credit - Employee%"
+OR fees_name LIKE "%KG- COVID19 - Kindergarten Paid In Full Tuition%"
+OR fees_name LIKE "%KG- Employee Kindergarten Registration Fee Discount%"
+OR fees_name LIKE "%KG- FDK Registration Refund%"
+OR fees_name LIKE "%KG- Kindergarten Credit%"
+OR fees_name LIKE "%KG- Kindergarten Employee Discount%"
+OR fees_name LIKE "%KG- Kindergarten Registration Employee Discount%"
+OR fees_name LIKE "%KG- Kindergarten Registration Fee Refund%"
+OR fees_name LIKE "%KG- Kindergarten Tuition Refund%"
+OR fees_name LIKE "%KG- Kindergarten: Employee Discount%"
+OR fees_name LIKE "%KG- Kindergarten: Financial Aid%"
+OR fees_name LIKE "%KG- Paid in Full Kinder Tuition%"
+OR fees_name LIKE "%KG: OFFSET Kindergarten Registration%"
+OR fees_name LIKE "%KG-Employee Kinder Discount%"
+OR fees_name LIKE "%KG-Financial Aid Kindergarten Annual%"
+OR fees_name LIKE "%KG-Financial Aid Kindergarten monthly%"
+OR fees_name LIKE "%KG-Financial Aid Kindergarten Registration%"
+OR fees_name LIKE "%KG-Financial Aid: Other%"
+OR fees_name LIKE "%KG-Full Day Kinder Non-Refundable Registration Fee%"
+OR fees_name LIKE "%KG-Full Day Registration Fee (NON-REFUNDABLE)%"
+OR fees_name LIKE "%KG-Kindergarten Credit - Employee%"
+OR fees_name LIKE "%KG-Kindergarten Employee Discount%"
+OR fees_name LIKE "%KG-Kindergarten Financial Aid%"
+OR fees_name LIKE "%KG-Kindergarten Registration non-refundable offset%"
+OR fees_name LIKE "%KG-Paid in Full Kinder Tuition%"
+OR fees_name LIKE "%OFFSET: Initial School Fees - Family%"
+OR fees_name LIKE "%OFFSET: refund issued%"
+OR fees_name LIKE "%OFFSET: See Note%"
+OR fees_name LIKE "%Other Discount - Employee%"
+OR fees_name LIKE "%Other Discount - Employee Club Enrollment Discount%"
+OR fees_name LIKE "%Other Discount - Employee Club Enrollment Discount (FALL)%"
+OR fees_name LIKE "%Other Discount - Employee Club Enrollment Discount (SPRING)%"
+OR fees_name LIKE "%Other Discount - Financial Aid%"
+OR fees_name LIKE "%Other Discount - Non-Employee%"
+OR fees_name LIKE "%Other Financial Aid%"
+OR fees_name LIKE "%Other Refund%"
+OR fees_name LIKE "%Other: Employee Discount%"
+OR fees_name LIKE "%Other: Financial Aid%"
+OR fees_name LIKE "%Other: School Credit (per HOPS)%"
+OR fees_name LIKE "%Other-Employee Discount%"
+OR fees_name LIKE "%Other-Financial Aid%"
+OR fees_name LIKE "%Paid via Shopify%"
+OR fees_name LIKE "%Refund for Item already paid%"
+OR fees_name LIKE "%Refund for No Show%"
+OR fees_name LIKE "%Refund Misc.%"
+OR fees_name LIKE "%School Credit (per HOPS)%"
+OR fees_name LIKE "%SD - ATF Security Deposit Donated%"
+OR fees_name LIKE "%SD - Paid Via Shopify%"
+OR fees_name LIKE "%SD - Security Deposit transferred from 2016-17 Tucson Primary%"
+OR fees_name LIKE "%SD - Security Deposit transferred from 2017-18 Tucson Primary%"
+OR fees_name LIKE "%SD - Security Deposit transferred from 2018-19 Tucson Primary%"
+OR fees_name LIKE "%SD - Security Deposit transferred from 2019-20 Tucson Primary%"
+OR fees_name LIKE "%SD - Security Deposit transferred from Tucson Primary%"
+OR fees_name LIKE "%SD - Security Deposit transferred to 2018-19 Tucson North%"
+OR fees_name LIKE "%SD - Security Deposit transferred to 2019-20 Tucson North%"
+OR fees_name LIKE "%SD - Security Deposit transferred to 2020-21 Tucson North%"
+OR fees_name LIKE "%SD-ATF-Security Deposit Donated%"
+OR fees_name LIKE "%SD-Security Deposit Paid via Shopify%"
+OR fees_name LIKE "%Security Deposit Donated%"
+OR fees_name LIKE "%Security Deposit Donated to ATF%"
+OR fees_name LIKE "%Security Deposit Payment transferred from Tucson%"
+OR fees_name LIKE "%Security Deposit Payment transferred to OV%"
+OR fees_name LIKE "%Security Deposit Payment transferred to OVP%"
+OR fees_name LIKE "%Security Deposit Payment transferred to Tucson N%"
+OR fees_name LIKE "%Security Deposit Transfer%"
+OR fees_name LIKE "%Security Deposit transferred to 2017-18 Tucson North%"
+OR fees_name LIKE "%Security Deposit transferred to Tucson North%")
 
 
 
