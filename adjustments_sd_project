@@ -1108,3 +1108,80 @@ OR fees_name LIKE "%Security Deposit transferred to Tucson North%")
 
 
 
+
+
+
+
+
+CREATE TABLE adjustments_sds (
+school TEXT,
+school_year TEXT,
+indicator_id INT,
+school_id INT,
+family_id INT,
+family_name TEXT,
+family_first_name TEXT,
+family_last_name TEXT,
+family_full_name TEXT,
+month_adjusted TEXT,
+adjustment_date TEXT,
+applied_on TEXT, 
+student_first_name TEXT,
+student_last_name TEXT,
+student_full_name TEXT,
+fees_name TEXT,
+original_amount FLOAT,
+adjustment_amount FLOAT,
+new_amount FLOAT,
+reason_for_adjustment TEXT,
+adjusted_by TEXT
+school_2 TEXT, 
+student_name TEXT, 
+sd_liability_balance TEXT, 
+school_year TEXT, 
+school_id INT, 
+family_id INT, 
+indicator_id INT, 
+payment_amount TEXT, 
+payment_method TEXT, 
+payment_date TEXT, 
+notes TEXT, 
+account_holder_primary TEXT, 
+account_holder_secondary TEXT, 
+full_address TEXT, 
+email_primary TEXT, 
+email_secondary TEXT, 
+phone_primary INT, 
+phone_secondary INT, 
+mobile_number INT, 
+international_number INT
+);
+
+
+school,
+student_name, 
+sd_liability_balance, 
+school_year,
+school_id,
+family_id,
+indicator_id,
+payment_amount, 
+payment_method, 
+payment_date,
+notes, 
+account_holder_primary, 
+account_holder_secondary, 
+full_address, 
+email_primary, 
+email_secondary, 
+phone_primary, 
+phone_secondary, 
+mobile_number, 
+international_number
+
+
+SELECT *
+FROM adjustments_sds
+JOIN project_organized
+ON project_organized.student_name = adjustments_sds.student_full_name
+
