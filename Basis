@@ -778,5 +778,27 @@ ON adjustments_all.student_full_name = project_organized.student_name
 
 
 
+school, 
+student_name, 
+sd_liability_balance, 
+school_year, 
+school_id, 
+family_id, 
+indicator_id, 
+payment_amount, 
+payment_method, 
+payment_date, 
+notes, 
+account_holder_primary, 
+account_holder_secondary, 
+full_address, 
+email_primary, 
+email_secondary, 
+phone_primary, 
+phone_secondary, 
+mobile_number, 
+international_number
+
+
 
 
