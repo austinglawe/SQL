@@ -1158,13 +1158,13 @@ international_number INT
 );
 
 
-school,
+school AS school_2,
 student_name, 
 sd_liability_balance, 
-school_year,
-school_id,
-family_id,
-indicator_id,
+school_year AS school_year_2,
+school_id AS school_id_2,
+family_id AS family_id_2,
+indicator_id AS indicator_id_2,
 payment_amount, 
 payment_method, 
 payment_date,
@@ -1313,17 +1313,163 @@ phone_secondary,
 mobile_number, 
 international_number   
 )
-SELECT *
+SELECT 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO adjustments_and_project (
+ school,
+school_year,
+indicator_id,
+school_id,
+family_id,
+family_name,
+family_first_name,
+family_last_name,
+family_full_name,
+month_adjusted,
+adjustment_date,
+applied_on, 
+student_first_name,
+student_last_name,
+student_full_name,
+fees_name,
+original_amount,
+adjustment_amount,
+new_amount,
+reason_for_adjustment,
+adjusted_by,
+school_2, 
+student_name, 
+sd_liability_balance, 
+school_year_2, 
+school_id_2, 
+family_id_2, 
+indicator_id_2, 
+payment_amount, 
+payment_method, 
+payment_date, 
+notes, 
+account_holder_primary, 
+account_holder_secondary, 
+full_address, 
+email_primary, 
+email_secondary, 
+phone_primary, 
+phone_secondary, 
+mobile_number, 
+international_number   
+)
+SELECT 
+a_s.school,
+a_s.school_year,
+a_s.indicator_id,
+a_s.school_id,
+a_s.family_id,
+a_s.family_name,
+a_s.family_first_name,
+a_s.family_last_name,
+a_s.family_full_name,
+a_s.month_adjusted,
+a_s.adjustment_date,
+a_s.applied_on, 
+a_s.student_first_name,
+a_s.student_last_name,
+a_s.student_full_name,
+a_s.fees_name,
+a_s.original_amount,
+a_s.adjustment_amount,
+a_s.new_amount,
+a_s.reason_for_adjustment,
+a_s.adjusted_by,
+p_o.school_2, 
+p_o.student_name, 
+p_o.sd_liability_balance, 
+p_o.school_year_2, 
+p_o.school_id_2, 
+p_o.family_id_2, 
+p_o.indicator_id_2, 
+p_o.payment_amount, 
+p_o.payment_method, 
+p_o.payment_date, 
+p_o.notes, 
+p_o.account_holder_primary, 
+p_o.account_holder_secondary, 
+p_o.full_address, 
+p_o.email_primary, 
+p_o.email_secondary, 
+p_o.phone_primary, 
+p_o.phone_secondary, 
+p_o.mobile_number, 
+p_o.international_number
 FROM (
-adjustments_sds
-JOIN project_organized
-ON project_organized.student_name = adjustments_sds.student_full_name)
-
-
-
-
-
-
+SELECT school AS school_2,
+student_name, 
+sd_liability_balance, 
+school_year AS school_year_2,
+school_id AS school_id_2,
+family_id AS family_id_2,
+indicator_id AS indicator_id_2,
+payment_amount, 
+payment_method, 
+payment_date,
+notes, 
+account_holder_primary, 
+account_holder_secondary, 
+full_address, 
+email_primary, 
+email_secondary, 
+phone_primary, 
+phone_secondary, 
+mobile_number, 
+international_number
+FROM project_organized) p_o
+JOIN adjustments_sds a_s
+ON a_s.student_full_name = p_o.student_name
 
 
 
