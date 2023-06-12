@@ -551,3 +551,151 @@ OR fees_name = "%Security Deposit Payment transferred to Tucson N%"
 OR fees_name = "%Security Deposit Transfer%"
 OR fees_name = "%Security Deposit transferred to 2017-18 Tucson North%"
 OR fees_name = "%Security Deposit transferred to Tucson North%"
+
+
+
+
+
+
+
+CREATE TABLE adjustments_project (
+school TEXT,
+school_year TEXT,
+indicator_id INT,
+school_id INT,
+family_id INT,
+family_name TEXT,
+family_first_name TEXT,
+family_last_name TEXT,
+family_full_name TEXT,
+month_adjusted TEXT,
+adjustment_date TEXT,
+applied_on TEXT, 
+student_first_name TEXT,
+student_last_name TEXT,
+student_full_name TEXT,
+fees_name TEXT,
+original_amount FLOAT,
+adjustment_amount FLOAT,
+new_amount FLOAT,
+reason_for_adjustment TEXT,
+adjusted_by TEXT
+);
+
+
+INSERT INTO adjustments_project( 
+school,
+school_year,
+indicator_id,
+school_id,
+family_id,
+family_name,
+family_first_name,
+family_last_name,
+family_full_name,
+month_adjusted,
+adjustment_date,
+applied_on,
+student_first_name,
+student_last_name,
+student_full_name,
+fees_name,
+original_amount,
+adjustment_amount,
+new_amount,
+reason_for_adjustment,
+adjusted_by)
+VALUES(
+SELECT school,
+school_year,
+indicator_id,
+school_id,
+family_id,
+family_name,
+family_first_name,
+family_last_name,
+family_full_name,
+month_adjusted,
+adjustment_date,
+applied_on,
+student_first_name,
+student_last_name,
+student_full_name,
+fees_name,
+original_amount,
+adjustment_amount,
+new_amount,
+reason_for_adjustment,
+adjusted_by
+FROM (
+SELECT *
+FROM (
+SELECT DISTINCT family_id AS distinct_familY_id
+FROM family_ids_for_project) AS family_ids_project2
+JOIN adjustments_all
+ON adjustments_all.family_id = family_ids_project2.distinct_family_id))
+
+
+
+
+THE RIGHT ONE IS BELOW.. ABOVE HAS an error
+INSERT INTO adjustments_project (
+    school,
+    school_year,
+    indicator_id,
+    school_id,
+    family_id,
+    family_name,
+    family_first_name,
+    family_last_name,
+    family_full_name,
+    month_adjusted,
+    adjustment_date,
+    applied_on,
+    student_first_name,
+    student_last_name,
+    student_full_name,
+    fees_name,
+    original_amount,
+    adjustment_amount,
+    new_amount,
+    reason_for_adjustment,
+    adjusted_by
+)
+SELECT
+    school,
+    school_year,
+    indicator_id,
+    school_id,
+    family_id,
+    family_name,
+    family_first_name,
+    family_last_name,
+    family_full_name,
+    month_adjusted,
+    adjustment_date,
+    applied_on,
+    student_first_name,
+    student_last_name,
+    student_full_name,
+    fees_name,
+    original_amount,
+    adjustment_amount,
+    new_amount,
+    reason_for_adjustment,
+    adjusted_by
+FROM (
+    SELECT DISTINCT family_id AS distinct_family_id
+    FROM family_ids_for_project
+) AS family_ids_project2
+JOIN adjustments_all ON adjustments_all.family_id = family_ids_project2.distinct_family_id;
+
+
+
+
+
+
+
+
+
+
