@@ -814,3 +814,33 @@ GROUP BY school,
 		 applied_on, 
 		 student_full_name
 
+
+
+SELECT  School,
+		indicator_id, 
+		family_name, 
+		family_full_name, 
+		applied_on, 
+		student_full_name
+FROM adjustments_all
+WHERE applied_on NOT LIKE "Family"
+GROUP BY school,
+		 indicator_id, 
+		 family_name, 
+		 family_full_name, 
+		 applied_on, 
+		 student_full_name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
