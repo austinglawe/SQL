@@ -72,3 +72,34 @@ SELECT  COUNT(*) AS num_of,
         fees_name
 FROM adjustments_all
 GROUP BY fees_name)
+
+
+
+
+_____________________________________________________________________________________________________________________________________________________________
+
+
+
+SELECT  COUNT(*) AS num_of,
+		school,
+		school_year,
+		fees_name,
+		SUM(original_amount) AS sum_original_amount,
+		SUM(adjustment_amount) AS sum_adjustment_amount,
+		SUM(new_amount) AS sum_new_amount,
+		MIN(original_amount) AS min_of_original_amount,
+		MIN(adjustment_amount) AS min_adjustment_amount,
+		MIN(new_amount) AS min_new_amount,
+		MAX(original_amount) AS max_original_amount,
+		MAX(adjustment_amount) AS max_adjustment_amount,
+		MAX(new_amount) AS max_new_amount,
+		AVG(original_amount) AS average_original_amount,
+		AVG(adjustment_amount) AS average_adjustment_amount,
+		AVG(new_amount) AS average_new_amount
+FROM adjustments_all
+GROUP BY fees_name,
+		 school,
+		 school_year
+
+
+
