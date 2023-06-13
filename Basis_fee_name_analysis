@@ -123,3 +123,23 @@ FROM adjustments_all
 GROUP BY fees_name,
 		 school,
 		 school_year
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+SELECT 	COUNT(*) AS number_of,
+		fees_name,
+		reason_for_adjustment
+FROM adjustments_all
+GROUP BY fees_name, reason_for_adjustment
