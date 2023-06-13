@@ -887,3 +887,32 @@ GROUP BY school,
 		 student_full_name,
 		 grade
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT  COUNT(*) AS num_of,
+		school,
+		school_year,
+		fees_name,
+		SUM(new_amount) total_paid,
+		MIN(new_amount) min_paid,
+		MAX(new_amount) max_paid,
+		SUM(CASE WHEN new_amount > 0 THEN 1 ELSE 0 END) AS count_positive
+FROM adjustments_all
+WHERE school_year LIKE "2013-14"
+AND fees_name LIKE "%OFFSET: Security Deposit%"
+GROUP BY fees_name, school_year, school
+ORDER BY school, fees_name
