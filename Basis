@@ -800,5 +800,17 @@ mobile_number,
 international_number
 
 
-
+SELECT  School,
+		indicator_id, 
+		family_name, 
+		family_full_name, 
+		applied_on, 
+		student_full_name
+FROM adjustments_all
+GROUP BY school,
+		 indicator_id, 
+		 family_name, 
+		 family_full_name, 
+		 applied_on, 
+		 student_full_name
 
