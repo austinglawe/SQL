@@ -817,6 +817,7 @@ GROUP BY school,
 
 
 SELECT  School,
+		school_year,
 		indicator_id, 
 		family_name, 
 		family_full_name, 
@@ -825,6 +826,7 @@ SELECT  School,
 FROM adjustments_all
 WHERE applied_on NOT LIKE "Family"
 GROUP BY school,
+		 school_year,
 		 indicator_id, 
 		 family_name, 
 		 family_full_name, 
@@ -834,13 +836,54 @@ GROUP BY school,
 
 
 
+SELECT school,
+	   school_year,
+	   indicator_id,
+	   family_name_OG,
+	   family_name
+FROM notes
+GROUP BY school,
+	   school_year,
+	   indicator_id,
+	   family_name_OG,
+	   family_name
 
 
 
 
 
 
-
-
-
+SELECT  school,
+		school_year,
+		indicator_id,
+		family_name_OG,
+		family_full_name
+FROM payments
+GROUP BY school,
+		school_year,
+		indicator_id,
+		family_name_OG,
+		family_full_name
+		
+		
+		
+		
+		
+SELECT 	 school,
+		 school_year,
+		 indicator_id,
+		 family_name,
+		 family_full_name,
+		 student_name,
+		 student_full_name,
+		 grade
+FROM students
+GROUP BY school,
+		 school_year,
+		 indicator_id,
+		 family_name,
+		 family_full_name,
+		 student_name,
+		 student_full_name,
+		 grade
 
