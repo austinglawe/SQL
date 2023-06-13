@@ -925,6 +925,18 @@ ORDER BY school, fees_name
 
 
 
+SELECT COUNT(*) AS count_of,
+		student_full_name
+FROM(
+SELECT *
+FROM adjustments_all
+WHERE school IS "Chandler"
+AND school_year IS "2013-14"
+AND applied_on NOT LIKE "family"
+GROUP BY student_full_name, family_id)
+GROUP BY student_full_name
+ORDER BY count_of DESC
+
 
 
 
