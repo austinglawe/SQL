@@ -112,3 +112,37 @@ JOIN chandler_ready
 ON chandler_ready.student_name = billing_and_paid_all2.student_full_name)
 GROUP BY student_full_name, school_fam_id
 ORDER BY student_full_name
+
+
+
+
+
+I needed to see only the billing and paid items associated with security deposits.
+SELECT 	student_name,
+		school_fam_id,
+		school_year,
+		student_grade,
+		billing_item,
+		billing_type,
+		months_billed,
+		times_billed,
+		months_paid,
+		times_paid,
+		total_billed,
+		total_paid,
+		total_unapplied,
+		billed_minus_paid
+FROM(
+SELECT 	chandler_broken_down.student_full_name AS student_name,
+		chandler_broken_down.school_fam_id AS fam_school_id,
+		billing_and_paid_all.*
+FROM chandler_broken_down
+JOIN billing_and_paid_all
+ON chandler_broken_down.school_fam_id = billing_and_paid_all.school_fam_id)
+WHERE billing_item LIKE "%security%"
+OR billing_item LIKE "%employee%"
+OR billing_item LIKE "%discount%"
+OR billing_item LIKE "%sd%"
+OR billing_item LIKE "%financial%"
+OR billing_item LIKE "%aid%"
+ORDER BY student_name
