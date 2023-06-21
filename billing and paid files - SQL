@@ -290,8 +290,58 @@ WHERE billing_type LIKE "Discount"
 
 
 
+This formula worked out the kinks; the above one was pulling anyone in the indicator id, including siblings, this one narrows it down to the exact name of this person.
 
-
+SELECT *
+FROM(
+SELECT 	joined.student_full_name,
+		joined.family_full_name,
+		joined.indicator_id,
+		joined.school_fam_id,
+		joined.school_year,
+		joined.student_grade,
+		joined.billing_item,
+		joined.billing_type,
+		joined.months_billed,
+		joined.times_billed,
+		joined.months_paid,
+		joined.times_paid,
+		joined.total_billed,
+		joined.total_paid,
+		joined.total_unapplied,
+		joined.billed_minus_paid
+FROM chandler_broken_down
+JOIN(
+SELECT 	chandler_broken_down.student_full_name AS student_name,
+		chandler_broken_down.school_fam_id AS fam_school_id,
+		billing_and_paid_all.*
+FROM chandler_broken_down
+JOIN billing_and_paid_all
+ON chandler_broken_down.school_fam_id = billing_and_paid_all.school_fam_id) AS joined
+ON chandler_broken_down.student_full_name = joined.student_full_name)
+WHERE billing_item LIKE "%AUX-Other: Financial Aid%"
+OR billing_item LIKE "%SD - Security Deposit Employee Credit%"
+OR billing_item LIKE "%ATF- Security Deposit Donated%"
+OR billing_item LIKE "%Security Deposit Received%"
+OR billing_item LIKE "%SD - Security Deposit Financial Aid%"
+OR billing_item LIKE "%Security Deposit Donated%"
+OR billing_item LIKE "%Financial Aid: Other%"
+OR billing_item LIKE "%Employee Discount%"
+OR billing_item LIKE "%Security Deposit Financial Aid%"
+OR billing_item LIKE "%Security Deposit 8-12%"
+OR billing_item LIKE "%Security Deposit K-7%"
+OR billing_item LIKE "%Security Deposit  Donated%"
+OR billing_item LIKE "%SD - Security Deposit K-7%"
+OR billing_item LIKE "%SD - Security Deposit 8-12%"
+OR billing_item LIKE "%OFFSET: Security Deposit 8-12%"
+OR billing_item LIKE "%SD: 2020-21 End of year balance move to 2021-22 - Student  Security Deposit%"
+OR billing_item LIKE "%SD: 2020-21 End of year balance - Student Security Deposit%"
+OR billing_item LIKE "%SD: 2021-22 End of year balance move to 2022-23 - Student  Security Deposit%"
+OR billing_item LIKE "%SD: 2021-22 End of year balance - Student Security Deposit%"
+OR billing_item LIKE "%SD - OFFSET: Security Deposit 8-12%"
+OR billing_item LIKE "%SD - OFFSET: Security Deposit K-7%"
+OR billing_item LIKE "%OFFSET: Security Deposit K-7%"
+ORDER BY student_full_name, school_year
 
 
 
