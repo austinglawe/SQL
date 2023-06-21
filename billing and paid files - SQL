@@ -147,3 +147,152 @@ OR billing_item LIKE "%financial%"
 OR billing_item LIKE "%aid%"
 OR billing_item LIKE "%offset%"
 ORDER BY student_name
+
+
+
+
+
+
+
+
+
+From this formula I looked at all the distinct formulas
+
+SELECT DISTINCT billing_item
+FROM(
+SELECT 	student_name,
+		school_fam_id,
+		school_year,
+		student_grade,
+		billing_item,
+		billing_type,
+		months_billed,
+		times_billed,
+		months_paid,
+		times_paid,
+		total_billed,
+		total_paid,
+		total_unapplied,
+		billed_minus_paid
+FROM(
+SELECT 	chandler_broken_down.student_full_name AS student_name,
+		chandler_broken_down.school_fam_id AS fam_school_id,
+		billing_and_paid_all.*
+FROM chandler_broken_down
+JOIN billing_and_paid_all
+ON chandler_broken_down.school_fam_id = billing_and_paid_all.school_fam_id)
+WHERE billing_item LIKE "%security%"
+OR billing_item LIKE "%employee%"
+OR billing_item LIKE "%discount%"
+OR billing_item LIKE "%sd%"
+OR billing_item LIKE "%financial%"
+OR billing_item LIKE "%aid%"
+OR billing_item LIKE "%offset%"
+ORDER BY student_name)
+
+
+It came back with this:
+AUX-Other: Financial Aid
+SD - Security Deposit Employee Credit
+OP- Art Box with BOSS Discount
+ATF- Security Deposit Donated
+EC- NSDA National Tournament Events
+Security Deposit Received
+SD - Security Deposit Financial Aid
+Late Bird - Semester 2 - Paid in Full
+Security Deposit Donated
+EV- The Little Mermaid- Student Saturday
+Financial Aid: Other
+EV- The Little Mermaid- Student Friday
+Employee Discount
+Security Deposit Financial Aid
+EV- The Little Mermaid- Adult Friday
+EV- The Little Mermaid- Adult Saturday
+OP- The Little Mermaid DVD of Performance
+OP- The Little Mermaid Photo Disc
+Security Deposit 8-12
+Security Deposit K-7
+Security Deposit  Donated
+CL-Applied Financial Math
+SD - Security Deposit K-7
+SD - Security Deposit 8-12
+OFFSET: Security Deposit 8-12
+SD: 2020-21 End of year balance move to 2021-22 - Student  Security Deposit
+SD: 2020-21 End of year balance - Student Security Deposit
+SD: 2021-22 End of year balance move to 2022-23 - Student  Security Deposit
+SD: 2021-22 End of year balance - Student Security Deposit
+SD - OFFSET: Security Deposit 8-12
+SD - OFFSET: Security Deposit K-7
+EV- CPR/First Aid Certification Class
+OFFSET: Security Deposit K-7
+
+
+I was able to eliminate many of them and was left with these to create this formula:
+
+
+
+
+
+
+SELECT * 
+FROM(
+SELECT *
+FROM(
+SELECT 		student_full_name,
+		family_full_name,
+		indicator_id,
+		school_fam_id,
+		school_year,
+		student_grade,
+		billing_item,
+		billing_type,
+		months_billed,
+		times_billed,
+		months_paid,
+		times_paid,
+		total_billed,
+		total_paid,
+		total_unapplied,
+		billed_minus_paid
+FROM(
+SELECT 	chandler_broken_down.student_full_name AS student_name,
+		chandler_broken_down.school_fam_id AS fam_school_id,
+		billing_and_paid_all.*
+FROM chandler_broken_down
+JOIN billing_and_paid_all
+ON chandler_broken_down.school_fam_id = billing_and_paid_all.school_fam_id)
+WHERE billing_item LIKE "%AUX-Other: Financial Aid%"
+OR billing_item LIKE "%SD - Security Deposit Employee Credit%"
+OR billing_item LIKE "%ATF- Security Deposit Donated%"
+OR billing_item LIKE "%Security Deposit Received%"
+OR billing_item LIKE "%SD - Security Deposit Financial Aid%"
+OR billing_item LIKE "%Security Deposit Donated%"
+OR billing_item LIKE "%Financial Aid: Other%"
+OR billing_item LIKE "%Employee Discount%"
+OR billing_item LIKE "%Security Deposit Financial Aid%"
+OR billing_item LIKE "%Security Deposit 8-12%"
+OR billing_item LIKE "%Security Deposit K-7%"
+OR billing_item LIKE "%Security Deposit  Donated%"
+OR billing_item LIKE "%SD - Security Deposit K-7%"
+OR billing_item LIKE "%SD - Security Deposit 8-12%"
+OR billing_item LIKE "%OFFSET: Security Deposit 8-12%"
+OR billing_item LIKE "%SD: 2020-21 End of year balance move to 2021-22 - Student  Security Deposit%"
+OR billing_item LIKE "%SD: 2020-21 End of year balance - Student Security Deposit%"
+OR billing_item LIKE "%SD: 2021-22 End of year balance move to 2022-23 - Student  Security Deposit%"
+OR billing_item LIKE "%SD: 2021-22 End of year balance - Student Security Deposit%"
+OR billing_item LIKE "%SD - OFFSET: Security Deposit 8-12%"
+OR billing_item LIKE "%SD - OFFSET: Security Deposit K-7%"
+OR billing_item LIKE "%OFFSET: Security Deposit K-7%")
+ORDER BY student_name, school_year)
+WHERE billing_type LIKE "Discount"
+
+
+
+
+
+
+
+
+
+
+
