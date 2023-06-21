@@ -84,3 +84,31 @@ INSERT INTO billing_and_paid_all
 SELECT * FROM billing_and_paid_merge_1
 UNION ALL
 SELECT * FROM billing_and_paid_merge_2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I needed to narrow down that accounts for the chandler students I had to look up:
+
+SELECT *
+FROM
+(SELECT 	student_full_name,
+			school_fam_id
+FROM (
+SELECT *
+FROM billing_and_paid_all
+WHERE school_id LIKE "12133") billing_and_paid_all2
+JOIN chandler_ready
+ON chandler_ready.student_name = billing_and_paid_all2.student_full_name)
+GROUP BY student_full_name, school_fam_id
+ORDER BY student_full_name
