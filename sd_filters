@@ -529,3 +529,31 @@ WHERE balance != 0
 ORDER BY balance) paid
 ON paid.student_full_name = pa.pa_student_name)
 ORDER BY balance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT sd_rec.*
+FROM project_austin
+JOIN(
+SELECT *
+FROM billing_and_paid_all
+WHERE billing_item LIKE "%security deposit rec%"
+AND (school LIKE "%Peoria Primary%"
+OR school LIKE "%Chandler%"
+OR school LIKE "%Oro Valley Primary%"
+OR school LIKE "%Phoenix %"
+OR school LIKE "%Goodyear Primary%")
+) AS sd_rec
+ON sd_rec.student_full_name = project_austin.pa_student_name
+
