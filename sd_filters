@@ -503,3 +503,29 @@ Security Deposit 8-12
 Security Deposit Employee Credit
 Security Deposit Financial Aid
 Security Deposit K-7
+
+___________________________________________________________________________
+___________________________________________________________________________
+___________________________________________________________________________
+___________________________________________________________________________
+___________________________________________________________________________
+___________________________________________________________________________
+___________________________________________________________________________
+
+SELECT *
+FROM(
+SELECT *
+FROM project_austin AS pa
+JOIN(
+SELECT *
+FROM(
+SELECT 	Student_full_name,
+		SUM(billed_minus_paid) AS balance
+FROM(
+SELECT *
+FROM billing_and_paid_all)
+GROUP BY student_full_name)
+WHERE balance != 0
+ORDER BY balance) paid
+ON paid.student_full_name = pa.pa_student_name)
+ORDER BY balance
