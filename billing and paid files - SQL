@@ -343,7 +343,7 @@ OR billing_item LIKE "%SD - OFFSET: Security Deposit K-7%"
 OR billing_item LIKE "%OFFSET: Security Deposit K-7%"
 ORDER BY student_full_name, school_year
 
-
+____________________________________________________________________
 
 SELECT *
 FROM(
@@ -395,3 +395,14 @@ OR billing_item LIKE "%SD - OFFSET: Security Deposit 8-12%"
 OR billing_item LIKE "%SD - OFFSET: Security Deposit K-7%"
 OR billing_item LIKE "%OFFSET: Security Deposit K-7%"
 ORDER BY student_full_name, school_year
+
+____________________________________________________________________________
+_______________________________________________________________-
+____________________________________________________________
+
+SELECT  pa.pa_student_name,
+		bps.*
+FROM billing_and_paid_sds AS bps
+JOIN project_austin AS pa
+ON pa.pa_student_name = bps.student_full_name
+ORDER BY student_full_name
