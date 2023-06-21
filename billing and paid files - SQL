@@ -145,4 +145,5 @@ OR billing_item LIKE "%discount%"
 OR billing_item LIKE "%sd%"
 OR billing_item LIKE "%financial%"
 OR billing_item LIKE "%aid%"
+OR billing_item LIKE "%offset%"
 ORDER BY student_name
