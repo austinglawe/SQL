@@ -1,0 +1,322 @@
+WHERE billing_item LIKE "%ATF - Account Credit Donated%"
+OR billing_item LIKE "%ATF - SD Donated to ATF%"
+OR billing_item LIKE "%ATF - Security Deposit Donated%"
+OR billing_item LIKE "%ATF - -Security Deposit Donated%"
+OR billing_item LIKE "%ATF- Account Credit Donated to ATF%"
+OR billing_item LIKE "%ATF- Credit Balance Donated%"
+OR billing_item LIKE "%ATF- Security Deposit Donated%"
+OR billing_item LIKE "%ATF: Security Deposit Donated%"
+OR billing_item LIKE "%ATF-Account Credit Donation%"
+OR billing_item LIKE "%ATF-Credit balance donated%"
+OR billing_item LIKE "%ATF-Credit Donation%"
+OR billing_item LIKE "%ATF-SD Donated to ATF%"
+OR billing_item LIKE "%ATF-Security Deposit Donated%"
+OR billing_item LIKE "%ATF-Security Deposit Donation%"
+OR billing_item LIKE "%BASIS Internal Balance Discount Offset%"
+OR billing_item LIKE "%BASIS Internal Balance Fee Offset%"
+OR billing_item LIKE "%Credit Balance Fwd%"
+OR billing_item LIKE "%Credit f/ Previous Year%"
+OR billing_item LIKE "%Discount - Other Financial Aid%"
+OR billing_item LIKE "%Discount- Other financial aid%"
+OR billing_item LIKE "%Discount-Other financial aid%"
+OR billing_item LIKE "%Employee Discount%"
+OR billing_item LIKE "%Employee Discount: Other%"
+OR billing_item LIKE "%Financial Aid: Other%"
+OR billing_item LIKE "%Full Day Kindergarten Deposit%"
+OR billing_item LIKE "%Full Day Registration NO REFUND%"
+OR billing_item LIKE "%KG - Employee Discount%"
+OR billing_item LIKE "%KG - Employee Discount - Kindergarten%"
+OR billing_item LIKE "%KG - Employee Discount Kindergarten%"
+OR billing_item LIKE "%KG - Employee Discount: Registration%"
+OR billing_item LIKE "%KG - Financial Aid Discount%"
+OR billing_item LIKE "%KG - Financial Aid: Kindergarten%"
+OR billing_item LIKE "%KG - Financial Aid: Registration%"
+OR billing_item LIKE "%KG - Full Day Kinder Non-Refundable Deposit%"
+OR billing_item LIKE "%KG - Full Day Kinder Non-Refundable Registration Fee%"
+OR billing_item LIKE "%KG - Full Day Kindergarten Deposit%"
+OR billing_item LIKE "%KG - Full Day Registration Fee (NON-REFUNDABLE)%"
+OR billing_item LIKE "%KG - Kinder Registration NO REFUND%"
+OR billing_item LIKE "%KG - Kindergarten Discount - Financial Aid%"
+OR billing_item LIKE "%KG - Kindergarten Discount- Employee%"
+OR billing_item LIKE "%KG - Kindergarten Employee%"
+OR billing_item LIKE "%KG - Kindergarten Employee Credit%"
+OR billing_item LIKE "%KG - Kindergarten Employee Discount%"
+OR billing_item LIKE "%KG - Kindergarten Financial Aid%"
+OR billing_item LIKE "%KG - Kindergarten May Credit 2021%"
+OR billing_item LIKE "%KG - Kindergarten Registration- Employee Discount%"
+OR billing_item LIKE "%KG - Kindergarten Registration Financial Aid%"
+OR billing_item LIKE "%KG - Kindergarten Registration Refund (West Transfer)%"
+OR billing_item LIKE "%KG - Kindergarten SD Offset%"
+OR billing_item LIKE "%KG - Kindergarten Tuition Financial Aid%"
+OR billing_item LIKE "%KG - Offset%"
+OR billing_item LIKE "%KG - Offset Kinder%"
+OR billing_item LIKE "%KG ? Kindergarten Credit - Employee%"
+OR billing_item LIKE "%KG- COVID19 - Kindergarten Paid In Full Tuition%"
+OR billing_item LIKE "%KG- Employee Kindergarten Registration Fee Discount%"
+OR billing_item LIKE "%KG- FDK Registration Refund%"
+OR billing_item LIKE "%KG- Kindergarten Credit%"
+OR billing_item LIKE "%KG- Kindergarten Employee Discount%"
+OR billing_item LIKE "%KG- Kindergarten Registration Employee Discount%"
+OR billing_item LIKE "%KG- Kindergarten Registration Fee Refund%"
+OR billing_item LIKE "%KG- Kindergarten Tuition Refund%"
+OR billing_item LIKE "%KG- Kindergarten: Employee Discount%"
+OR billing_item LIKE "%KG- Kindergarten: Financial Aid%"
+OR billing_item LIKE "%KG- Paid in Full Kinder Tuition%"
+OR billing_item LIKE "%KG: OFFSET Kindergarten Registration%"
+OR billing_item LIKE "%KG-Employee Kinder Discount%"
+OR billing_item LIKE "%KG-Financial Aid Kindergarten Annual%"
+OR billing_item LIKE "%KG-Financial Aid Kindergarten monthly%"
+OR billing_item LIKE "%KG-Financial Aid Kindergarten Registration%"
+OR billing_item LIKE "%KG-Financial Aid: Other%"
+OR billing_item LIKE "%KG-Full Day Kinder Non-Refundable Registration Fee%"
+OR billing_item LIKE "%KG-Full Day Registration Fee (NON-REFUNDABLE)%"
+OR billing_item LIKE "%KG-Kindergarten Credit - Employee%"
+OR billing_item LIKE "%KG-Kindergarten Employee Discount%"
+OR billing_item LIKE "%KG-Kindergarten Financial Aid%"
+OR billing_item LIKE "%KG-Kindergarten Registration non-refundable offset%"
+OR billing_item LIKE "%KG-Paid in Full Kinder Tuition%"
+OR billing_item LIKE "%OFFSET: Initial School Fees - Family%"
+OR billing_item LIKE "%OFFSET: refund issued%"
+OR billing_item LIKE "%OFFSET: See Note%"
+OR billing_item LIKE "%Other Discount - Employee%"
+OR billing_item LIKE "%Other Discount - Employee Club Enrollment Discount%"
+OR billing_item LIKE "%Other Discount - Employee Club Enrollment Discount (FALL)%"
+OR billing_item LIKE "%Other Discount - Employee Club Enrollment Discount (SPRING)%"
+OR billing_item LIKE "%Other Discount - Financial Aid%"
+OR billing_item LIKE "%Other Discount - Non-Employee%"
+OR billing_item LIKE "%Other Financial Aid%"
+OR billing_item LIKE "%Other Refund%"
+OR billing_item LIKE "%Other: Employee Discount%"
+OR billing_item LIKE "%Other: Financial Aid%"
+OR billing_item LIKE "%Other: School Credit (per HOPS)%"
+OR billing_item LIKE "%Other-Employee Discount%"
+OR billing_item LIKE "%Other-Financial Aid%"
+OR billing_item LIKE "%Paid via Shopify%"
+OR billing_item LIKE "%Refund for Item already paid%"
+OR billing_item LIKE "%Refund for No Show%"
+OR billing_item LIKE "%Refund Misc.%"
+OR billing_item LIKE "%School Credit (per HOPS)%"
+OR billing_item LIKE "%SD - ATF Security Deposit Donated%"
+OR billing_item LIKE "%SD - Paid Via Shopify%"
+OR billing_item LIKE "%SD - Security Deposit transferred from 2016-17 Tucson Primary%"
+OR billing_item LIKE "%SD - Security Deposit transferred from 2017-18 Tucson Primary%"
+OR billing_item LIKE "%SD - Security Deposit transferred from 2018-19 Tucson Primary%"
+OR billing_item LIKE "%SD - Security Deposit transferred from 2019-20 Tucson Primary%"
+OR billing_item LIKE "%SD - Security Deposit transferred from Tucson Primary%"
+OR billing_item LIKE "%SD - Security Deposit transferred to 2018-19 Tucson North%"
+OR billing_item LIKE "%SD - Security Deposit transferred to 2019-20 Tucson North%"
+OR billing_item LIKE "%SD - Security Deposit transferred to 2020-21 Tucson North%"
+OR billing_item LIKE "%SD-ATF-Security Deposit Donated%"
+OR billing_item LIKE "%SD-Security Deposit Paid via Shopify%"
+OR billing_item LIKE "%Security Deposit Donated%"
+OR billing_item LIKE "%Security Deposit Donated to ATF%"
+OR billing_item LIKE "%Security Deposit Payment transferred from Tucson%"
+OR billing_item LIKE "%Security Deposit Payment transferred to OV%"
+OR billing_item LIKE "%Security Deposit Payment transferred to OVP%"
+OR billing_item LIKE "%Security Deposit Payment transferred to Tucson N%"
+OR billing_item LIKE "%Security Deposit Transfer%"
+OR billing_item LIKE "%Security Deposit transferred to 2017-18 Tucson North%"
+OR billing_item LIKE "%Security Deposit transferred to Tucson North%"
+OR billing_item LIKE "%OFFSET Security Deposit%"
+OR billing_item LIKE "%OFFSET: Security Deposit 8-12%"
+OR billing_item LIKE "%OFFSET: Security Deposit K-7%"
+OR billing_item LIKE "%SD - (50%)Security Deposit K-7%"
+OR billing_item LIKE "%SD - OFFSET: Security Deposit 8-12%"
+OR billing_item LIKE "%SD - OFFSET: Security Deposit K-7%"
+OR billing_item LIKE "%SD - Security Deposit - Financial Aid%"
+OR billing_item LIKE "%SD - Security Deposit 8-12%"
+OR billing_item LIKE "%SD - Security Deposit Discount - Employee%"
+OR billing_item LIKE "%SD - Security Deposit Discount - Financial Aid%"
+OR billing_item LIKE "%SD - Security Deposit Discount - Non-Employee%"
+OR billing_item LIKE "%SD - Security Deposit Employee Credit%"
+OR billing_item LIKE "%SD - Security Deposit Financial Aid%"
+OR billing_item LIKE "%SD - Security Deposit K-7%"
+OR billing_item LIKE "%SD- Security Deposit 8-12%"
+OR billing_item LIKE "%SD- Security Deposit Employee Credit%"
+OR billing_item LIKE "%SD- Security Deposit Financial Aid%"
+OR billing_item LIKE "%SD- Security Deposit K-7%"
+OR billing_item LIKE "%SD: 2020-21 End of Year Balance - Student Security Deposit%"
+OR billing_item LIKE "%SD: 2020-21 End of Year Balance move to 2021-22 - Student Security Deposit%"
+OR billing_item LIKE "%SD: 2021-22 End of year balance - Student Security Deposit%"
+OR billing_item LIKE "%SD: 2021-22 End of year balance move to 2022-23 - Student Security Deposit%"
+OR billing_item LIKE "%SD: 2021-22 End of year balance write off - Student Security Deposit%"
+OR billing_item LIKE "%SD: Security Deposit Employee Credit%"
+OR billing_item LIKE "%SD: Security Deposit Financial Aid%"
+OR billing_item LIKE "%SD: Security Deposit K-7%"
+OR billing_item LIKE "%SD-Employee Discount%"
+OR billing_item LIKE "%SD-OFFSET: Security Deposit 8-12%"
+OR billing_item LIKE "%SD-OFFSET: Security Deposit K-7%"
+OR billing_item LIKE "%SD-Security Deposit 8-12%"
+OR billing_item LIKE "%SD-Security Deposit 8-12.%"
+OR billing_item LIKE "%SD-Security Deposit Discount - Non-Employee%"
+OR billing_item LIKE "%SD-Security Deposit Employee Credit%"
+OR billing_item LIKE "%SD-Security Deposit Fee Discount - Non-Employee%"
+OR billing_item LIKE "%SD-Security Deposit Financial Aid%"
+OR billing_item LIKE "%SD-Security Deposit K-7%"
+OR billing_item LIKE "%Security Deposit 8-12%"
+OR billing_item LIKE "%Security Deposit Employee Credit%"
+OR billing_item LIKE "%Security Deposit Financial Aid%"
+OR billing_item LIKE "%Security Deposit K-7%"
+___________________________________________________________________________________________________________________________________________________
+ATF - Account Credit Donated
+ATF - SD Donated to ATF
+ATF - Security Deposit Donated
+ATF - -Security Deposit Donated
+ATF- Account Credit Donated to ATF
+ATF- Credit Balance Donated
+ATF- Security Deposit Donated
+ATF: Security Deposit Donated
+ATF-Account Credit Donation
+ATF-Credit balance donated
+ATF-Credit Donation
+ATF-SD Donated to ATF
+ATF-Security Deposit Donated
+ATF-Security Deposit Donation
+BASIS Internal Balance Discount Offset
+BASIS Internal Balance Fee Offset
+Credit Balance Fwd
+Credit f/ Previous Year
+Discount - Other Financial Aid
+Discount- Other financial aid
+Discount-Other financial aid
+Employee Discount
+Employee Discount: Other
+Financial Aid: Other
+Full Day Kindergarten Deposit
+Full Day Registration NO REFUND
+KG - Employee Discount
+KG - Employee Discount - Kindergarten
+KG - Employee Discount Kindergarten
+KG - Employee Discount: Registration
+KG - Financial Aid Discount
+KG - Financial Aid: Kindergarten
+KG - Financial Aid: Registration
+KG - Full Day Kinder Non-Refundable Deposit
+KG - Full Day Kinder Non-Refundable Registration Fee
+KG - Full Day Kindergarten Deposit
+KG - Full Day Registration Fee (NON-REFUNDABLE)
+KG - Kinder Registration NO REFUND
+KG - Kindergarten Discount - Financial Aid
+KG - Kindergarten Discount- Employee
+KG - Kindergarten Employee
+KG - Kindergarten Employee Credit
+KG - Kindergarten Employee Discount
+KG - Kindergarten Financial Aid
+KG - Kindergarten May Credit 2021
+KG - Kindergarten Registration- Employee Discount
+KG - Kindergarten Registration Financial Aid
+KG - Kindergarten Registration Refund (West Transfer)
+KG - Kindergarten SD Offset
+KG - Kindergarten Tuition Financial Aid
+KG - Offset
+KG - Offset Kinder
+KG ? Kindergarten Credit - Employee
+KG- COVID19 - Kindergarten Paid In Full Tuition
+KG- Employee Kindergarten Registration Fee Discount
+KG- FDK Registration Refund
+KG- Kindergarten Credit
+KG- Kindergarten Employee Discount
+KG- Kindergarten Registration Employee Discount
+KG- Kindergarten Registration Fee Refund
+KG- Kindergarten Tuition Refund
+KG- Kindergarten: Employee Discount
+KG- Kindergarten: Financial Aid
+KG- Paid in Full Kinder Tuition
+KG: OFFSET Kindergarten Registration
+KG-Employee Kinder Discount
+KG-Financial Aid Kindergarten Annual
+KG-Financial Aid Kindergarten monthly
+KG-Financial Aid Kindergarten Registration
+KG-Financial Aid: Other
+KG-Full Day Kinder Non-Refundable Registration Fee
+KG-Full Day Registration Fee (NON-REFUNDABLE)
+KG-Kindergarten Credit - Employee
+KG-Kindergarten Employee Discount
+KG-Kindergarten Financial Aid
+KG-Kindergarten Registration non-refundable offset
+KG-Paid in Full Kinder Tuition
+OFFSET: Initial School Fees - Family
+OFFSET: refund issued
+OFFSET: See Note
+Other Discount - Employee
+Other Discount - Employee Club Enrollment Discount
+Other Discount - Employee Club Enrollment Discount (FALL)
+Other Discount - Employee Club Enrollment Discount (SPRING)
+Other Discount - Financial Aid
+Other Discount - Non-Employee
+Other Financial Aid
+Other Refund
+Other: Employee Discount
+Other: Financial Aid
+Other: School Credit (per HOPS)
+Other-Employee Discount
+Other-Financial Aid
+Paid via Shopify
+Refund for Item already paid
+Refund for No Show
+Refund Misc.
+School Credit (per HOPS)
+SD - ATF Security Deposit Donated
+SD - Paid Via Shopify
+SD - Security Deposit transferred from 2016-17 Tucson Primary
+SD - Security Deposit transferred from 2017-18 Tucson Primary
+SD - Security Deposit transferred from 2018-19 Tucson Primary
+SD - Security Deposit transferred from 2019-20 Tucson Primary
+SD - Security Deposit transferred from Tucson Primary
+SD - Security Deposit transferred to 2018-19 Tucson North
+SD - Security Deposit transferred to 2019-20 Tucson North
+SD - Security Deposit transferred to 2020-21 Tucson North
+SD-ATF-Security Deposit Donated
+SD-Security Deposit Paid via Shopify
+Security Deposit Donated
+Security Deposit Donated to ATF
+Security Deposit Payment transferred from Tucson
+Security Deposit Payment transferred to OV
+Security Deposit Payment transferred to OVP
+Security Deposit Payment transferred to Tucson N
+Security Deposit Transfer
+Security Deposit transferred to 2017-18 Tucson North
+Security Deposit transferred to Tucson North
+
+
+
+OFFSET Security Deposit
+OFFSET: Security Deposit 8-12
+OFFSET: Security Deposit K-7
+SD - (50%)Security Deposit K-7
+SD - OFFSET: Security Deposit 8-12
+SD - OFFSET: Security Deposit K-7
+SD - Security Deposit - Financial Aid
+SD - Security Deposit 8-12
+SD - Security Deposit Discount - Employee
+SD - Security Deposit Discount - Financial Aid
+SD - Security Deposit Discount - Non-Employee
+SD - Security Deposit Employee Credit
+SD - Security Deposit Financial Aid
+SD - Security Deposit K-7
+SD- Security Deposit 8-12
+SD- Security Deposit Employee Credit
+SD- Security Deposit Financial Aid
+SD- Security Deposit K-7
+SD: 2020-21 End of Year Balance - Student Security Deposit
+SD: 2020-21 End of Year Balance move to 2021-22 - Student Security Deposit
+SD: 2021-22 End of year balance - Student Security Deposit
+SD: 2021-22 End of year balance move to 2022-23 - Student Security Deposit
+SD: 2021-22 End of year balance write off - Student Security Deposit
+SD: Security Deposit Employee Credit
+SD: Security Deposit Financial Aid
+SD: Security Deposit K-7
+SD-Employee Discount
+SD-OFFSET: Security Deposit 8-12
+SD-OFFSET: Security Deposit K-7
+SD-Security Deposit 8-12
+SD-Security Deposit 8-12.
+SD-Security Deposit Discount - Non-Employee
+SD-Security Deposit Employee Credit
+SD-Security Deposit Fee Discount - Non-Employee
+SD-Security Deposit Financial Aid
+SD-Security Deposit K-7
+Security Deposit 8-12
+Security Deposit Employee Credit
+Security Deposit Financial Aid
+Security Deposit K-7
