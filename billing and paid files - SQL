@@ -406,3 +406,14 @@ FROM billing_and_paid_sds AS bps
 JOIN project_austin AS pa
 ON pa.pa_student_name = bps.student_full_name
 ORDER BY student_full_name
+____________________________________________________________________________
+_______________________________________________________________-
+____________________________________________________________
+SELECT DISTINCT student_full_name
+FROM(
+SELECT  pa.pa_student_name,
+		bps.*
+FROM billing_and_paid_sds AS bps
+JOIN project_austin AS pa
+ON pa.pa_student_name = bps.student_full_name
+ORDER BY student_full_name)
