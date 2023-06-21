@@ -165,12 +165,12 @@ SELECT bpa.*
 FROM
 (SELECT *
 FROM project_austin
-WHERE pa_school LIKE "Goodyear Primary") AS pa
+WHERE pa_school LIKE "Phoenix Central") AS pa
 JOIN (
 SELECT *
 FROM
 billing_and_paid_all
-WHERE school LIKE "%Goodyear Primary%"
+WHERE school LIKE "%Phoenix - Central%"
 AND (billing_item LIKE "%ATF - Account Credit Donated%"
 OR billing_item LIKE "%ATF - SD Donated to ATF%"
 OR billing_item LIKE "%ATF - Security Deposit Donated%"
