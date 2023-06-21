@@ -1,7 +1,7 @@
 CREATE TABLE billing_and_paid_all (
     school TEXT,
-    school_year TEXT,
     school_id INT,
+    school_year TEXT,
     indicator_id INT,
     family_id INT,
     school_fam_id TEXT,
