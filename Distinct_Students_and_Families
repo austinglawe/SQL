@@ -1,5 +1,5 @@
 CREATE TABLE all_basis_families
-(in_fam INT,
+(students_in_fam INT,
 school TEXT,
 school_id INT,
 school_year TEXT,
@@ -83,7 +83,7 @@ unapplied FLOAT)
 
 
 INSERT INTO all_basis_families
-(in_fam,
+(students_in_fam,
 school,
 school_id,
 school_year,
@@ -191,7 +191,7 @@ ________________________________________________________________________________
 
 
 CREATE TABLE all_basis_students(
-years_student INT,
+student_years INT,
 school TEXT,
 school_id INT,
 school_year TEXT,
@@ -275,7 +275,7 @@ unapplied FLOAT)
 
 
 INSERT INTO all_basis_students(
-years_student,
+student_years,
 school,
 school_id,
 school_year,
@@ -353,13 +353,15 @@ end_yr_10_billed,
 aug_02,
 sep_02,
 unapplied)
-SELECT  *
+
+SELECT  COUNT(*) AS student_years,
+	*
 FROM
-(SELECT COUNT(*) AS years_student,
-		*
-FROM billing_and_paid_all
-GROUP BY school_fam_id, student_full_name)
-ORDER BY years_student DESC
+	(SELECT *
+	FROM billing_and_paid_all
+	GROUP BY school_fam_id, student_full_name,school_year)
+GROUP BY school_fam_id, student_full_name
+ORDER BY student_years DESC
 
 
 
