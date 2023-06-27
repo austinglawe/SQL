@@ -79,7 +79,7 @@ E2 - is a link to the fourth and final tab, I will speak on later ("FOR RESULTS,
 And after this, row 2 starts getting into the formulas that I have filled down to the 10,001st row. But they are only text to show what the formulas are.
 Row 3 gets into helping the data start to work!
 
-F2 - =IF(B2="",0,IF(D2="",1,IF(B2="",0,IF(D2=D1,1+F1,1))))
+F2 - =IF(B2="",0,IF(D2="",1,IF(D2=D1,1+F1,1))))
 G2 - =IF(F2=1,B2,"")
 H2 - =IF(F2=2,B2,"")
 I2 -  =IF(F2=3,B2,"")
@@ -121,28 +121,36 @@ AR2 - =IF(AG2="USE",C2,"")
 AS2 - =IF(AH2="USE",IF(D2<>"",D2,""),"")
 AT2 - =IF(AG2="USE",E2,"")
 
-To Build understanding of these formulas I will know replace the cell numbers with the column headers appropriate but use brackets only to indicate what that is linked to. To be able to see both
-Anything with a number after a letter for instance AB2, C2, A2, etc. - Where 2 is the second character, is linked to the same row as the data.
-Anything with a 1 for instance D1, AB1, C1, A1, etc. - means it comes from a row above or previous data. Building off the last data entered
-Anything that uses a 3 for instance O3, AB3, C3, A3, etc. - will be looking at a row below.
 
-F2[student count] - =IF(B2[Student Name]="",0,IF(D2[Primary Email]="",1,IF(D2[Primary Email]=D1[Primary Email above],F1[Student Count above]+1,1))))
-----This is all based on the Student Name column in the current row(2), the Primary Email Column in the column row(2), the Primary Email Column in the row above(1), and the Student Count Column in the row above(1)
--------So this is saying if the student name column in the current row is equal "" (no data, or blank), then print a value of 0
----------if not (meaning student column in row not blank), if the primary email in row is "" (no data, or blank) print 1,
------------if not (meaning student column in row not blank and primary email in row not blank), if the current row primary email is equal to the previous row email, print the Student Count in row above's number + 1
+-------------------EXPLANATION---------------------------------
+--Section 1--
+This is the section that is imported data. But it starts in row 3. So the next section is looking at the formulas the 
+
+
+--Section 2--
+To Build understanding of these formulas I will now use brackets to indicate what that is linked to. To be able to see both the formula and how it is related to the data.
+Anything with a number after a letter for instance AB3, C3, A3, etc. - Where 3 is the second character, is linked to the same row as the data.
+Anything with a 2 for instance D2, AB2, C2, A2, etc. - means it comes from a row above or previous data. Building off the last data entered
+Anything that uses a 4 for instance O4, AB4, C4, A4, etc. - will be looking at a row below.
+
+F3[student count] - =IF(B3[Student Name]="",0,IF(D3[Primary Email]="",1,IF(D3[Primary Email]=D2[Primary Email above],F2[Student Count above]+1,1))))
+----This is all based on the Student Name column in the current row(3), the Primary Email Column in the column row(3), the Primary Email Column in the row above(2), and the Student Count Column in the row above(2)
+-------So this is saying if the student name column in the current row(B3) is equal "" (no data, or blank), then print a value of 0
+---------if not (meaning student column in row not blank), if the primary email in current row(D3) is "" (no data, or blank) print 1,
+-----------if not (meaning student column in row not blank and primary email in row not blank), if the primary email in the current row(D3) is equal to the primary email in the previous row(D2), print the Student Count in row above(F2)'s number + 1
 -------------if not (meaning student column in row not blank, primary email in row not blank, primary email in row is not equal to the previous row's email), print 1
 -- I did this a progression because, if there is no student name, there is no data available at all. Nothing is relevant. But there were some cases where an email was not present. In those cases, I didn't want them all to be grouped as the same email
 -- so I wanted to make sure it was counted only as an individual email but still included in the data.
 -- All this will have meaning in the next part. Where the next section is trying to put the data into different columns based on the students for a given email address
-G2[] - =IF(F2[]=1,B2,"")
-H2[] - =IF(F2=2,B2,"")
-I2[] -  =IF(F2=3,B2,"")
-J2[] - =IF(F2=4,B2,"")
-K2[] - =IF(F2=5,B2,"")
-L2[] - =IF(F2=6,B2,"")
-M2[] - =IF(F2=7,B2,"")
-N2[] - =IF(F2=8,B2,"")
+G2[Student 1] - =IF(F2[]=1,B2,"")
+H2[Student 2] - =IF(F2=2,B2,"")
+I2[Student 3] -  =IF(F2=3,B2,"")
+J2[Student 4] - =IF(F2=4,B2,"")
+K2[Student 5] - =IF(F2=5,B2,"")
+L2[Student 6] - =IF(F2=6,B2,"")
+M2[Student 7] - =IF(F2=7,B2,"")
+N2[Student 8] - =IF(F2=8,B2,"")
+--Section 3--
 O2[] - =IF(F2>0,IF(D2="",0,IF(D2=D1,IF(A2=A1,1+O1,0),0)),0)
 P2[] - =IF(AND(F2=1,O2=0),G2,IF(AND(F2=2,O2=1),P1,IF(AND(F2=3,O2=2),P1,IF(AND(F2=4,O2=3),P1,IF(AND(F2=5,O2=4),P1,IF(AND(F2=6,O2=5),P1,IF(AND(F2=7,O2=6),P1,IF(AND(F2=8,O2=7),P1,""))))))))
 Q2[] - =IF(AND(F2=2,O2=0),H2,IF(AND(F2=2,O2=1),H2,IF(AND(F2=3,O2=1),Q1,IF(AND(F2=3,O2=2),Q1,IF(AND(F2=4,O2=2),Q1,IF(AND(F2=4,O2=3),Q1,IF(AND(F2=5,O2=3),Q1,IF(AND(F2=5,O2=4),Q1,IF(AND(F2=6,O2=4),Q1,IF(AND(F2=6,O2=5),Q1,IF(AND(F2=7,O2=5),Q1,IF(AND(F2=7,O2=6),Q1,IF(AND(F2=8,O2=6),Q1,IF(AND(F2=8,O2=7),Q1,""))))))))))))))
