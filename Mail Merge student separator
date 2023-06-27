@@ -1,21 +1,184 @@
-=IF(E1095="", B1095,IF(F1095="~",IF(E1095="^",H1094,IF(E1095="^^",IF(F1094="~",H1094,""),IF(E1095="^^^",IF(F1094="~",IF(F1093="~",H1093,""),IF(E1095="^^^^",IF(F1094="~",IF(F1093="~",IF(F1092="~",H1092),""),""),"")),""))),""))
+With this project I created many formulas and some macros.
+
+The formulas were intended to breakdown all the data into a way that my supervisor
+was looking for.
+
+The project was a project that started with the following columns:
+| school | Student Name | Family ID | Primary Email | Sender Initials
+
+For context, we were planning to send emails to students to know whether they would
+like their deposit back or whether it could be donated. The initial probelm was that
+all the students are separated and put in one column, but there were multiple students
+with the same email. From the same school and from different schools. These students
+would fall under the same family. For more context, each school is its own individual
+entity. So an email should be sent to email address while and the students name attached
+to them. But if it is from a different school a separate email needs to be sent. We
+wanted to track how many students were attached to each email and school. For example
+the final results should show new columns like so:
+| school | Student Name 1 | Student Name 2 | Student Name 3 | Student Name 4 | Student Name ... | Family ID | Primary Email | Sender Initials
 
 
-E - Same Email
-=IFERROR(IF(E6="",IF(O7=O6,"^",""),IF(E6="^",IF(O7=O6,"^^",""),IF(E6="^^",IF(O7=O6,"^^^",""),IF(E6="^^^",IF(O7=O6,"^^^^",""),"")))),"CHECK OUT")
-F - Same email, same school
-=IF(LEN(E7)>0,IF(A7=A6,"~",""),"")
-G - Get rid of
-=IF(I8=I7,"^^^^^","")
-H - school
-=A7
-I - Student 1
-=IF(E7="", B7, IF(F7="", "", IF(E7="^", I6,IF(AND(E7="^^", F6="~"), I6, IF(AND(E7="^^^", F6="~", F5="~"), I6,IF(AND(E7="^^^^", F6="~", F5="~", F4="~"), I6, ""))))))
-J - Student 2
-=IF(LEN(E7)<1, "", IF(E7="^", B7,IF(F7="", "",IF(AND(E7="^^", F6="~"), J6,IF(AND(E7="^^^", F6="~", F5="~"), J6, IF(AND(E7="^^^^", F6="~", F5="~", F4="~"), J6, ""))))))
-K - Student 3
-=IF(LEN(E7)<2, "", IF(E7="^^", B7,IF(F7="", "",IF(AND(E7="^^^", F6="~"), K6,IF(AND(E7="^^^", F6="~", F5="~"), K6, "")))))
-L - Student 4
-=IF(LEN(E7)<3, "", IF(E7="^^^", B7,IF(F7="", "",IF(AND(E7="^^^^", F6="~"), K6, ""))))
-M - Student 5
-=IF(E7="^^^^",B7,"")
+So in order to accomplish this I set out to create formulas in excel to tackle the issue.
+-My first sheet, which I named 'FIRST, SORT' I will get to later as it is the import and macro file.
+-My second sheet I named 'INSERT SORTED HERE', has the following data attached to it:
+The headers are as Follows
+A1 - School
+B1 - Student Name
+C1 - Family ID
+D1 - Primary Email
+E1 - Sender Initials
+F1 - student count
+G1 - Student 1
+H1 - Student 2
+I1 - Student 3
+J1 - Student 4
+K1 - Student 5
+L1 - Student 6
+M1 - Student 7
+N1 - Student 8
+O1 - count of same school, same email students
+P1 - Student 1
+Q1 - Student 2
+R1 - Student 3
+S1 - Student 4
+T1 - Student 5
+U1 - Student 6
+V1 - Student 7
+W1 - Student 8
+X1 - Clean Up
+Y1 - Student 1
+Z1 - Student 2
+AA1 - Student 3
+AB1 - Student 4
+AC1 - Student 5
+AD1 - Student 6
+AE1 - Student 7
+AF1 - Student 8
+AG1 - ..........
+AH1 - USE OR DELETE
+AI1 - School
+AJ1 - Student 1
+AK1 - Student 2
+AL1 - Student 3
+AM1 - Student 4
+AN1 - Student 5
+AO1 - Student 6
+AP1 - Student 7
+AQ1 - Student 8
+AR1 - Family ID
+AS1 - Primary Email
+AT1 - Sender Initials
+
+Row 2 Has the formulas to look back on if anything needs to be looked at or fixed, as well as a macro and 2 links
+A2 - is a conditionally formatted cell that reads "NOT READY" in Red or "READY" in green, used with the macro I will talk about later
+B2 - Just gives some text to say "FORMULAS LINE - IF YOU NEED TO CHECK!"
+C2 - is a macro to delete all data, which I will speak on later
+D2 - is a link to the third tab, that I will speak on later ("CHECK EXTRACTED DATA, CLICK HERE")
+E2 - is a link to the fourth and final tab, I will speak on later ("FOR RESULTS, CLICK HERE")
+
+And after this, row 2 starts getting into the formulas that I have filled down to the 10,001st row. But they are only text to show what the formulas are.
+Row 3 gets into helping the data start to work!
+
+F2 - =IF(B2="",0,IF(D2="",1,IF(B2="",0,IF(D2=D1,1+F1,1))))
+G2 - =IF(F2=1,B2,"")
+H2 - =IF(F2=2,B2,"")
+I2 -  =IF(F2=3,B2,"")
+J2 - =IF(F2=4,B2,"")
+K2 - =IF(F2=5,B2,"")
+L2 - =IF(F2=6,B2,"")
+M2 - =IF(F2=7,B2,"")
+N2 - =IF(F2=8,B2,"")
+O2 - =IF(F2>0,IF(D2="",0,IF(D2=D1,IF(A2=A1,1+O1,0),0)),0)
+P2 - =IF(AND(F2=1,O2=0),G2,IF(AND(F2=2,O2=1),P1,IF(AND(F2=3,O2=2),P1,IF(AND(F2=4,O2=3),P1,IF(AND(F2=5,O2=4),P1,IF(AND(F2=6,O2=5),P1,IF(AND(F2=7,O2=6),P1,IF(AND(F2=8,O2=7),P1,""))))))))
+Q2 - =IF(AND(F2=2,O2=0),H2,IF(AND(F2=2,O2=1),H2,IF(AND(F2=3,O2=1),Q1,IF(AND(F2=3,O2=2),Q1,IF(AND(F2=4,O2=2),Q1,IF(AND(F2=4,O2=3),Q1,IF(AND(F2=5,O2=3),Q1,IF(AND(F2=5,O2=4),Q1,IF(AND(F2=6,O2=4),Q1,IF(AND(F2=6,O2=5),Q1,IF(AND(F2=7,O2=5),Q1,IF(AND(F2=7,O2=6),Q1,IF(AND(F2=8,O2=6),Q1,IF(AND(F2=8,O2=7),Q1,""))))))))))))))
+R2 - =IF(AND(F2=3,O2=0),I2,IF(AND(F2=3,O2=1),I2,IF(AND(F2=3,O2=2),I2,IF(AND(F2=4,O2=1),R1,IF(AND(F2=4,O2=2),R1,IF(AND(F2=4,O2=3),R1,IF(AND(F2=5,O2=2),R1,IF(AND(F2=5,O2=3),R1,IF(AND(F2=5,O2=4),R1,IF(AND(F2=6,O2=3),R1,IF(AND(F2=6,O2=4),R1,IF(AND(F2=6,O2=5),R1,IF(AND(F2=7,O2=4),R1,IF(AND(F2=7,O2=5),R1,IF(AND(F2=7,O2=6),R1,IF(AND(F2=8,O2=5),R1,IF(AND(F2=8,O2=6),R1,IF(AND(F2=8,O2=7),R1,""))))))))))))))))))
+S2 - =IF(AND(F2=4,O2=0),J2,IF(AND(F2=4,O2=1),J2,IF(AND(F2=4,O2=2),J2,IF(AND(F2=4,O2=3),J2,IF(AND(F2=5,O2=1),S1,IF(AND(F2=5,O2=2),S1,IF(AND(F2=5,O2=3),S1,IF(AND(F2=5,O2=4),S1,IF(AND(F2=6,O2=2),S1,IF(AND(F2=6,O2=3),S1,IF(AND(F2=6,O2=4),S1,IF(AND(F2=6,O2=5),S1,IF(AND(F2=7,O2=3),S1,IF(AND(F2=7,O2=4),S1,IF(AND(F2=7,O2=5),S1,IF(AND(F2=7,O2=6),S1,IF(AND(F2=8,O2=4),S1,IF(AND(F2=8,O2=5),S1,IF(AND(F2=8,O2=6),S1,IF(AND(F2=8,O2=7),S1,""))))))))))))))))))))
+T2 - =IF(AND(F2=5,O2=0),K2,IF(AND(F2=5,O2=1),K2,IF(AND(F2=5,O2=2),K2,IF(AND(F2=5,O2=3),K2,IF(AND(F2=5,O2=4),K2,IF(AND(F2=6,O2=1),T1,IF(AND(F2=6,O2=2),T1,IF(AND(F2=6,O2=3),T1,IF(AND(F2=6,O2=4),T1,IF(AND(F2=6,O2=5),T1,IF(AND(F2=7,O2=2),T1,IF(AND(F2=7,O2=3),T1,IF(AND(F2=7,O2=4),T1,IF(AND(F2=7,O2=5),T1,IF(AND(F2=7,O2=6),T1,IF(AND(F2=8,O2=3),T1,IF(AND(F2=8,O2=4),T1,IF(AND(F2=8,O2=5),T1,IF(AND(F2=8,O2=6),T1,IF(AND(F2=8,O2=7),T1,""))))))))))))))))))))
+U2 - =IF(AND(F2=6,O2=0),L2,IF(AND(F2=6,O2=1),L2,IF(AND(F2=6,O2=2),L2,IF(AND(F2=6,O2=3),L2,IF(AND(F2=6,O2=4),L2,IF(AND(F2=6,O2=5),L2,IF(AND(F2=7,O2=1),U1,IF(AND(F2=7,O2=2),U1,IF(AND(F2=7,O2=3),U1,IF(AND(F2=7,O2=4),U1,IF(AND(F2=7,O2=5),U1,IF(AND(F2=7,O2=6),U1,IF(AND(F2=8,O2=2),U1,IF(AND(F2=8,O2=3),U1,IF(AND(F2=8,O2=4),U1,IF(AND(F2=8,O2=5),U1,IF(AND(F2=8,O2=6),U1,IF(AND(F2=8,O2=7),U1,""))))))))))))))))))
+V2 - =IF(AND(F2=7,O2=0),M2,IF(AND(F2=7,O2=1),M2,IF(AND(F2=7,O2=2),M2,IF(AND(F2=7,O2=3),M2,IF(AND(F2=7,O2=4),M2,IF(AND(F2=7,O2=5),M2,IF(AND(F2=7,O2=6),M2,IF(AND(F2=8,O2=1),V1,IF(AND(F2=8,O2=2),V1,IF(AND(F2=8,O2=3),V1,IF(AND(F2=8,O2=4),V1,IF(AND(F2=8,O2=5),V1,IF(AND(F2=8,O2=6),V1,IF(AND(F2=8,O2=7),V1,""))))))))))))))
+W2 - =IF(F2=8,N2,"")
+X2 - =IF((P2&Q2&R2&S2&T2&U2&V2&W2)="",1,"0")
+Y2 - =IF($O3=0,P2,"")
+Z2 - =IF($O3=0,Q2,"")
+AA2 - =IF($O3=0,R2,"")
+AB2 - =IF($O3=0,S2,"")
+AC2 - =IF($O3=0,T2,"")
+AD2 - =IF($O3=0,U2,"")
+AE2 - =IF($O3=0,V2,"")
+AF2 - =IF($O3=0,W2,"")
+AG2 - ..........
+AH2 - =IF(F2=0,"",IF(Y2&Z2&AA2&AB2&AC2&AD2&AE2&AF2<>"","USE","DELETE"))
+AI2 - =IF(AG2="USE",A2,"")
+AJ2 - =Y2
+AK2 - =Z2
+AL2 - =AA2
+AM2 - =AB2
+AN2 - =AC2
+AO2 - =AD2
+AP2 - =AE2
+AQ2 - =AF2
+AR2 - =IF(AG2="USE",C2,"")
+AS2 - =IF(AH2="USE",IF(D2<>"",D2,""),"")
+AT2 - =IF(AG2="USE",E2,"")
+
+To Build understanding of these formulas I will know replace the cell numbers with the column headers appropriate but use brackets only to indicate what that is linked to. To be able to see both
+Anything with a number after a letter for instance AB2, C2, A2, etc. - Where 2 is the second character, is linked to the same row as the data.
+Anything with a 1 for instance D1, AB1, C1, A1, etc. - means it comes from a row above or previous data. Building off the last data entered
+Anything that uses a 3 for instance O3, AB3, C3, A3, etc. - will be looking at a row below.
+
+F2[student count] - =IF(B2[Student Name]="",0,IF(D2[Primary Email]="",1,IF(B2[Student Name]="",0,IF(D2[Primary Email]=D1[Primary Email above],1+F1,1))))
+G2 - =IF(F2=1,B2,"")
+H2 - =IF(F2=2,B2,"")
+I2 -  =IF(F2=3,B2,"")
+J2 - =IF(F2=4,B2,"")
+K2 - =IF(F2=5,B2,"")
+L2 - =IF(F2=6,B2,"")
+M2 - =IF(F2=7,B2,"")
+N2 - =IF(F2=8,B2,"")
+O2 - =IF(F2>0,IF(D2="",0,IF(D2=D1,IF(A2=A1,1+O1,0),0)),0)
+P2 - =IF(AND(F2=1,O2=0),G2,IF(AND(F2=2,O2=1),P1,IF(AND(F2=3,O2=2),P1,IF(AND(F2=4,O2=3),P1,IF(AND(F2=5,O2=4),P1,IF(AND(F2=6,O2=5),P1,IF(AND(F2=7,O2=6),P1,IF(AND(F2=8,O2=7),P1,""))))))))
+Q2 - =IF(AND(F2=2,O2=0),H2,IF(AND(F2=2,O2=1),H2,IF(AND(F2=3,O2=1),Q1,IF(AND(F2=3,O2=2),Q1,IF(AND(F2=4,O2=2),Q1,IF(AND(F2=4,O2=3),Q1,IF(AND(F2=5,O2=3),Q1,IF(AND(F2=5,O2=4),Q1,IF(AND(F2=6,O2=4),Q1,IF(AND(F2=6,O2=5),Q1,IF(AND(F2=7,O2=5),Q1,IF(AND(F2=7,O2=6),Q1,IF(AND(F2=8,O2=6),Q1,IF(AND(F2=8,O2=7),Q1,""))))))))))))))
+R2 - =IF(AND(F2=3,O2=0),I2,IF(AND(F2=3,O2=1),I2,IF(AND(F2=3,O2=2),I2,IF(AND(F2=4,O2=1),R1,IF(AND(F2=4,O2=2),R1,IF(AND(F2=4,O2=3),R1,IF(AND(F2=5,O2=2),R1,IF(AND(F2=5,O2=3),R1,IF(AND(F2=5,O2=4),R1,IF(AND(F2=6,O2=3),R1,IF(AND(F2=6,O2=4),R1,IF(AND(F2=6,O2=5),R1,IF(AND(F2=7,O2=4),R1,IF(AND(F2=7,O2=5),R1,IF(AND(F2=7,O2=6),R1,IF(AND(F2=8,O2=5),R1,IF(AND(F2=8,O2=6),R1,IF(AND(F2=8,O2=7),R1,""))))))))))))))))))
+S2 - =IF(AND(F2=4,O2=0),J2,IF(AND(F2=4,O2=1),J2,IF(AND(F2=4,O2=2),J2,IF(AND(F2=4,O2=3),J2,IF(AND(F2=5,O2=1),S1,IF(AND(F2=5,O2=2),S1,IF(AND(F2=5,O2=3),S1,IF(AND(F2=5,O2=4),S1,IF(AND(F2=6,O2=2),S1,IF(AND(F2=6,O2=3),S1,IF(AND(F2=6,O2=4),S1,IF(AND(F2=6,O2=5),S1,IF(AND(F2=7,O2=3),S1,IF(AND(F2=7,O2=4),S1,IF(AND(F2=7,O2=5),S1,IF(AND(F2=7,O2=6),S1,IF(AND(F2=8,O2=4),S1,IF(AND(F2=8,O2=5),S1,IF(AND(F2=8,O2=6),S1,IF(AND(F2=8,O2=7),S1,""))))))))))))))))))))
+T2 - =IF(AND(F2=5,O2=0),K2,IF(AND(F2=5,O2=1),K2,IF(AND(F2=5,O2=2),K2,IF(AND(F2=5,O2=3),K2,IF(AND(F2=5,O2=4),K2,IF(AND(F2=6,O2=1),T1,IF(AND(F2=6,O2=2),T1,IF(AND(F2=6,O2=3),T1,IF(AND(F2=6,O2=4),T1,IF(AND(F2=6,O2=5),T1,IF(AND(F2=7,O2=2),T1,IF(AND(F2=7,O2=3),T1,IF(AND(F2=7,O2=4),T1,IF(AND(F2=7,O2=5),T1,IF(AND(F2=7,O2=6),T1,IF(AND(F2=8,O2=3),T1,IF(AND(F2=8,O2=4),T1,IF(AND(F2=8,O2=5),T1,IF(AND(F2=8,O2=6),T1,IF(AND(F2=8,O2=7),T1,""))))))))))))))))))))
+U2 - =IF(AND(F2=6,O2=0),L2,IF(AND(F2=6,O2=1),L2,IF(AND(F2=6,O2=2),L2,IF(AND(F2=6,O2=3),L2,IF(AND(F2=6,O2=4),L2,IF(AND(F2=6,O2=5),L2,IF(AND(F2=7,O2=1),U1,IF(AND(F2=7,O2=2),U1,IF(AND(F2=7,O2=3),U1,IF(AND(F2=7,O2=4),U1,IF(AND(F2=7,O2=5),U1,IF(AND(F2=7,O2=6),U1,IF(AND(F2=8,O2=2),U1,IF(AND(F2=8,O2=3),U1,IF(AND(F2=8,O2=4),U1,IF(AND(F2=8,O2=5),U1,IF(AND(F2=8,O2=6),U1,IF(AND(F2=8,O2=7),U1,""))))))))))))))))))
+V2 - =IF(AND(F2=7,O2=0),M2,IF(AND(F2=7,O2=1),M2,IF(AND(F2=7,O2=2),M2,IF(AND(F2=7,O2=3),M2,IF(AND(F2=7,O2=4),M2,IF(AND(F2=7,O2=5),M2,IF(AND(F2=7,O2=6),M2,IF(AND(F2=8,O2=1),V1,IF(AND(F2=8,O2=2),V1,IF(AND(F2=8,O2=3),V1,IF(AND(F2=8,O2=4),V1,IF(AND(F2=8,O2=5),V1,IF(AND(F2=8,O2=6),V1,IF(AND(F2=8,O2=7),V1,""))))))))))))))
+W2 - =IF(F2=8,N2,"")
+X2 - =IF((P2&Q2&R2&S2&T2&U2&V2&W2)="",1,"0")
+Y2 - =IF($O3=0,P2,"")
+Z2 - =IF($O3=0,Q2,"")
+AA2 - =IF($O3=0,R2,"")
+AB2 - =IF($O3=0,S2,"")
+AC2 - =IF($O3=0,T2,"")
+AD2 - =IF($O3=0,U2,"")
+AE2 - =IF($O3=0,V2,"")
+AF2 - =IF($O3=0,W2,"")
+AG2 - ..........
+AH2 - =IF(F2=0,"",IF(Y2&Z2&AA2&AB2&AC2&AD2&AE2&AF2<>"","USE","DELETE"))
+AI2 - =IF(AG2="USE",A2,"")
+AJ2 - =Y2
+AK2 - =Z2
+AL2 - =AA2
+AM2 - =AB2
+AN2 - =AC2
+AO2 - =AD2
+AP2 - =AE2
+AQ2 - =AF2
+AR2 - =IF(AG2="USE",C2,"")
+AS2 - =IF(AH2="USE",IF(D2<>"",D2,""),"")
+AT2 - =IF(AG2="USE",E2,"")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
