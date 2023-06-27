@@ -12,7 +12,7 @@ start_yr,
 end_yr,
 num_of_yrs,
 fees_name
-);
+)
 SELECT 	COUNT(*) num_of,
 		MIN(school_year) AS start_yr,
 		MAX(school_year) AS end_yr,
@@ -20,4 +20,4 @@ SELECT 	COUNT(*) num_of,
 		fees_name
 FROM adjustments_all
 GROUP BY fees_name
-ORDER BY fees_name;
+ORDER BY fees_name
