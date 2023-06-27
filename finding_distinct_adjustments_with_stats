@@ -1,0 +1,23 @@
+CREATE TABLE fees_statistics_from_adjustments(
+num_of INT,
+start_yr TEXT,
+end_yr TEXT,
+num_of_yrs INT,
+fees_name TEXT
+);
+
+INSERT INTO fees_statistics_from_adjustments(
+num_of,
+start_yr,
+end_yr,
+num_of_yrs,
+fees_name
+);
+SELECT 	COUNT(*) num_of,
+		MIN(school_year) AS start_yr,
+		MAX(school_year) AS end_yr,
+		COUNT(DISTINCT school_year) AS num_of_yrs,
+		fees_name
+FROM adjustments_all
+GROUP BY fees_name
+ORDER BY fees_name;
