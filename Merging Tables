@@ -1,0 +1,3 @@
+SELECT  SUBSTR(indicator_id,1,5)||'--'||SUBSTR(indicator_id,-6) AS school_fam_id,
+		*
+FROM adjustments_all
