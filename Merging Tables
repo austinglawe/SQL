@@ -2,3 +2,9 @@
 SELECT  SUBSTR(indicator_id,1,5)||'--'||SUBSTR(indicator_id,-6) AS school_fam_id,
 		*
 FROM adjustments_all
+
+
+SELECT  SUBSTR(indicator_id,1,5)||'--'||SUBSTR(indicator_id,-6) AS school_fam_id,
+		*
+FROM adjustments_all
+WHERE school_fam_id GLOB '12132--004692'
